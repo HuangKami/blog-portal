@@ -146,7 +146,7 @@ public class LoginController {
 			SessionHelper.setAttribute(request, KeyHelper.EMAIL_AUTHCODE, code);
 			SessionHelper.setAttribute(request, KeyHelper.EMAIL, email);
 			MailHelper.sendEmail(user.getEmail(), user.getName(), "KBlog重置密码",
-					"您的验证码为：" + code);
+					"您的验证码为：" + code + "，请输入验证码重置密码");
 		} catch (Exception e) {
 			return "邮箱不存在";
 		}
@@ -162,7 +162,7 @@ public class LoginController {
 		if(StringHelper.isEmpty(code)) {
 			return "邮箱验证码不能为空";
 		}
-		if(StringHelper.equalsIgnoreCase(SessionHelper.getAttribute(request, KeyHelper.EMAIL_AUTHCODE).toString(), code)) {
+		if(!StringHelper.equalsIgnoreCase(SessionHelper.getAttribute(request, KeyHelper.EMAIL_AUTHCODE).toString(), code)) {
 			return "验证码错误";
 		}
 		return KeyHelper.SUCCESS;
