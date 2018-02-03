@@ -86,11 +86,13 @@ public class AuthCodeController {
 		g.dispose();
 		
 		//把验证码存进session中
-		if(StringHelper.equals("loginAuthCode", authCodeType)) {
+		if(StringHelper.equals(KeyHelper.LOGIN_AUTHCODE, authCodeType)) {
 			SessionHelper.setAttribute(request, KeyHelper.LOGIN_AUTHCODE, authCode.toString());
-		} else if(StringHelper.equals("registerAuthCode", authCodeType)) {
+		} else if(StringHelper.equals(KeyHelper.REGISTER_AUTHCODE, authCodeType)) {
 			SessionHelper.setAttribute(request, KeyHelper.REGISTER_AUTHCODE, authCode.toString());
-		} 
+		} else if(StringHelper.equals(KeyHelper.FIND_BACK_AUTHCODE, authCodeType)) {
+			SessionHelper.setAttribute(request, KeyHelper.FIND_BACK_AUTHCODE, authCode.toString());
+		}
 //		else {
 //			SessionHelper.setAttribute(request, KeyHelper.AUTHCODE, authCode.toString());
 //		}

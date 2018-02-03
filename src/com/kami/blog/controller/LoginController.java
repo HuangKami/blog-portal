@@ -133,9 +133,16 @@ public class LoginController {
 	 */
 	@RequestMapping("/findBack")
 	@ResponseBody
-	public String findBackPass(HttpServletRequest request, @RequestParam(value="email") String email) {
+	public String findBackPass(HttpServletRequest request, @RequestParam(value="email") String email,
+			@RequestParam(value="findBackAuthCode") String findBackAuthCode) {
 		if(StringHelper.isEmpty(email)) {
 			return "邮箱不能为空";
+		}
+		if(StringHelper.isEmpty(findBackAuthCode)) {
+			return "验证码不能为空";
+		}
+		if(!StringHelper.equalsIgnoreCase(findBackAuthCode, SessionHelper.getAttribute(request, KeyHelper.FIND_BACK_AUTHCODE).toString())) {
+			return "验证码错误";
 		}
 		User user = userService.selectUserByEmail(email);
 		if(user == null) {
@@ -149,6 +156,7 @@ public class LoginController {
 		} catch (Exception e) {
 			return "邮箱不存在";
 		}
+		SessionHelper.removeAttribute(request, KeyHelper.FIND_BACK_AUTHCODE);
 		return KeyHelper.SUCCESS;
 	}
 	

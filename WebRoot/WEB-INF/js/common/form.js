@@ -128,6 +128,7 @@
 		case "registerAuthCode":
 		case "loginAuthCode":
 		case "affirmCode":
+		case "findBackAuthCode":
 			flag = /^\w{4}$/.test(value);
 			id = "authCode";
 			break;

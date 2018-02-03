@@ -66,6 +66,9 @@
 		<div class="input_findBack">
 			<input class="input" id="forget_user_email" type="text" aria-label="邮箱" placeholder="输入邮箱重置密码" />
 			<div class="hint">请输入邮箱</div>
+			<input class="input" id="findBackAuthCode" style="width: 220px;" type="text" aria-label="验证码" placeholder="验证码" />
+			<a href="#" onclick="return changeAuthCode('findBackAuthCode')"><img src="authCode?authCodeType=findBackAuthCode" style="float: right" id="findBackAuthCodeImage" title="图片看不清？点击重新得到验证码" style="cursor: pointer;" /></a> 
+			<div class="hint">请输入验证码</div>
 			<input type="submit" class="button" id="findBack" name="button" value="获取验证码" />
 		</div>
 		

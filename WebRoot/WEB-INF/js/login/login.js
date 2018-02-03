@@ -165,12 +165,14 @@ function register() {
  */
 function findBack() {
 	var email = $("#forget_user_email").val();
+	var findBackAuthCode = $("#findBackAuthCode").val();
 	loadingActive("login_cont");
 	$.ajax( {  
         type : "POST",  
         url : "login/findBack",  
         data : {
-        	"email" : email
+        	"email" : email,
+        	"findBackAuthCode" : findBackAuthCode
         },
         dataType: "json",  
         success : function(data) { 

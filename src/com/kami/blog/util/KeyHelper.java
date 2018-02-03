@@ -16,6 +16,8 @@ public class KeyHelper {
 	public static final String REGISTER_AUTHCODE = "registerAuthCode";
 	//邮箱验证码
 	public static final String EMAIL_AUTHCODE = "emailAuthCode";
+	//找回密码验证码
+	public static final String FIND_BACK_AUTHCODE = "findBackAuthCode";
 	//验证码个数
 	public static final int CODE_SIZE = 4;
 	//用户
