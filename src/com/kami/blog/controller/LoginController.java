@@ -145,8 +145,7 @@ public class LoginController {
 			String code = RandomHelper.getRandomCode();
 			SessionHelper.setAttribute(request, KeyHelper.EMAIL_AUTHCODE, code);
 			SessionHelper.setAttribute(request, KeyHelper.EMAIL, email);
-			MailHelper.sendEmail(user.getEmail(), user.getName(), "KBlog重置密码",
-					"您的验证码为：" + code + "，请输入验证码重置密码");
+			MailHelper.sendEmail(user.getEmail(), user.getName(), "KBlog重置验证码", code);
 		} catch (Exception e) {
 			return "邮箱不存在";
 		}

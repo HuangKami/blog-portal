@@ -205,7 +205,7 @@ function affirmCode() {
         success : function(data) { 
         	loadingUnactive("login_cont");
         	if(data == "success") {
-        		alert("操作成功，请输入新密码重置");
+        		//alert("操作成功，请输入新密码重置");
         		$(".input_affirm")[0].className="input_affirm";
         		$(".input_reset")[0].className="input_reset active";
         	} else {
