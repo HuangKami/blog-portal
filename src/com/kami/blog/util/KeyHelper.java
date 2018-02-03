@@ -3,7 +3,7 @@ package com.kami.blog.util;
 public class KeyHelper {
 	//项目地址
 	public static final String URL = "http://localhost:8080/blog-portal";
-	//public static final String URL = "http://www.kami.org.cn/blog";
+	//public static final String URL = "http://www.kami.org.cn/kblog";
 	//成功信息
 	public static final String SUCCESS = "success";
 	//失败信息
