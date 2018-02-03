@@ -57,6 +57,7 @@ function login() {
 	var name = $("#login_user_name").val();
 	var password = $("#login_password").val();
 	var authCode = $("#loginAuthCode").val();
+	loadingActive("login_cont");
 	$.ajax( {  
         type : "POST",  
         url : "login/login",  
@@ -67,11 +68,15 @@ function login() {
         },
         dataType: "json",  
         success : function(data) {  
+        	loadingUnactive("login_cont");
         	if(data != "success") {
         		alert(data);
         	} else {
         		window.location.href = "main";
         	}
+        },
+        error : function() {
+        	loadingUnactive("login_cont");
         }
     });  
 }

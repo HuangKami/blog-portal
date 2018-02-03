@@ -118,8 +118,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String checkLoginUser(HttpServletRequest request, User loginUser, String authCode) {
 		String result = "";
+		Object loginAuthCode = SessionHelper.getAttribute(request, KeyHelper.LOGIN_AUTHCODE);
+		if(loginAuthCode == null) {
+			return "请刷新重试";
+		}
 		// 检查验证码
-		if (!StringHelper.equalsIgnoreCase(SessionHelper.getAttribute(request, KeyHelper.LOGIN_AUTHCODE).toString(), authCode)) {
+		if (!StringHelper.equalsIgnoreCase(loginAuthCode.toString(), authCode)) {
 			result = "验证码错误";
 		} else {
 			User user = selectUserByNameOrEmail(loginUser);
@@ -152,7 +156,11 @@ public class UserServiceImpl implements UserService {
 		if(StringHelper.isEmpty(user.getEmail())) {
 			return "邮箱不能为空";
 		}
-		if (!StringHelper.equalsIgnoreCase(SessionHelper.getAttribute(request, KeyHelper.REGISTER_AUTHCODE).toString(), authCode)) {
+		Object registerAuthCode = SessionHelper.getAttribute(request, KeyHelper.REGISTER_AUTHCODE);
+		if(registerAuthCode == null) {
+			return "请刷新重试";
+		}
+		if (!StringHelper.equalsIgnoreCase(registerAuthCode.toString(), authCode)) {
 			return "验证码错误";
 		}
 		if(selectUserByName(user.getName()) != null) {

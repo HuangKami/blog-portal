@@ -141,7 +141,11 @@ public class LoginController {
 		if(StringHelper.isEmpty(findBackAuthCode)) {
 			return "验证码不能为空";
 		}
-		if(!StringHelper.equalsIgnoreCase(findBackAuthCode, SessionHelper.getAttribute(request, KeyHelper.FIND_BACK_AUTHCODE).toString())) {
+		Object authCode = SessionHelper.getAttribute(request, KeyHelper.FIND_BACK_AUTHCODE);
+		if(authCode == null) {
+			return "请刷新重试";
+		}
+		if(!StringHelper.equalsIgnoreCase(findBackAuthCode, authCode.toString())) {
 			return "验证码错误";
 		}
 		User user = userService.selectUserByEmail(email);
