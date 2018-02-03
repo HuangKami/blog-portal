@@ -2,9 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kami.blog.dao.UserDao">
     <!-- User的resultMap,column是给数据库列起的别名,它对应property类的属性-->
-    <resultMap id="result_User_Map" type="com.kami.blog.entity.User">
-        <id column="name" jdbcType="VARCHAR" property="name" />
-        <result column="pass" jdbcType="VARCHAR" property="pass" />
+    <resultMap id="result_User_Map" type="com.kami.blog.model.User">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="admin" jdbcType="TINYINT" property="admin" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="active" jdbcType="TINYINT" property="active" />
+        <result column="createTime" jdbcType="DATE" property="createTime" />
     </resultMap>
 
 	   <!-- Assist用于辅助工具类setRequires设置的条件,${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
@@ -41,13 +46,18 @@
 
     <!-- 数据库中表名为:user的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
     <sql id="user_Column">
-        user.name as name
-        ,user.pass as pass
+        user.id as id
+        ,user.password as password
+        ,user.name as name
+        ,user.admin as admin
+        ,user.email as email
+        ,user.active as active
+        ,user.createTime as createTime
     </sql>
 
     <!--获得类名为:User对应的数据库表的数据总行数 -->
     <select id="getUserRowCount" parameterType="com.kami.blog.common.Assist" resultType="java.lang.Long">
-        select count(name) from user
+        select count(id) from user
         <if test="require!=null"><include refid="Assist" /></if>
     </select>
     <!-- 获得类名为:User对应数据库中表的数据集合 -->
@@ -70,7 +80,7 @@
             <otherwise>
                 inner join
                 (
-                SELECT name as primary_key FROM user
+                SELECT id as primary_key FROM user
                 <if test="require!=null">
                     <include refid="Assist" />
                 </if>
@@ -80,62 +90,116 @@
                     <when test="rowSize !=null">LIMIT #{rowSize,jdbcType=INTEGER}</when>
                  </choose>
                  ) as tmp
-                 on tmp.primary_key=user.name
+                 on tmp.primary_key=user.id
             </otherwise>
         </choose>
     </select> 
 
     <!-- 获得一个User对象,以参数User对象中不为空的属性作为条件进行查询-->
-    <select id="selectUserByObj" parameterType="com.kami.blog.entity.User" resultMap="result_User_Map">
+    <select id="selectUserByObj" parameterType="com.kami.blog.model.User" resultMap="result_User_Map">
         select 
             <include refid="user_Column" /> 
         from user
         <where>
-            <if test="pass != null "> and user.pass = #{pass,jdbcType=VARCHAR}</if>
+            <if test="email != null "> and user.email = #{email,jdbcType=VARCHAR}</if>
+            <if test="admin != null "> and user.admin = #{admin,jdbcType=TINYINT}</if>
             <if test="name != null "> and user.name = #{name,jdbcType=VARCHAR}</if>
+            <if test="password != null "> and user.password = #{password,jdbcType=VARCHAR}</if>
+            <if test="id != null "> and user.id = #{id,jdbcType=VARCHAR}</if>
+            <if test="active != null "> and user.active = #{active,jdbcType=TINYINT}</if>
+            <if test="createTime != null "> and user.createTime = #{createTime,jdbcType=DATE}</if>
         </where>
     </select> 
+    
+    <delete id="deleteUnactiveUser">
+    	delete 
+    	from user 
+    	where user.active = 0 and datediff(now(), user.createTime) >= 3
+    </delete>
 
     <!-- 通过User的id获得对应数据库中表的数据对象-->
     <select id="selectUserById" parameterType="java.lang.String" resultMap="result_User_Map">
         select 
             <include refid="user_Column" /> 
         from user
-        where user.name = #{id,jdbcType=VARCHAR}
+        where user.id = #{id,jdbcType=VARCHAR}
     </select> 
+    
+    <!-- 通过User的name获得对应数据库中表的数据对象-->
+    <select id="selectUserByName" parameterType="java.lang.String" resultMap="result_User_Map">
+        select 
+            <include refid="user_Column" /> 
+        from user
+        where user.name = #{name, jdbcType=VARCHAR}
+    </select> 
+    
+    <!-- 通过User的email获得对应数据库中表的数据对象-->
+    <select id="selectUserByEmail" parameterType="java.lang.String" resultMap="result_User_Map">
+        select 
+            <include refid="user_Column" /> 
+        from user
+        where user.email = #{email, jdbcType=VARCHAR}
+    </select> 
+    
+    <!-- 通过User的name或email获得对应数据库中表的数据对象-->
+    <select id="selectUserByNameOrEmail" parameterType="com.kami.blog.model.User" resultMap="result_User_Map">
+        select 
+            <include refid="user_Column" /> 
+        from user
+        where user.name = #{name,jdbcType=VARCHAR} or user.email = #{email,jdbcType=VARCHAR}
+    </select>
 
     <!-- 将User插入到对应数据库的表中,包括属性值为null的数据-->
 
-    <insert id="insertUser" parameterType="com.kami.blog.entity.User">
-        insert into user(name,pass) 
-        values(#{name,jdbcType=VARCHAR},#{pass,jdbcType=VARCHAR})
+    <insert id="insertUser" parameterType="com.kami.blog.model.User" useGeneratedKeys="true" keyProperty="id">
+	    <selectKey keyProperty="id" resultType="String" order="BEFORE">
+	        select replace(uuid(), '-', '') from dual
+	    </selectKey>
+        insert into user(id,password,name,admin,email,active,createTime) 
+        values(#{id,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{admin,jdbcType=TINYINT},#{email,jdbcType=VARCHAR},#{active,jdbcType=TINYINT},#{createTime,jdbcType=DATE})
     </insert>
 
     <!-- 将User中属性值不为null的数据,插入到对应数据库的表中-->
-    <insert id="insertNonEmptyUser" parameterType="com.kami.blog.entity.User">
+    <insert id="insertNonEmptyUser" parameterType="com.kami.blog.model.User">
+        <selectKey keyProperty="id" resultType="String" order="BEFORE">
+	        select replace(uuid(), '-', '') from dual
+	    </selectKey>
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="password != null">password,</if>
             <if test="name != null">name,</if>
-            <if test="pass != null">pass,</if>
+            <if test="admin != null">admin,</if>
+            <if test="email != null">email,</if>
+            <if test="active != null">active,</if>
+            <if test="createTime != null">createTime,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id,jdbcType=VARCHAR},</if>
+            <if test="password != null"> #{password,jdbcType=VARCHAR},</if>
             <if test="name != null"> #{name,jdbcType=VARCHAR},</if>
-            <if test="pass != null"> #{pass,jdbcType=VARCHAR},</if>
+            <if test="admin != null"> #{admin,jdbcType=TINYINT},</if>
+            <if test="email != null"> #{email,jdbcType=VARCHAR},</if>
+            <if test="active != null"> #{active,jdbcType=TINYINT},</if>
+            <if test="createTime != null"> #{createTime,jdbcType=DATE},</if>
         </trim>
     </insert>
 
     <!-- 将User批量插入到对应数据库的表中-->
     <insert id="insertUserByBatch" parameterType="ArrayList">
-        insert into user(name,pass) values
+    	<selectKey keyProperty="id" resultType="String" order="BEFORE">
+	        select replace(uuid(), '-', '') from dual
+	    </selectKey>
+        insert into user(id,password,name,admin,email,active,createTime) values
         <foreach collection="list" item="item" index="index" separator="," >
-            (#{item.name,jdbcType=VARCHAR},#{item.pass,jdbcType=VARCHAR})
+            (#{item.id,jdbcType=VARCHAR},#{item.password,jdbcType=VARCHAR},#{item.name,jdbcType=VARCHAR},#{item.admin,jdbcType=TINYINT},#{item.email,jdbcType=VARCHAR},#{item.active,jdbcType=TINYINT},#{item.createTime,jdbcType=DATE})
         </foreach>
     </insert>
 
     <!-- 通过User的id将数据库表中对应的数据删除-->
     <delete id="deleteUserById" parameterType="java.lang.String">
         delete from user
-        where name = #{id,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
     </delete>
 
     <!-- 通过辅助工具Assist中的条件将User对应的数据库表的数据删除-->
@@ -143,31 +207,57 @@
         delete from user
         <if test="require!=null"><include refid="Assist" /></if>
     </delete>
+    
 
     <!-- 通过User的id将User的数据更新到数据库中对应的表,包括值null的数据-->
-    <update id="updateUserById" parameterType="com.kami.blog.entity.User">
+    <update id="updateUserById" parameterType="com.kami.blog.model.User">
         update user set
-            pass=#{pass,jdbcType=VARCHAR}
-        where name=#{name,jdbcType=VARCHAR}
+            password=#{password,jdbcType=VARCHAR}
+            ,name=#{name,jdbcType=VARCHAR}
+            ,admin=#{admin,jdbcType=TINYINT}
+            ,email=#{email,jdbcType=VARCHAR}
+            ,active=#{active,jdbcType=TINYINT}
+            ,createTime=#{createTime,jdbcType=DATE}
+        where id=#{id,jdbcType=VARCHAR}
     </update>
 
     <!-- 通过User的id将User中属性值不为null的数据更新到数据库对应的表中-->
-    <update id="updateNonEmptyUserById" parameterType="com.kami.blog.entity.User">
+    <update id="updateNonEmptyUserById" parameterType="com.kami.blog.model.User">
         update user
         <set>
-            <if test="pass != null">
-                pass=#{pass,jdbcType=VARCHAR},
+            <if test="password != null">
+                password=#{password,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name=#{name,jdbcType=VARCHAR},
+            </if>
+            <if test="admin != null">
+                admin=#{admin,jdbcType=TINYINT},
+            </if>
+            <if test="email != null">
+                email=#{email,jdbcType=VARCHAR},
+            </if>
+            <if test="active != null">
+                active=#{active,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                active=#{createTime,jdbcType=Date},
             </if>
         </set>
-        where name=#{name,jdbcType=VARCHAR}
+        where id=#{id,jdbcType=VARCHAR}
     </update>
 
     <!-- 通过辅助工具Assist中的条件将User中的数据更新到数据库对应的表中,包括值为null的数据-->
     <update id="updateUser" parameterType="map">
         update user
         <set>
+                id=#{enti.id,jdbcType=VARCHAR},
+                password=#{enti.password,jdbcType=VARCHAR},
                 name=#{enti.name,jdbcType=VARCHAR},
-                pass=#{enti.pass,jdbcType=VARCHAR},
+                admin=#{enti.admin,jdbcType=TINYINT},
+                email=#{enti.email,jdbcType=VARCHAR},
+                active=#{enti.active,jdbcType=TINYINT},
+                createTime=#{enti.createTime,jdbcType=DATE},
         </set>
         <if test="assist.require!=null"><include refid="updateAssist" /></if>
     </update>
@@ -176,11 +266,26 @@
     <update id="updateNonEmptyUser" parameterType="map">
         update user
         <set>
+            <if test="enti.id != null">
+                id=#{enti.id,jdbcType=VARCHAR},
+            </if>
+            <if test="enti.password != null">
+                password=#{enti.password,jdbcType=VARCHAR},
+            </if>
             <if test="enti.name != null">
                 name=#{enti.name,jdbcType=VARCHAR},
             </if>
-            <if test="enti.pass != null">
-                pass=#{enti.pass,jdbcType=VARCHAR},
+            <if test="enti.admin != null">
+                admin=#{enti.admin,jdbcType=TINYINT},
+            </if>
+            <if test="enti.email != null">
+                email=#{enti.email,jdbcType=VARCHAR},
+            </if>
+            <if test="enti.active != null">
+                active=#{enti.active,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                createTime=#{enti.createTime,jdbcType=DATE},
             </if>
         </set>
         <if test="assist.require!=null"><include refid="updateAssist" /></if>

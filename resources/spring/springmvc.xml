@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -28,20 +27,11 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-<!--
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/**/*.css" />
-			<mvc:exclude-mapping path="/**/*.js" />
-			<mvc:exclude-mapping path="/**/*.png" />
-			<mvc:exclude-mapping path="/**/*.gif" />
-			<mvc:exclude-mapping path="/**/*.jpg" />
-			<mvc:exclude-mapping path="/**/*.jpeg" />
-			<bean class="com.kami.blog.inteceptor.LoginInteceptor"></bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
--->	
+	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/**" /> <mvc:exclude-mapping 
+		path="/**/*.css" /> <mvc:exclude-mapping path="/**/*.js" /> <mvc:exclude-mapping 
+		path="/**/*.png" /> <mvc:exclude-mapping path="/**/*.gif" /> <mvc:exclude-mapping 
+		path="/**/*.jpg" /> <mvc:exclude-mapping path="/**/*.jpeg" /> <bean class="com.kami.blog.inteceptor.LoginInteceptor"></bean> 
+		</mvc:interceptor> </mvc:interceptors> -->
 	<!-- 配置资源映射 -->
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
