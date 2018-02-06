@@ -88,11 +88,16 @@
 			<input type="submit" id="resetPassword" class="button" id="reset" name="button" value="重置密码" />
 		</div>
 	</div>
-	
 	<jsp:include page="../common/loading.jsp"></jsp:include>
 </body>
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/login/login.js"></script>
 <script type="text/javascript" src="js/common/form.js"></script>
+<script type="text/javascript">
+	var error = "${requestScope.error}";
+	if(error != "") {
+		alert(error);
+	}
+</script>
 </html>

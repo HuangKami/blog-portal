@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.kami.blog.dao.UserDao;
 import com.kami.blog.model.User;
+import com.kami.blog.redis.UserSessionRedis;
 import com.kami.blog.common.Assist;
 import com.kami.blog.service.UserService;
 import com.kami.blog.util.KeyHelper;
@@ -20,6 +21,8 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private UserSessionRedis userSessionRedis;
 
 	@Override
 	public long getUserRowCount(Assist assist) {
@@ -116,7 +119,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String checkLoginUser(HttpServletRequest request, User loginUser, String authCode) {
+	public String login(HttpServletRequest request, User loginUser, String authCode) {
 		String result = "";
 		Object loginAuthCode = SessionHelper.getAttribute(request, KeyHelper.LOGIN_AUTHCODE);
 		if(loginAuthCode == null) {
@@ -136,6 +139,8 @@ public class UserServiceImpl implements UserService {
 			} else {
 				// 校验成功，将用户放进session中
 				SessionHelper.setAttribute(request, KeyHelper.USER, user);
+				SessionHelper.removeAttribute(request, KeyHelper.LOGIN_AUTHCODE);
+				userSessionRedis.saveUserSession(user.getId(), SessionHelper.getSessionId(request));
 				result = KeyHelper.SUCCESS;
 			}
 		}

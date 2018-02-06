@@ -74,7 +74,7 @@ public interface UserService{
     /**
      * 用户登陆校验
      */
-    String checkLoginUser(HttpServletRequest request, User loginUser, String authCode);
+    String login(HttpServletRequest request, User loginUser, String authCode);
     /**
      * 用户注册检验
      */

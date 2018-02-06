@@ -63,14 +63,15 @@
 		<property name="targetMethod" value="startTask" />
 		<property name="concurrent" value="false" />
 	</bean>
-	
+
 	<!-- 定义触发时间 -->
-	<bean id="clearUnactiveUserTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+	<bean id="clearUnactiveUserTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="clearUnactiveUserDetail" />
 		<!-- cron表达式 -->
 		<property name="cronExpression" value="0 0 0 * * ?" />
 	</bean>
-	
+
 	<!-- 总管理类 -->
 	<bean id="startQuertz" lazy-init="false" autowire="no"
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
@@ -81,10 +82,16 @@
 		</property>
 	</bean>
 
-	<!-- redis <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"> 
-		<property name="usePool" value="true"></property> <property name="hostName" 
-		value="${redis.host}" /> <property name="port" value="${redis.port}" /> <property 
-		name="password" value="${redis.pass}" /> <property name="timeout" value="${redis.timeout}" 
-		/> </bean> <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"> 
-		<property name="connectionFactory" ref="jedisConnectionFactory" /> </bean> -->
+	<!-- redis -->
+	<bean id="jedisConnectionFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+		<property name="usePool" value="true"></property>
+		<property name="hostName" value="${redis.host}" />
+		<property name="port" value="${redis.port}" />
+		<property name="password" value="${redis.pass}" />
+		<property name="timeout" value="${redis.timeout}" />
+	</bean>
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory" ref="jedisConnectionFactory" />
+	</bean>
 </beans>

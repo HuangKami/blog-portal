@@ -27,11 +27,20 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/**" /> <mvc:exclude-mapping 
-		path="/**/*.css" /> <mvc:exclude-mapping path="/**/*.js" /> <mvc:exclude-mapping 
-		path="/**/*.png" /> <mvc:exclude-mapping path="/**/*.gif" /> <mvc:exclude-mapping 
-		path="/**/*.jpg" /> <mvc:exclude-mapping path="/**/*.jpeg" /> <bean class="com.kami.blog.inteceptor.LoginInteceptor"></bean> 
-		</mvc:interceptor> </mvc:interceptors> -->
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/comment" />
+			<mvc:exclude-mapping path="/**/*.css" />
+			<mvc:exclude-mapping path="/**/*.js" />
+			<mvc:exclude-mapping path="/**/*.png" />
+			<mvc:exclude-mapping path="/**/*.gif" />
+			<mvc:exclude-mapping path="/**/*.jpg" />
+			<mvc:exclude-mapping path="/**/*.jpeg" />
+			<bean class="com.kami.blog.interceptor.UserSessionInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 	<!-- 配置资源映射 -->
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**" />

@@ -29,6 +29,7 @@ import com.kami.blog.util.StringHelper;
 public class LoginController {
 	@Autowired
 	private UserService userService;
+	
 	private Logger logger =  Logger.getLogger(LoginController.class);
 	
 	/**
@@ -47,9 +48,8 @@ public class LoginController {
 	public String login(HttpServletRequest request, @ModelAttribute User loginUser,
 			@RequestParam(value="loginAuthCode") String loginAuthCode) {
 		loginUser.setEmail(loginUser.getName());
-		String result = userService.checkLoginUser(request, loginUser, loginAuthCode);
+		String result = userService.login(request, loginUser, loginAuthCode);
 		if(StringHelper.equals(KeyHelper.SUCCESS, result)) {
-			SessionHelper.removeAttribute(request, KeyHelper.LOGIN_AUTHCODE);
 			return KeyHelper.SUCCESS;
 		}
 		return result;

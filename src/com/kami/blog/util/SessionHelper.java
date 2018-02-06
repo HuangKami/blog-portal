@@ -28,4 +28,8 @@ public class SessionHelper {
 	public static Object getAttribute(HttpServletRequest request, String key) {
 		return request.getSession().getAttribute(key);
 	}
+	
+	public static String getSessionId(HttpServletRequest request) {
+		return request.getSession().getId();
+	}
 }
