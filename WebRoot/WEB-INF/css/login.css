@@ -11,7 +11,7 @@ html, body {
 body {
 	padding: 0;
 	margin: 0;
-	background: url(../images/login.png);
+	background: url(../images/login-bg.png);
     background-size:100% 100%;
     background-repeat: no-repeat;
 }

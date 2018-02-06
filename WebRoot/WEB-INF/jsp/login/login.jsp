@@ -95,12 +95,4 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/login/login.js"></script>
 <script type="text/javascript" src="js/common/form.js"></script>
-<script type="text/javascript">
-	if ("${error}" != "") {
-		alert("${error}");
-	}
-	if ("${message}" != "") {
-		alert("${message}");
-	}
-</script>
 </html>
