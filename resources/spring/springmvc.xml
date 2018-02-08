@@ -28,16 +28,24 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<!-- 拦截器 -->
 	<mvc:interceptors>
+		<!-- 顶号通知拦截器 -->
 		<mvc:interceptor>
-			<mvc:mapping path="/comment" />
+			<mvc:mapping path="/*" />
 			<mvc:exclude-mapping path="/**/*.css" />
 			<mvc:exclude-mapping path="/**/*.js" />
 			<mvc:exclude-mapping path="/**/*.png" />
 			<mvc:exclude-mapping path="/**/*.gif" />
 			<mvc:exclude-mapping path="/**/*.jpg" />
 			<mvc:exclude-mapping path="/**/*.jpeg" />
-			<bean class="com.kami.blog.interceptor.UserSessionInterceptor"></bean>
+			<bean class="com.kami.blog.interceptor.ReplaceUserInterceptor"></bean>
+		</mvc:interceptor>
+		
+		<!-- 登录拦截器 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/comment" />
+			<bean class="com.kami.blog.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

@@ -1,14 +1,10 @@
-package com.kami.blog.filter;
+package com.kami.blog.interceptor;
 
-import java.io.IOException;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.kami.blog.model.User;
 import com.kami.blog.redis.UserSessionRedis;
@@ -17,26 +13,25 @@ import com.kami.blog.util.SessionHelper;
 import com.kami.blog.util.StringHelper;
 
 /**
- * 顶号处理过滤器
+ *	账号在异处登录通知用户
  */
-public class UserSessionFilter extends OncePerRequestFilter {
-	
+public class ReplaceUserInterceptor extends HandlerInterceptorAdapter {
 	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-			throws ServletException, IOException {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
 		UserSessionRedis userSessionRedis = (UserSessionRedis) 
 				WebApplicationContextUtils.getWebApplicationContext(
 						request.getSession().getServletContext()).getBean("userSessionRedis");
 		User user = (User) SessionHelper.getAttribute(request, KeyHelper.USER);
 		if(user != null) {
 			String redisSessionId = userSessionRedis.readUserSession(user.getId());
-			if(!StringHelper.equals(SessionHelper.getSessionId(request), redisSessionId)) {
+			if(!StringHelper.isEmpty(redisSessionId) && !StringHelper.equals(SessionHelper.getSessionId(request), redisSessionId)) {
 				request.setAttribute(KeyHelper.ERROR, "账号在异处登录");
 				SessionHelper.removeAttribute(request, KeyHelper.USER);
+				request.getRequestDispatcher("/login").forward(request, response);
+				return false;
 			}
 		} 
-		filterChain.doFilter(request, response);
+		return true;
 	}
-	
-	
 }
