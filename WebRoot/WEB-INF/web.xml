@@ -26,6 +26,16 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	<!-- XSS攻击过滤器 -->
+	<filter>
+		<filter-name>XSSFilter</filter-name>
+		<filter-class>com.kami.blog.filter.XSSFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>XSSFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<!-- 加载spring配置文件 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

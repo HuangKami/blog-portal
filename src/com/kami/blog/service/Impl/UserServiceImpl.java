@@ -123,7 +123,7 @@ public class UserServiceImpl implements UserService {
 		String result = "";
 		Object loginAuthCode = SessionHelper.getAttribute(request, KeyHelper.LOGIN_AUTHCODE);
 		if(loginAuthCode == null) {
-			return "请刷新重试";
+			return "验证码过期，请刷新重试";
 		}
 		// 检查验证码
 		if (!StringHelper.equalsIgnoreCase(loginAuthCode.toString(), authCode)) {
