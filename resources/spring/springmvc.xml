@@ -39,6 +39,12 @@
 			<mvc:exclude-mapping path="/**/*.gif" />
 			<mvc:exclude-mapping path="/**/*.jpg" />
 			<mvc:exclude-mapping path="/**/*.jpeg" />
+			<mvc:exclude-mapping path="/**/*.eot" />
+			<mvc:exclude-mapping path="/**/*.svg" />
+			<mvc:exclude-mapping path="/**/*.ttf" />
+			<mvc:exclude-mapping path="/**/*.woff" />
+			<mvc:exclude-mapping path="/**/*.woff2" />
+			<mvc:exclude-mapping path="/**/*.otf" />
 			<bean class="com.kami.blog.interceptor.ReplaceUserInterceptor"></bean>
 		</mvc:interceptor>
 		
@@ -53,4 +59,5 @@
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
 	<mvc:resources location="/WEB-INF/images/" mapping="/images/**" />
+	<mvc:resources location="/WEB-INF/fonts/" mapping="/fonts/**" />
 </beans>

@@ -16,7 +16,7 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<script type="text/javascript" src="js/common/common.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 <link rel="stylesheet" type="text/css" href="css/common.css">
 <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
@@ -92,8 +92,8 @@
 </body>
 
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/login/login.js"></script>
-<script type="text/javascript" src="js/common/form.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/form.js"></script>
 <script type="text/javascript">
 	var error = "${requestScope.error}";
 	if(error != "") {
