@@ -28,7 +28,7 @@
 		authCode : {
 			hint : "⚠️请输入验证码",
 			right : "√验证码输入正确",
-			wrong : "验证码为4位，请重新输入"
+			wrong : "×验证码为4位，请重新输入"
 		},
 		phone : {
 			hint : "⚠️请输入11位电话号码",
@@ -53,7 +53,7 @@
 		login_user_name : {
 			hint : "⚠️请输入用户名或邮箱账号",
 			right : "√用户名或邮箱账号正确",
-			wrong : "用户名或邮箱账号格式不正确"
+			wrong : "×用户名或邮箱账号格式不正确"
 		}
 	};
 	var regEvent = function(node, event, func) {
