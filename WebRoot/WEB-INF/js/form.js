@@ -48,7 +48,7 @@
 		repassword : {
 			hint : "⚠️请再次输入密码",
 			right : "√再次输入密码正确",
-			wrong : "×两次输入不一致或密码格式不正确，请重新输入或密码格式不正确"
+			wrong : "×两次输入不一致或密码格式不正确"
 		},
 		login_user_name : {
 			hint : "⚠️请输入用户名或邮箱账号",
@@ -97,7 +97,7 @@
 			flag = document.getElementById("password").value == value
 					&& value != "" && value != null
 					&& (/^\S{6,16}$/.test(value));
-			id = repassword;
+			id = "repassword";
 			break;
 		case "info_repassword":
 			flag = document.getElementById("info_password").value == value
