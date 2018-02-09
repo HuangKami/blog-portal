@@ -180,7 +180,7 @@
 	});
 	regEvent(document.getElementById("register"), "click", function(e) {
 		var email = document.getElementById("hint_email");
-		var name = document.getElementById("hint_email");
+		var name = document.getElementById("hint_name");
 		if (index !== 0 || email.className == "hint hint_wrong" || name.className == "hint hint_wrong") {
 			e.preventDefault();
 			alert("您的输入有误，请检查并重新输入！");
