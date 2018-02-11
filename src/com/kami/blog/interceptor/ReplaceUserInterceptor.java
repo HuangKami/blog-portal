@@ -3,11 +3,11 @@ package com.kami.blog.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.kami.blog.model.User;
 import com.kami.blog.redis.UserSessionRedis;
+import com.kami.blog.util.BeanHelper;
 import com.kami.blog.util.KeyHelper;
 import com.kami.blog.util.SessionHelper;
 import com.kami.blog.util.StringHelper;
@@ -20,8 +20,7 @@ public class ReplaceUserInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		UserSessionRedis userSessionRedis = (UserSessionRedis) 
-				WebApplicationContextUtils.getWebApplicationContext(
-						request.getSession().getServletContext()).getBean("userSessionRedis");
+				BeanHelper.getBean("userSessionRedis");
 		User user = (User) SessionHelper.getAttribute(request, KeyHelper.USER);
 		if(user != null) {
 			String redisSessionId = userSessionRedis.readUserSession(user.getId());

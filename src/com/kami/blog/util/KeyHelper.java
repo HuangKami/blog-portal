@@ -24,5 +24,4 @@ public class KeyHelper {
 	public static final String USER = "user";
 	//邮件
 	public static final String EMAIL = "email";
-	
 }
