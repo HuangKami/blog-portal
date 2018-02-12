@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>  
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -28,16 +29,19 @@
 
 </head>
 <body class="user-select">
-	<header class="header"> <nav class="navbar navbar-default"
-		id="navbar">
+	<header class="header"> 
+	<nav class="navbar navbar-default" id="navbar">
 	<div class="container">
 		<div class="header-topbar hidden-xs link-border">
 			<ul class="site-nav topmenu">
-				<li><a href="#">标签云</a></li>
-				<li><a href="#" rel="nofollow">读者墙</a></li>
-				<li><a href="#" title="RSS订阅"> <i class="fa fa-rss"> </i>
-						RSS订阅
-				</a></li>
+				<c:if test="${empty user}">
+					<li><a href="login"><i class="fa fa-sign-in"></i> 登录</a></li>
+					<li><a href="login" rel="nofollow"><i class="fa fa-sign-in"></i> 注册</a></li>
+				</c:if>
+				<c:if test="${not empty user}">
+					<li><a href="#"><i class="fa fa-user"></i> ${user.name}</a></li>
+					<li><a href="#"><i class="fa fa-sign-out"></i> 注销</a></li>
+				</c:if>
 			</ul>
 			勤记录 懂分享
 		</div>
