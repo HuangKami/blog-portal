@@ -2,6 +2,9 @@ package com.kami.blog.util;
 
 import java.util.Random;
 
+/**
+ *	随机数工具类
+ */
 public class RandomHelper {
 	private static Random random;
 	private static Object object = new Object();

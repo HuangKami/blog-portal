@@ -24,6 +24,7 @@ public class ReplaceUserInterceptor extends HandlerInterceptorAdapter {
 		User user = (User) SessionHelper.getAttribute(request, KeyHelper.USER);
 		if(user != null) {
 			String redisSessionId = userSessionRedis.readUserSession(user.getId());
+			//用户的sessionId与redis缓存中不一致
 			if(!StringHelper.isEmpty(redisSessionId) && !StringHelper.equals(SessionHelper.getSessionId(request), redisSessionId)) {
 				request.setAttribute(KeyHelper.ERROR, "账号在异处登录");
 				SessionHelper.removeAttribute(request, KeyHelper.USER);

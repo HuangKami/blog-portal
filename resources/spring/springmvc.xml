@@ -38,7 +38,7 @@
 	<mvc:interceptors>
 		<!-- 顶号通知拦截器 -->
 		<mvc:interceptor>
-			<mvc:mapping path="/*" />
+			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/**/*.css" />
 			<mvc:exclude-mapping path="/**/*.js" />
 			<mvc:exclude-mapping path="/**/*.png" />
@@ -56,19 +56,7 @@
 		
 		<!-- ip黑名单 -->
 		<mvc:interceptor>
-			<mvc:mapping path="/*" />
-			<mvc:exclude-mapping path="/**/*.css" />
-			<mvc:exclude-mapping path="/**/*.js" />
-			<mvc:exclude-mapping path="/**/*.png" />
-			<mvc:exclude-mapping path="/**/*.gif" />
-			<mvc:exclude-mapping path="/**/*.jpg" />
-			<mvc:exclude-mapping path="/**/*.jpeg" />
-			<mvc:exclude-mapping path="/**/*.eot" />
-			<mvc:exclude-mapping path="/**/*.svg" />
-			<mvc:exclude-mapping path="/**/*.ttf" />
-			<mvc:exclude-mapping path="/**/*.woff" />
-			<mvc:exclude-mapping path="/**/*.woff2" />
-			<mvc:exclude-mapping path="/**/*.otf" />
+			<mvc:mapping path="/**" />
 			<bean class="com.kami.blog.interceptor.BloomInterceptor"></bean>
 		</mvc:interceptor>
 		

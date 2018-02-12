@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import com.kami.blog.service.UserService;
 
+/**
+ *	定时清除未激活用户
+ */
 @Component
 public class ClearUnactiveUserJob {
 	@Autowired

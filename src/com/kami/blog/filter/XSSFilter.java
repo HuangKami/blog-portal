@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
+/**
+ * 过滤特殊字符
+ */
 public class XSSFilter extends OncePerRequestFilter {
 
 	@Override

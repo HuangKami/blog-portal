@@ -10,6 +10,9 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.log4j.Logger;
 
+/**
+ *	邮件攻击类
+ */
 public class MailHelper {
 	public static final String HOST = "smtp.163.com";
 	public static final String PORT = "465";
@@ -22,6 +25,7 @@ public class MailHelper {
 	private static Logger logger = Logger.getLogger(MailHelper.class);
 	
 	static {
+		//初始化配置
 		Properties props = new Properties();
 		props.put("username", ACCOUNT);  
         props.put("password", PASSWORD);  

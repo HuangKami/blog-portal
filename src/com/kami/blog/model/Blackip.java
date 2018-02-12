@@ -5,6 +5,10 @@ public class Blackip {
     public Blackip() {
         super();
     }
+    public Blackip(String ip) {
+        super();
+        this.ip = ip;
+    }
     public Blackip(Integer id,String ip) {
         super();
         this.id = id;

@@ -2,9 +2,15 @@ package com.kami.blog.util;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * IP工具类
+ */
 public class IPHelper {
 	private IPHelper() {}
 
+	/**
+	 * 获取请求的IP
+	 */
 	public static String getIpAddr(HttpServletRequest request) {
 		String ip = request.getHeader("X-Forwarded-For");
 

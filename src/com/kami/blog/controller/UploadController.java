@@ -18,6 +18,9 @@ import com.kami.blog.util.OSSHelper;
 import com.kami.blog.util.SessionHelper;
 import com.kami.blog.util.StringHelper;
 
+/**
+ *	文件上传
+ */
 @Controller
 @RequestMapping("/upload")
 public class UploadController {

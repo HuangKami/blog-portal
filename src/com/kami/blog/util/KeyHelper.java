@@ -1,5 +1,8 @@
 package com.kami.blog.util;
 
+/**
+ *	字符串工具类
+ */
 public class KeyHelper {
 	//项目地址
 	public static final String URL = "http://localhost:8080/blog-portal";

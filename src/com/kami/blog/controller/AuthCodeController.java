@@ -35,6 +35,9 @@ public class AuthCodeController {
 	private Random random = RandomHelper.getRandom();
 	 
 
+	/**
+	 * 获取验证码
+	 */
 	@RequestMapping
 	public void getAuthCode(HttpServletRequest request, HttpServletResponse response) {
 		// 设置response头信息

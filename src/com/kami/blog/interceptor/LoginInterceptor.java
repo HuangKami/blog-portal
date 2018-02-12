@@ -9,6 +9,9 @@ import com.kami.blog.model.User;
 import com.kami.blog.util.KeyHelper;
 import com.kami.blog.util.SessionHelper;
 
+/**
+ *	拦截未登录的请求
+ */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	@Override

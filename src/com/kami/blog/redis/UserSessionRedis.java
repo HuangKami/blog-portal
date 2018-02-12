@@ -20,6 +20,9 @@ public class UserSessionRedis {
 	 * 读取
 	 */
 	public String readUserSession(String userId) {
+		if(!redisTemplate.hasKey(userId)) {
+			return "";
+		}
 		return redisTemplate.opsForValue().get(userId);
 	}
 	
@@ -27,6 +30,8 @@ public class UserSessionRedis {
 	 * 删除
 	 */
 	public void deleteUserSession(String userId) {
-		redisTemplate.delete(userId);
+		if(redisTemplate.hasKey(userId)) {
+			redisTemplate.delete(userId);
+		}
 	}
 }

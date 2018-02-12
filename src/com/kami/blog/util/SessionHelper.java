@@ -2,6 +2,9 @@ package com.kami.blog.util;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Session工具类
+ */
 public class SessionHelper {
 	/**
 	 * session添加属性

@@ -80,7 +80,7 @@ public interface UserService{
      */
 	String checkRegister(HttpServletRequest request, User user, String authCode);
 	/**
-     * 查询3天内未激活的用户
+     * 删除3天内未激活的用户
      */
 	int deleteUnactiveUser();
 }

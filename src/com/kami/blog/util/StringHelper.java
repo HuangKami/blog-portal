@@ -3,6 +3,9 @@ package com.kami.blog.util;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
+/**
+ *	字符串工具类
+ */
 public class StringHelper extends StringUtils {
 	private static Logger logger = Logger.getLogger(StringHelper.class);
 	

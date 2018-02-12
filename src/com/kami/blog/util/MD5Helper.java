@@ -16,7 +16,9 @@ import com.google.common.hash.Hashing;
 import com.google.common.hash.PrimitiveSink;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
-
+/**
+ *	MD5加密工具类
+ */
 public class MD5Helper {
 	private static HashFunction hf = Hashing.md5();
 	private static Charset defaultCharset = Charset.forName("UTF-8");
