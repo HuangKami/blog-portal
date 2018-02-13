@@ -140,3 +140,20 @@ function SiteSearch(send_url, divTgs) {
 	}
 	return false
 }
+
+/**
+ * 注销
+ */
+function logout() {
+	$.ajax( {  
+        type : "POST",  
+        url : "login/logout",  
+        success : function(data) {  
+        	$("#login").hide();
+        	$("#logout").show();
+        },
+        error : function(data) {
+        }
+    });  
+	return false;
+}

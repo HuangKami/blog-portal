@@ -33,15 +33,19 @@
 	<nav class="navbar navbar-default" id="navbar">
 	<div class="container">
 		<div class="header-topbar hidden-xs link-border">
-			<ul class="site-nav topmenu">
+			<ul id="login" class="site-nav topmenu">
 				<c:if test="${empty user}">
 					<li><a href="login"><i class="fa fa-sign-in"></i> 登录</a></li>
 					<li><a href="login" rel="nofollow"><i class="fa fa-sign-in"></i> 注册</a></li>
 				</c:if>
 				<c:if test="${not empty user}">
 					<li><a href="#"><i class="fa fa-user"></i> ${user.name}</a></li>
-					<li><a href="#"><i class="fa fa-sign-out"></i> 注销</a></li>
+					<li><a href="#" onclick="return logout();"><i class="fa fa-sign-out"></i> 注销</a></li>
 				</c:if>
+			</ul>
+			<ul id="logout" class="site-nav topmenu" style="display: none;">
+				<li><a href="login"><i class="fa fa-sign-in"></i> 登录</a></li>
+				<li><a href="login" rel="nofollow"><i class="fa fa-sign-in"></i> 注册</a></li>
 			</ul>
 			勤记录 懂分享
 		</div>

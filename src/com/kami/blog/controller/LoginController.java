@@ -56,6 +56,16 @@ public class LoginController {
 	}
 	
 	/**
+	 * 用户请求注销
+	 */
+	@RequestMapping("/logout")
+	@ResponseBody
+	public String logout(HttpServletRequest request) {
+		SessionHelper.removeAttribute(request, KeyHelper.USER);
+		return KeyHelper.SUCCESS;
+	}
+	
+	/**
 	 * 检查用户名是否已存在
 	 */
 	@RequestMapping("/checkName")
