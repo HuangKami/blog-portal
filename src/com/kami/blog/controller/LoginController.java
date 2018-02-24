@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kami.blog.model.User;
 import com.kami.blog.service.UserService;
+import com.kami.blog.spring.BloomFilterInit;
 import com.kami.blog.util.KeyHelper;
 import com.kami.blog.util.MD5Helper;
 import com.kami.blog.util.MailHelper;
@@ -71,8 +72,7 @@ public class LoginController {
 	@RequestMapping("/checkName")
 	@ResponseBody
 	public boolean checkName(@RequestParam(value="name") String name) {
-		User user = userService.selectUserByName(name);
-		if(user != null) {
+		if(BloomFilterInit.nameFilter.mightContain(name)) {
 			return false;
 		}
 		return true;
@@ -84,8 +84,7 @@ public class LoginController {
 	@RequestMapping("/checkEmail")
 	@ResponseBody
 	public boolean checkEmail(@RequestParam(value="email") String email) {
-		User user = userService.selectUserByEmail(email);
-		if(user != null) {
+		if(BloomFilterInit.emailFilter.mightContain(email)) {
 			return false;
 		}
 		return true;

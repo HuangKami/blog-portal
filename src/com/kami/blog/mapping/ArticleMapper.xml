@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kami.blog.dao.ArticleDao">
+    <!-- Article的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_Article_Map" type="com.kami.blog.model.Article">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="topicId" jdbcType="INTEGER" property="topicId" />
+        <result column="createTime" jdbcType="DATE" property="createTime" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="readCount" jdbcType="INTEGER" property="readCount" />
+        <result column="userId" jdbcType="VARCHAR" property="userId" />
+        <result column="content" jdbcType="DECIMAL" property="content" />
+    </resultMap>
+
+    <!-- 数据库中表名为:article的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="article_Column">
+        article.id as id
+        ,article.topicId as topicId
+        ,article.createTime as createTime
+        ,article.title as title
+        ,article.readCount as readCount
+        ,article.userId as userId
+        ,article.content as content
+    </sql>
+
+    <!--获得类名为:Article对应的数据库表的数据总行数 -->
+    <select id="getArticleRowCount" resultType="java.lang.Long">
+        select count(id) from article
+    </select>
+    <!-- 获得类名为:Article对应数据库中表的数据集合 -->
+    <select id="selectArticle" resultMap="result_Article_Map">
+        select 
+        <include refid="article_Column" /> 
+        from article
+    </select> 
+
+    <!-- 获得一个Article对象,以参数Article对象中不为空的属性作为条件进行查询-->
+    <select id="selectArticleByObj" parameterType="com.kami.blog.model.Article" resultMap="result_Article_Map">
+        select 
+            <include refid="article_Column" /> 
+        from article
+        <where>
+            <if test="content != null "> and article.content = #{content,jdbcType=DECIMAL}</if>
+            <if test="userId != null "> and article.userId = #{userId,jdbcType=VARCHAR}</if>
+            <if test="readCount != null "> and article.readCount = #{readCount,jdbcType=INTEGER}</if>
+            <if test="title != null "> and article.title = #{title,jdbcType=VARCHAR}</if>
+            <if test="createTime != null "> and article.createTime = #{createTime,jdbcType=DATE}</if>
+            <if test="topicId != null "> and article.topicId = #{topicId,jdbcType=INTEGER}</if>
+            <if test="id != null "> and article.id = #{id,jdbcType=INTEGER}</if>
+        </where>
+    </select> 
+
+    <!-- 通过Article的id获得对应数据库中表的数据对象-->
+    <select id="selectArticleById" parameterType="java.lang.Integer" resultMap="result_Article_Map">
+        select 
+            <include refid="article_Column" /> 
+        from article
+        where article.id = #{id,jdbcType=INTEGER}
+    </select> 
+
+    <!-- 将Article插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertArticle" parameterType="com.kami.blog.model.Article">
+        insert into article(id,topicId,createTime,title,readCount,userId,content) 
+        values(#{id,jdbcType=INTEGER},#{topicId,jdbcType=INTEGER},#{createTime,jdbcType=DATE},#{title,jdbcType=VARCHAR},#{readCount,jdbcType=INTEGER},#{userId,jdbcType=VARCHAR},#{content,jdbcType=DECIMAL})
+    </insert>
+
+    <!-- 将Article中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptyArticle" parameterType="com.kami.blog.model.Article">
+        insert into article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="topicId != null">topicId,</if>
+            <if test="createTime != null">createTime,</if>
+            <if test="title != null">title,</if>
+            <if test="readCount != null">readCount,</if>
+            <if test="userId != null">userId,</if>
+            <if test="content != null">content,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id,jdbcType=INTEGER},</if>
+            <if test="topicId != null"> #{topicId,jdbcType=INTEGER},</if>
+            <if test="createTime != null"> #{createTime,jdbcType=DATE},</if>
+            <if test="title != null"> #{title,jdbcType=VARCHAR},</if>
+            <if test="readCount != null"> #{readCount,jdbcType=INTEGER},</if>
+            <if test="userId != null"> #{userId,jdbcType=VARCHAR},</if>
+            <if test="content != null"> #{content,jdbcType=DECIMAL},</if>
+        </trim>
+    </insert>
+
+    <!-- 将Article批量插入到对应数据库的表中-->
+    <insert id="insertArticleByBatch" parameterType="ArrayList">
+        insert into article(id,topicId,createTime,title,readCount,userId,content) values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id,jdbcType=INTEGER},#{item.topicId,jdbcType=INTEGER},#{item.createTime,jdbcType=DATE},#{item.title,jdbcType=VARCHAR},#{item.readCount,jdbcType=INTEGER},#{item.userId,jdbcType=VARCHAR},#{item.content,jdbcType=DECIMAL})
+        </foreach>
+    </insert>
+
+    <!-- 通过Article的id将数据库表中对应的数据删除-->
+    <delete id="deleteArticleById" parameterType="java.lang.Integer">
+        delete from article
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 通过Article的id将Article的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateArticleById" parameterType="com.kami.blog.model.Article">
+        update article set
+            topicId=#{topicId,jdbcType=INTEGER}
+            ,createTime=#{createTime,jdbcType=DATE}
+            ,title=#{title,jdbcType=VARCHAR}
+            ,readCount=#{readCount,jdbcType=INTEGER}
+            ,userId=#{userId,jdbcType=VARCHAR}
+            ,content=#{content,jdbcType=DECIMAL}
+        where id=#{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 通过Article的id将Article中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyArticleById" parameterType="com.kami.blog.model.Article">
+        update article
+        <set>
+            <if test="topicId != null">
+                topicId=#{topicId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                createTime=#{createTime,jdbcType=DATE},
+            </if>
+            <if test="title != null">
+                title=#{title,jdbcType=VARCHAR},
+            </if>
+            <if test="readCount != null">
+                readCount=#{readCount,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                userId=#{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content=#{content,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where id=#{id,jdbcType=INTEGER}
+    </update>
+
+</mapper>

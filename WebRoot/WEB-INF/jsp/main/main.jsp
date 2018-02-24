@@ -85,7 +85,8 @@
 			</ul>
 		</div>
 	</div>
-	</nav> </header>
+	</nav> 
+	</header>
 	<section class="container">
 	<div class="content-wrap">
 		<div class="content">
@@ -133,116 +134,25 @@
 						href="#" title="靠谱网赚">靠谱网赚</a> <a href="#" title="资讯分享">资讯分享</a>
 				</div>
 			</div>
-			<article class="excerpt excerpt-1" style=""> <a
-				class="focus" href="#" title="用DTcms做一个独立博客网站（响应式模板）"
-				target="_blank"><img class="thumb"
-				data-original="images/201610181739277776.jpg"
-				src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-				style="display: inline;"></a> <header>
+			<c:forEach var="article" items="${list}">
+			<article class="excerpt" style=""> 
+			<header>
 			<a class="cat" href="#" title="MZ-NetBlog主题">MZ-NetBlog主题<i></i></a>
 			<h2>
-				<a href="#" title="用DTcms做一个独立博客网站（响应式模板）" target="_blank">用DTcms做一个独立博客网站（响应式模板）</a>
+				<a href="#" title="用DTcms做一个独立博客网站（响应式模板）" target="_blank">${article.title }</a>
 			</h2>
 			</header>
 			<p class="meta">
 				<time class="time">
-				<i class="glyphicon glyphicon-time"></i> 2016-10-14</time>
+				<i class="glyphicon glyphicon-time"></i> ${article.createTime}</time>
 				<span class="views"><i class="glyphicon glyphicon-eye-open"></i>
-					216</span> <a class="comment" href="##comment" title="评论" target="_blank"><i
+					${article.readCount}</span> <a class="comment" href="##comment" title="评论" target="_blank"><i
 					class="glyphicon glyphicon-comment"></i> 4</a>
 			</p>
-			<p class="note">用DTcms做一个独立博客网站（响应式模板），采用DTcms
-				V4.0正式版（MSSQL）。开发环境：SQL2008R2+VS2010。DTcms
-				V4.0正式版功能修复和优化：1、favicon.ico图标后台上传。（解决要换图标时要连FTP或者开服务器的麻烦）</p>
+			<p class="note">${article.content}</p>
 			</article>
-			<article class="excerpt excerpt-2" style="">
-			<a class="focus" href="#" title="用DTcms做一个独立博客网站（响应式模板）"
-				target="_blank"><img class="thumb"
-				data-original="images/201610181739277776.jpg"
-				src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-				style="display: inline;"></a> <header>
-			<a class="cat" href="#" title="MZ-NetBlog主题">MZ-NetBlog主题<i></i></a>
-			<h2>
-				<a href="#" title="用DTcms做一个独立博客网站（响应式模板）" target="_blank">用DTcms做一个独立博客网站（响应式模板）</a>
-			</h2>
-			</header>
-			<p class="meta">
-				<time class="time">
-				<i class="glyphicon glyphicon-time"></i> 2016-10-14</time>
-				<span class="views"><i class="glyphicon glyphicon-eye-open"></i>216</span>
-				<a class="comment" href="##comment" title="评论" target="_blank"><i
-					class="glyphicon glyphicon-comment"></i>4</a>
-			</p>
-			<p class="note">用DTcms做一个独立博客网站（响应式模板），采用DTcms
-				V4.0正式版（MSSQL）。开发环境：SQL2008R2+VS2010。DTcms
-				V4.0正式版功能修复和优化：1、favicon.ico图标后台上传。（解决要换图标时要连FTP或者开服务器的麻烦）</p>
-			</article>
-			<article class="excerpt excerpt-3" style="">
-			<a class="focus" href="#" title="用DTcms做一个独立博客网站（响应式模板）"
-				target="_blank"><img class="thumb"
-				data-original="images/201610181739277776.jpg"
-				src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-				style="display: inline;"></a> <header>
-			<a class="cat" href="#" title="MZ-NetBlog主题">MZ-NetBlog主题<i></i></a>
-			<h2>
-				<a href="#" title="用DTcms做一个独立博客网站（响应式模板）" target="_blank">用DTcms做一个独立博客网站（响应式模板）</a>
-			</h2>
-			</header>
-			<p class="meta">
-				<time class="time">
-				<i class="glyphicon glyphicon-time"></i> 2016-10-14</time>
-				<span class="views"><i class="glyphicon glyphicon-eye-open"></i>
-					216</span> <a class="comment" href="##comment" title="评论" target="_blank"><i
-					class="glyphicon glyphicon-comment"></i> 4</a>
-			</p>
-			<p class="note">用DTcms做一个独立博客网站（响应式模板），采用DTcms
-				V4.0正式版（MSSQL）。开发环境：SQL2008R2+VS2010。DTcms
-				V4.0正式版功能修复和优化：1、favicon.ico图标后台上传。（解决要换图标时要连FTP或者开服务器的麻烦）</p>
-			</article>
-			<article class="excerpt excerpt-4" style="">
-			<a class="focus" href="#" title="用DTcms做一个独立博客网站（响应式模板）"
-				target="_blank"><img class="thumb"
-				data-original="images/201610181739277776.jpg"
-				src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-				style="display: inline;"></a> <header>
-			<a class="cat" href="#" title="MZ-NetBlog主题">MZ-NetBlog主题<i></i></a>
-			<h2>
-				<a href="#" title="用DTcms做一个独立博客网站（响应式模板）" target="_blank">用DTcms做一个独立博客网站（响应式模板）</a>
-			</h2>
-			</header>
-			<p class="meta">
-				<time class="time">
-				<i class="glyphicon glyphicon-time"></i> 2016-10-14</time>
-				<span class="views"><i class="glyphicon glyphicon-eye-open"></i>
-					216</span> <a class="comment" href="##comment" title="评论" target="_blank"><i
-					class="glyphicon glyphicon-comment"></i> 4</a>
-			</p>
-			<p class="note">用DTcms做一个独立博客网站（响应式模板），采用DTcms
-				V4.0正式版（MSSQL）。开发环境：SQL2008R2+VS2010。DTcms
-				V4.0正式版功能修复和优化：1、favicon.ico图标后台上传。（解决要换图标时要连FTP或者开服务器的麻烦）</p>
-			</article>
-			<article class="excerpt excerpt-5" style="">
-			<a class="focus" href="#" title="用DTcms做一个独立博客网站（响应式模板）"
-				target="_blank"><img class="thumb"
-				data-original="images/201610181739277776.jpg"
-				src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-				style="display: inline;"></a> <header>
-			<a class="cat" href="#" title="MZ-NetBlog主题">MZ-NetBlog主题<i></i></a>
-			<h2>
-				<a href="#" title="用DTcms做一个独立博客网站（响应式模板）" target="_blank">用DTcms做一个独立博客网站（响应式模板）</a>
-			</h2>
-			</header>
-			<p class="meta">
-				<time class="time">
-				<i class="glyphicon glyphicon-time"></i> 2016-10-14</time>
-				<span class="views"><i class="glyphicon glyphicon-eye-open"></i>
-					216</span> <a class="comment" href="##comment" title="评论" target="_blank"><i
-					class="glyphicon glyphicon-comment"></i> 4</a>
-			</p>
-			<p class="note">用DTcms做一个独立博客网站（响应式模板），采用DTcms
-				V4.0正式版（MSSQL）。开发环境：SQL2008R2+VS2010。DTcms
-				V4.0正式版功能修复和优化：1、favicon.ico图标后台上传。（解决要换图标时要连FTP或者开服务器的麻烦）</p>
-			</article>
+			</c:forEach>
+	
 			<nav class="pagination" style="display: none;">
 			<ul>
 				<li class="prev-page"></li>
@@ -366,15 +276,6 @@
 					class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
 
 		</ul>
-	</div>
-	<div class="widget widget_sentence">
-		<a href="#" target="_blank" rel="nofollow" title="专业网站建设"> <img
-			style="width: 100%" src="images//201610241224221511.jpg" alt="专业网站建设"></a>
-	</div>
-	<div class="widget widget_sentence">
-		<a href="#" target="_blank" rel="nofollow" title="MZ-NetBlog主题">
-			<img style="width: 100%" src="images/ad.jpg" alt="MZ-NetBlog主题">
-		</a>
 	</div>
 	</aside> </section>
 
