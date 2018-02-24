@@ -4,19 +4,53 @@
     <!-- Article的resultMap,column是给数据库列起的别名,它对应property类的属性-->
     <resultMap id="result_Article_Map" type="com.kami.blog.model.Article">
         <id column="id" jdbcType="INTEGER" property="id" />
-        <result column="topicId" jdbcType="INTEGER" property="topicId" />
         <result column="createTime" jdbcType="DATE" property="createTime" />
+        <result column="topic" jdbcType="VARCHAR" property="topic" />
+        <result column="updateTime" jdbcType="DATE" property="updateTime" />
         <result column="title" jdbcType="VARCHAR" property="title" />
         <result column="readCount" jdbcType="INTEGER" property="readCount" />
         <result column="userId" jdbcType="VARCHAR" property="userId" />
         <result column="content" jdbcType="DECIMAL" property="content" />
     </resultMap>
 
+	   <!-- Assist用于辅助工具类setRequires设置的条件,${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+    <sql id="Assist">
+        <where>
+            <foreach collection="require" item="req" separator=" ">
+                ${req.require} 
+                <if test="req.value != null"> #{req.value}</if> 
+                <if test="req.values != null">
+                    <foreach collection="req.values" item="val" separator=","> 
+                        #{val} 
+                    </foreach> 
+                </if> 
+                <if test="req.suffix != null"> ${req.suffix}</if> 
+            </foreach>
+        </where>
+    </sql>
+
+	   <!-- updateAssist用于更新数据的使用它拓展自Assist,用于辅助工具类setRequires设置的条件,${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+    <sql id="updateAssist">
+        <where>
+            <foreach collection="assist.require" item="req" separator=" ">
+                ${req.require} 
+                <if test="req.value != null"> #{req.value}</if> 
+                <if test="req.values != null">
+                    <foreach collection="req.values" item="val" separator=","> 
+                        #{val} 
+                    </foreach> 
+                </if> 
+                <if test="req.suffix != null"> ${req.suffix}</if> 
+            </foreach>
+        </where>
+    </sql>
+
     <!-- 数据库中表名为:article的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
     <sql id="article_Column">
         article.id as id
-        ,article.topicId as topicId
         ,article.createTime as createTime
+        ,article.topic as topic
+        ,article.updateTime as updateTime
         ,article.title as title
         ,article.readCount as readCount
         ,article.userId as userId
@@ -24,14 +58,43 @@
     </sql>
 
     <!--获得类名为:Article对应的数据库表的数据总行数 -->
-    <select id="getArticleRowCount" resultType="java.lang.Long">
+    <select id="getArticleRowCount" parameterType="com.kami.blog.common.Assist" resultType="java.lang.Long">
         select count(id) from article
+        <if test="require!=null"><include refid="Assist" /></if>
     </select>
     <!-- 获得类名为:Article对应数据库中表的数据集合 -->
-    <select id="selectArticle" resultMap="result_Article_Map">
-        select 
+    <select id="selectArticle" parameterType="com.kami.blog.common.Assist"  resultMap="result_Article_Map">
+        select  <if test="distinct !=null">${distinct}</if>
+        <choose>
+            <when test="resultColumn!=null">${resultColumn}</when>
+            <otherwise>
         <include refid="article_Column" /> 
+            </otherwise>
+        </choose>
         from article
+        <choose>
+            <when test="rowSize ==null">
+                <if test="require!=null">
+                    <include refid="Assist" />
+                </if>
+                <if test="order !=null">${order}</if>
+            </when>
+            <otherwise>
+                inner join
+                (
+                SELECT id as primary_key FROM article
+                <if test="require!=null">
+                    <include refid="Assist" />
+                </if>
+                <if test="order !=null">${order}</if>
+                <choose>
+                    <when test="startRow !=null and rowSize !=null">LIMIT #{startRow,jdbcType=INTEGER},#{rowSize,jdbcType=INTEGER} </when>
+                    <when test="rowSize !=null">LIMIT #{rowSize,jdbcType=INTEGER}</when>
+                 </choose>
+                 ) as tmp
+                 on tmp.primary_key=article.id
+            </otherwise>
+        </choose>
     </select> 
 
     <!-- 获得一个Article对象,以参数Article对象中不为空的属性作为条件进行查询-->
@@ -44,8 +107,9 @@
             <if test="userId != null "> and article.userId = #{userId,jdbcType=VARCHAR}</if>
             <if test="readCount != null "> and article.readCount = #{readCount,jdbcType=INTEGER}</if>
             <if test="title != null "> and article.title = #{title,jdbcType=VARCHAR}</if>
+            <if test="updateTime != null "> and article.updateTime = #{updateTime,jdbcType=DATE}</if>
+            <if test="topic != null "> and article.topic = #{topic,jdbcType=VARCHAR}</if>
             <if test="createTime != null "> and article.createTime = #{createTime,jdbcType=DATE}</if>
-            <if test="topicId != null "> and article.topicId = #{topicId,jdbcType=INTEGER}</if>
             <if test="id != null "> and article.id = #{id,jdbcType=INTEGER}</if>
         </where>
     </select> 
@@ -61,8 +125,8 @@
     <!-- 将Article插入到对应数据库的表中,包括属性值为null的数据-->
 
     <insert id="insertArticle" parameterType="com.kami.blog.model.Article">
-        insert into article(id,topicId,createTime,title,readCount,userId,content) 
-        values(#{id,jdbcType=INTEGER},#{topicId,jdbcType=INTEGER},#{createTime,jdbcType=DATE},#{title,jdbcType=VARCHAR},#{readCount,jdbcType=INTEGER},#{userId,jdbcType=VARCHAR},#{content,jdbcType=DECIMAL})
+        insert into article(id,createTime,topic,updateTime,title,readCount,userId,content) 
+        values(#{id,jdbcType=INTEGER},#{createTime,jdbcType=DATE},#{topic,jdbcType=VARCHAR},#{updateTime,jdbcType=DATE},#{title,jdbcType=VARCHAR},#{readCount,jdbcType=INTEGER},#{userId,jdbcType=VARCHAR},#{content,jdbcType=DECIMAL})
     </insert>
 
     <!-- 将Article中属性值不为null的数据,插入到对应数据库的表中-->
@@ -70,8 +134,9 @@
         insert into article
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">id,</if>
-            <if test="topicId != null">topicId,</if>
             <if test="createTime != null">createTime,</if>
+            <if test="topic != null">topic,</if>
+            <if test="updateTime != null">updateTime,</if>
             <if test="title != null">title,</if>
             <if test="readCount != null">readCount,</if>
             <if test="userId != null">userId,</if>
@@ -79,8 +144,9 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null"> #{id,jdbcType=INTEGER},</if>
-            <if test="topicId != null"> #{topicId,jdbcType=INTEGER},</if>
             <if test="createTime != null"> #{createTime,jdbcType=DATE},</if>
+            <if test="topic != null"> #{topic,jdbcType=VARCHAR},</if>
+            <if test="updateTime != null"> #{updateTime,jdbcType=DATE},</if>
             <if test="title != null"> #{title,jdbcType=VARCHAR},</if>
             <if test="readCount != null"> #{readCount,jdbcType=INTEGER},</if>
             <if test="userId != null"> #{userId,jdbcType=VARCHAR},</if>
@@ -90,9 +156,9 @@
 
     <!-- 将Article批量插入到对应数据库的表中-->
     <insert id="insertArticleByBatch" parameterType="ArrayList">
-        insert into article(id,topicId,createTime,title,readCount,userId,content) values
+        insert into article(id,createTime,topic,updateTime,title,readCount,userId,content) values
         <foreach collection="list" item="item" index="index" separator="," >
-            (#{item.id,jdbcType=INTEGER},#{item.topicId,jdbcType=INTEGER},#{item.createTime,jdbcType=DATE},#{item.title,jdbcType=VARCHAR},#{item.readCount,jdbcType=INTEGER},#{item.userId,jdbcType=VARCHAR},#{item.content,jdbcType=DECIMAL})
+            (#{item.id,jdbcType=INTEGER},#{item.createTime,jdbcType=DATE},#{item.topic,jdbcType=VARCHAR},#{item.updateTime,jdbcType=DATE},#{item.title,jdbcType=VARCHAR},#{item.readCount,jdbcType=INTEGER},#{item.userId,jdbcType=VARCHAR},#{item.content,jdbcType=DECIMAL})
         </foreach>
     </insert>
 
@@ -102,11 +168,18 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
 
+    <!-- 通过辅助工具Assist中的条件将Article对应的数据库表的数据删除-->
+    <delete id="deleteArticle" parameterType="com.kami.blog.common.Assist">
+        delete from article
+        <if test="require!=null"><include refid="Assist" /></if>
+    </delete>
+
     <!-- 通过Article的id将Article的数据更新到数据库中对应的表,包括值null的数据-->
     <update id="updateArticleById" parameterType="com.kami.blog.model.Article">
         update article set
-            topicId=#{topicId,jdbcType=INTEGER}
-            ,createTime=#{createTime,jdbcType=DATE}
+            createTime=#{createTime,jdbcType=DATE}
+            ,topic=#{topic,jdbcType=VARCHAR}
+            ,updateTime=#{updateTime,jdbcType=DATE}
             ,title=#{title,jdbcType=VARCHAR}
             ,readCount=#{readCount,jdbcType=INTEGER}
             ,userId=#{userId,jdbcType=VARCHAR}
@@ -118,11 +191,14 @@
     <update id="updateNonEmptyArticleById" parameterType="com.kami.blog.model.Article">
         update article
         <set>
-            <if test="topicId != null">
-                topicId=#{topicId,jdbcType=INTEGER},
-            </if>
             <if test="createTime != null">
                 createTime=#{createTime,jdbcType=DATE},
+            </if>
+            <if test="topic != null">
+                topic=#{topic,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                updateTime=#{updateTime,jdbcType=DATE},
             </if>
             <if test="title != null">
                 title=#{title,jdbcType=VARCHAR},
@@ -138,6 +214,54 @@
             </if>
         </set>
         where id=#{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 通过辅助工具Assist中的条件将Article中的数据更新到数据库对应的表中,包括值为null的数据-->
+    <update id="updateArticle" parameterType="map">
+        update article
+        <set>
+                id=#{enti.id,jdbcType=INTEGER},
+                createTime=#{enti.createTime,jdbcType=DATE},
+                topic=#{enti.topic,jdbcType=VARCHAR},
+                updateTime=#{enti.updateTime,jdbcType=DATE},
+                title=#{enti.title,jdbcType=VARCHAR},
+                readCount=#{enti.readCount,jdbcType=INTEGER},
+                userId=#{enti.userId,jdbcType=VARCHAR},
+                content=#{enti.content,jdbcType=DECIMAL},
+        </set>
+        <if test="assist.require!=null"><include refid="updateAssist" /></if>
+    </update>
+
+    <!-- 通过辅助工具Assist中的条件将Article中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyArticle" parameterType="map">
+        update article
+        <set>
+            <if test="enti.id != null">
+                id=#{enti.id,jdbcType=INTEGER},
+            </if>
+            <if test="enti.createTime != null">
+                createTime=#{enti.createTime,jdbcType=DATE},
+            </if>
+            <if test="enti.topic != null">
+                topic=#{enti.topic,jdbcType=VARCHAR},
+            </if>
+            <if test="enti.updateTime != null">
+                updateTime=#{enti.updateTime,jdbcType=DATE},
+            </if>
+            <if test="enti.title != null">
+                title=#{enti.title,jdbcType=VARCHAR},
+            </if>
+            <if test="enti.readCount != null">
+                readCount=#{enti.readCount,jdbcType=INTEGER},
+            </if>
+            <if test="enti.userId != null">
+                userId=#{enti.userId,jdbcType=VARCHAR},
+            </if>
+            <if test="enti.content != null">
+                content=#{enti.content,jdbcType=DECIMAL},
+            </if>
+        </set>
+        <if test="assist.require!=null"><include refid="updateAssist" /></if>
     </update>
 
 </mapper>

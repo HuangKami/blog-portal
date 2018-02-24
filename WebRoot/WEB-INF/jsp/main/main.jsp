@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>  
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -134,33 +135,39 @@
 						href="#" title="靠谱网赚">靠谱网赚</a> <a href="#" title="资讯分享">资讯分享</a>
 				</div>
 			</div>
-			<c:forEach var="article" items="${list}">
-			<article class="excerpt" style=""> 
-			<header>
-			<a class="cat" href="#" title="MZ-NetBlog主题">MZ-NetBlog主题<i></i></a>
-			<h2>
-				<a href="#" title="用DTcms做一个独立博客网站（响应式模板）" target="_blank">${article.title }</a>
-			</h2>
-			</header>
-			<p class="meta">
-				<time class="time">
-				<i class="glyphicon glyphicon-time"></i> ${article.createTime}</time>
-				<span class="views"><i class="glyphicon glyphicon-eye-open"></i>
-					${article.readCount}</span> <a class="comment" href="##comment" title="评论" target="_blank"><i
-					class="glyphicon glyphicon-comment"></i> 4</a>
-			</p>
-			<p class="note">${article.content}</p>
-			</article>
+			<c:forEach var="article" items="${latestArticles}">
+				<article class="excerpt" style=""> 
+					<header>
+						<a class="cat" href="#">${article.topic }<i></i></a>
+						<h2>
+							<a href="#" target="_blank">${article.title }</a>
+						</h2>
+					</header>
+					<p class="meta">
+						<time class="time">
+							<i class="glyphicon glyphicon-time"></i> 
+							<fmt:formatDate value="${article.createTime}" pattern="yyyy-MM-dd HH:mm"/> 
+						</time>
+						<span class="views">
+							<i class="glyphicon glyphicon-eye-open"></i>
+							${article.readCount}
+						</span> 
+						<span class="views">
+							<i class="glyphicon glyphicon-comment"></i> 4
+						</span>
+					</p>
+					<p class="note">${article.content}</p>
+				</article>
 			</c:forEach>
 	
-			<nav class="pagination" style="display: none;">
-			<ul>
-				<li class="prev-page"></li>
-				<li class="active"><span>1</span></li>
-				<li><a href="?page=2">2</a></li>
-				<li class="next-page"><a href="?page=2">下一页</a></li>
-				<li><span>共 2 页</span></li>
-			</ul>
+			<nav class="pagination" >
+				<ul>
+					<li class="prev-page"></li>
+					<li class="active"><span>1</span></li>
+					<li><a href="?page=2">2</a></li>
+					<li class="next-page"><a href="?page=2">下一页</a></li>
+					<li><span>共 2 页</span></li>
+				</ul>
 			</nav>
 		</div>
 	</div>

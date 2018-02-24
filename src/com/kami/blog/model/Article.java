@@ -1,8 +1,9 @@
 package com.kami.blog.model;
 public class Article {
     private Integer id;//主键
-    private Integer topicId;//所属主题
     private java.util.Date createTime;//创建时间
+    private String topic;//所属主题
+    private java.util.Date updateTime;//最新评论时间
     private String title;//标题
     private Integer readCount;//浏览数
     private String userId;//所属人
@@ -15,20 +16,28 @@ public class Article {
         this.id = id;
     }
 
-    public Integer getTopicId() {
-        return this.topicId;
-    }
-
-    public void setTopicId(Integer topicId) {
-        this.topicId = topicId;
-    }
-
     public java.util.Date getCreateTime() {
         return this.createTime;
     }
 
     public void setCreateTime(java.util.Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getTopic() {
+        return this.topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public java.util.Date getUpdateTime() {
+        return this.updateTime;
+    }
+
+    public void setUpdateTime(java.util.Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public String getTitle() {
