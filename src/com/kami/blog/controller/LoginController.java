@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kami.blog.model.User;
 import com.kami.blog.service.UserService;
-import com.kami.blog.spring.BloomFilterInit;
+import com.kami.blog.spring.UserExistBloomFilter;
 import com.kami.blog.util.KeyHelper;
 import com.kami.blog.util.MD5Helper;
 import com.kami.blog.util.MailHelper;
@@ -72,7 +72,7 @@ public class LoginController {
 	@RequestMapping("/checkName")
 	@ResponseBody
 	public boolean checkName(@RequestParam(value="name") String name) {
-		if(BloomFilterInit.nameFilter.mightContain(name)) {
+		if(UserExistBloomFilter.nameFilter.mightContain(name)) {
 			return false;
 		}
 		return true;
@@ -84,7 +84,7 @@ public class LoginController {
 	@RequestMapping("/checkEmail")
 	@ResponseBody
 	public boolean checkEmail(@RequestParam(value="email") String email) {
-		if(BloomFilterInit.emailFilter.mightContain(email)) {
+		if(UserExistBloomFilter.emailFilter.mightContain(email)) {
 			return false;
 		}
 		return true;
@@ -110,8 +110,8 @@ public class LoginController {
 			return "注册失败，请重新注册";
 		}
 		//加入布隆过滤器
-		BloomFilterInit.nameFilter.put(user.getName());
-		BloomFilterInit.emailFilter.put(user.getEmail());
+		UserExistBloomFilter.nameFilter.put(user.getName());
+		UserExistBloomFilter.emailFilter.put(user.getEmail());
 		//移除验证码
 		SessionHelper.removeAttribute(request, KeyHelper.REGISTER_AUTHCODE);
 		//发激活邮件

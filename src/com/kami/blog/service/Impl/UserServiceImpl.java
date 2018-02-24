@@ -9,7 +9,7 @@ import com.kami.blog.model.User;
 import com.kami.blog.redis.UserSessionRedis;
 import com.kami.blog.common.Assist;
 import com.kami.blog.service.UserService;
-import com.kami.blog.spring.BloomFilterInit;
+import com.kami.blog.spring.UserExistBloomFilter;
 import com.kami.blog.util.KeyHelper;
 import com.kami.blog.util.MD5Helper;
 import com.kami.blog.util.SessionHelper;
@@ -169,10 +169,10 @@ public class UserServiceImpl implements UserService {
 		if (!StringHelper.equalsIgnoreCase(registerAuthCode.toString(), authCode)) {
 			return "验证码错误";
 		}
-		if(BloomFilterInit.nameFilter.mightContain(user.getName())) {
+		if(UserExistBloomFilter.nameFilter.mightContain(user.getName())) {
 			return "用户名已被注册";
 		}
-		if(BloomFilterInit.emailFilter.mightContain(user.getEmail())) {
+		if(UserExistBloomFilter.emailFilter.mightContain(user.getEmail())) {
 			return "邮箱已被注册";
 		}
 		return KeyHelper.SUCCESS;

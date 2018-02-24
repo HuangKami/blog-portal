@@ -16,7 +16,7 @@ import com.kami.blog.service.UserService;
  * spring容器加载完后初始化布隆过滤器
  */
 @Component
-public class BloomFilterInit {
+public class UserExistBloomFilter {
 	@Autowired
 	private UserService userService;
 	public static final BloomFilter<String> nameFilter = 
