@@ -109,9 +109,12 @@ public class LoginController {
 			logger.error("插入用户失败:" + user.toString() + e);
 			return "注册失败，请重新注册";
 		}
-		
+		//加入布隆过滤器
+		BloomFilterInit.nameFilter.put(user.getName());
+		BloomFilterInit.emailFilter.put(user.getEmail());
+		//移除验证码
 		SessionHelper.removeAttribute(request, KeyHelper.REGISTER_AUTHCODE);
-		
+		//发激活邮件
 		MailHelper.sendEmail(user.getEmail(), user.getName(), "欢迎注册KBlog", 
 				"恭喜您注册成功，请点击下面链接进行激活，若无法打开请复制链接在浏览器打开，该链接将在3天后失效  " + KeyHelper.URL + "/login/active/" + user.getId());
 		return result;
