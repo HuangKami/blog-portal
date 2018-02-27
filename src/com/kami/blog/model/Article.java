@@ -1,6 +1,10 @@
 package com.kami.blog.model;
-public class Article {
-    private Integer id;//主键
+
+import java.io.Serializable;
+
+public class Article implements Serializable {
+	private static final long serialVersionUID = -4661366821839028568L;
+	private Integer id;//主键
     private java.util.Date createTime;//创建时间
     private String topic;//所属主题
     private java.util.Date updateTime;//最新评论时间

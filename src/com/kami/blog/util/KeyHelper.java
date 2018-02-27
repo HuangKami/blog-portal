@@ -27,4 +27,6 @@ public class KeyHelper {
 	public static final String USER = "user";
 	//邮件
 	public static final String EMAIL = "email";
+	//最热文章
+	public static final String HOTEST_ARTICLE = "hotestArticle";
 }

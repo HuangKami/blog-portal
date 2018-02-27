@@ -99,5 +99,10 @@
 	if(error != "") {
 		alert(error);
 	}
+	
+	var message = "${message}";
+	if(message != "") {
+		alert(message);
+	}
 </script>
 </html>

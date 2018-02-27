@@ -1,4 +1,5 @@
 package com.kami.blog.service;
+import java.util.Collection;
 import java.util.List;
 import com.kami.blog.model.Article;
 import com.kami.blog.common.Assist;
@@ -83,8 +84,8 @@ public interface ArticleService{
 	 * @return
 	 */
     int updateNonEmptyArticle(Article value, Assist assist);
-    /**
-     * 最新文章列表
+    /*
+     * 格式化文章内容
      */
-    List<Article> selectLatestArticle(Assist assist);
+	Collection<Article> formatArticle(Collection<Article> list, int contentLength);
 }

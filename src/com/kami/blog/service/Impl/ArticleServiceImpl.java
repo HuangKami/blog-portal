@@ -1,4 +1,5 @@
 package com.kami.blog.service.Impl;
+import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -75,8 +76,7 @@ public class ArticleServiceImpl implements ArticleService{
     }
 	
     @Override
-	public List<Article> selectLatestArticle(Assist assist) {
-    	List<Article> list = selectArticle(assist);
+    public Collection<Article> formatArticle(Collection<Article> list, int contentLength) {
     	for (Article article : list) {
 			String content = article.getContent();
 			Pattern pattern = Pattern.compile(">(.*?)<");
@@ -85,9 +85,8 @@ public class ArticleServiceImpl implements ArticleService{
 			while(matcher.find()){
 				sbBuilder.append(matcher.group().replaceAll(">", "").replaceAll("<", ""));
 			}
-			article.setContent(sbBuilder.toString().substring(0, 200));
+			article.setContent(sbBuilder.toString().substring(0, contentLength));
 		}
-		return null;
-	}
-
+    	return list;
+    }
 }

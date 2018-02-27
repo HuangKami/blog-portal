@@ -71,6 +71,24 @@
 		<!-- cron表达式 -->
 		<property name="cronExpression" value="0 0 0 * * ?" />
 	</bean>
+	
+	<!-- 刷新redis缓存 -->
+	<bean id="updateArticleIntoMysqlDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="updateArticleIntoMysqlJob" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="startTask" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!-- 定义触发时间 -->
+	<bean id="updateArticleIntoMysqlTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="updateArticleIntoMysqlDetail" />
+		<!-- cron表达式 -->
+		<property name="cronExpression" value="*/30 * * * * ?" />
+	</bean>
 
 	<!-- 总管理类 -->
 	<bean id="startQuertz" lazy-init="false" autowire="no"
@@ -78,6 +96,7 @@
 		<property name="triggers">
 			<list>
 				<ref bean="clearUnactiveUserTrigger" />
+				<ref bean="updateArticleIntoMysqlTrigger" />
 			</list>
 		</property>
 	</bean>
