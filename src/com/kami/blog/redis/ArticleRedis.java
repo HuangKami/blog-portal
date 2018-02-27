@@ -87,13 +87,15 @@ public class ArticleRedis {
 		Set<Article> set = zSetOperations.reverseRange(key, 0, Integer.MAX_VALUE);
 		int result = 0;
 		int index = 0;
+		int lowScore = 0;
 		for (Article article : set) {
 			result += articleService.updateArticleById(article);
-			if(index >= SIZE) {
-				zSetOperations.remove(key, article);
+			if(index == SIZE) {
+				lowScore = article.getReadCount();
 			}
 			index ++;
 		}
+		zSetOperations.removeRange(key, lowScore, Integer.MAX_VALUE);
 		return result;
 	}
 }
