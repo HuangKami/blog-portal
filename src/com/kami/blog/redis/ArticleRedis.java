@@ -86,16 +86,10 @@ public class ArticleRedis {
 	public int updateIntoMysql(String key) {
 		Set<Article> set = zSetOperations.reverseRange(key, 0, Integer.MAX_VALUE);
 		int result = 0;
-		int index = 0;
-		int lowScore = 0;
 		for (Article article : set) {
 			result += articleService.updateArticleReadCountById(article.getId());
-			if(index == SIZE) {
-				lowScore = article.getReadCount();
-			}
-			index ++;
 		}
-		zSetOperations.removeRange(key, lowScore, Integer.MAX_VALUE);
+		zSetOperations.removeRange(key, SIZE, Integer.MAX_VALUE);
 		return result;
 	}
 }
