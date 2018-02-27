@@ -84,4 +84,8 @@ public interface ArticleDao{
 	 * @return
 	 */
     int updateNonEmptyArticle(@Param("enti") Article value, @Param("assist") Assist assist);
+    /**
+     * 通过id更新阅读数
+     */
+    int updateArticleReadCountById(Integer id);
 }

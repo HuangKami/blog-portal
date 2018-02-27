@@ -186,6 +186,13 @@
             ,content=#{content,jdbcType=DECIMAL}
         where id=#{id,jdbcType=INTEGER}
     </update>
+    
+    <!-- 通过Article的id将Article的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateArticleReadCountById" parameterType="Integer">
+        update article set
+            readCount=#{readCount,jdbcType=INTEGER}
+        where id=#{id,jdbcType=INTEGER}
+    </update>
 
     <!-- 通过Article的id将Article中属性值不为null的数据更新到数据库对应的表中-->
     <update id="updateNonEmptyArticleById" parameterType="com.kami.blog.model.Article">

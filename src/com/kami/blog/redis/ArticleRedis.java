@@ -30,7 +30,7 @@ public class ArticleRedis {
 	@PostConstruct
 	private void init() {
 		zSetOperations = redisTemplate.opsForZSet();
-		
+		zSetOperations.removeRange(KeyHelper.HOTEST_ARTICLE, 0, Integer.MAX_VALUE);
 		Assist assist = new Assist().setStartRow(0).setRowSize(SIZE).setOrder(Assist.order("Article.readCount", false));
 		for(Article article : articleService.selectArticle(assist)) {
 			zSetOperations.add(KeyHelper.HOTEST_ARTICLE, article, article.getReadCount());
@@ -89,7 +89,7 @@ public class ArticleRedis {
 		int index = 0;
 		int lowScore = 0;
 		for (Article article : set) {
-			result += articleService.updateArticleById(article);
+			result += articleService.updateArticleReadCountById(article.getId());
 			if(index == SIZE) {
 				lowScore = article.getReadCount();
 			}

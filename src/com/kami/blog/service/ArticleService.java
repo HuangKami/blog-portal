@@ -88,4 +88,8 @@ public interface ArticleService{
      * 格式化文章内容
      */
 	Collection<Article> formatArticle(Collection<Article> list, int contentLength);
+	/**
+     * 通过id更新阅读数
+     */
+    int updateArticleReadCountById(Integer id);
 }

@@ -89,4 +89,9 @@ public class ArticleServiceImpl implements ArticleService{
 		}
     	return list;
     }
+    
+	@Override
+	public int updateArticleReadCountById(Integer id) {
+		return articleDao.updateArticleReadCountById(id);
+	}
 }
