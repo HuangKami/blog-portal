@@ -25,12 +25,11 @@ public class ArticleRedis {
 	@Autowired
 	private RedisTemplate<String, Article> redisTemplate;
 	private ZSetOperations<String, Article> zSetOperations;
-	public static final int SIZE = 10;
+	public static final int SIZE = 20;
 	
 	@PostConstruct
 	private void init() {
 		zSetOperations = redisTemplate.opsForZSet();
-		zSetOperations.removeRange(KeyHelper.HOTEST_ARTICLE, 0, Integer.MAX_VALUE);
 		Assist assist = new Assist().setStartRow(0).setRowSize(SIZE).setOrder(Assist.order("Article.readCount", false));
 		for(Article article : articleService.selectArticle(assist)) {
 			zSetOperations.add(KeyHelper.HOTEST_ARTICLE, article, article.getReadCount());
@@ -38,7 +37,7 @@ public class ArticleRedis {
 	}
 	
 	/**
-	 * 获取top 10最热文章
+	 * 获取top 20最热文章
 	 */
 	public Set<Article> getArticles(String key) {
 		if(!redisTemplate.hasKey(key)) {
@@ -55,7 +54,7 @@ public class ArticleRedis {
 	}
 	
 	/**
-	 * 获取最热的第十条记录的分数
+	 * 获取最热文章最后一条记录的分数
 	 */
 	public int getScore(String key) {
 		if(!redisTemplate.hasKey(key)) {
@@ -75,7 +74,9 @@ public class ArticleRedis {
 		Set<Article> set = zSetOperations.range(key, 0, Integer.MAX_VALUE);
 		for (Article article : set) {
 			if(article.getId() == articleId) {
-				zSetOperations.incrementScore(key, article, delta);
+				synchronized (this) {
+					zSetOperations.incrementScore(key, article, delta);
+				}
 			}
 		}
 	}
@@ -84,12 +85,14 @@ public class ArticleRedis {
 	 * 定时刷进数据库
 	 */
 	public int updateIntoMysql(String key) {
-		Set<Article> set = zSetOperations.reverseRange(key, 0, Integer.MAX_VALUE);
 		int result = 0;
-		for (Article article : set) {
-			result += articleService.updateArticleReadCountById(article.getId());
+		synchronized(this) {
+			Set<Article> set = zSetOperations.reverseRange(key, 0, Integer.MAX_VALUE);
+			for (Article article : set) {
+				result += articleService.updateArticleReadCountById(article.getId());
+			}
+			zSetOperations.removeRange(key, SIZE, Integer.MAX_VALUE);
 		}
-		zSetOperations.removeRange(key, SIZE, Integer.MAX_VALUE);
 		return result;
 	}
 }
