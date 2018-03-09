@@ -50,7 +50,9 @@ public class ArticleRedis {
 	 * 增加最热文章
 	 */
 	public void addArticle(String key, Article article) {
-		zSetOperations.add(KeyHelper.HOTEST_ARTICLE, article, article.getReadCount());
+		synchronized (this) {
+			zSetOperations.add(KeyHelper.HOTEST_ARTICLE, article, article.getReadCount());
+		}
 	}
 	
 	/**
