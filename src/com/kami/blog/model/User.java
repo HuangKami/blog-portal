@@ -1,12 +1,14 @@
 package com.kami.blog.model;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Timestamp;
 
-public class User {
-    private String id;//主键
+public class User implements Serializable {
+	private static final long serialVersionUID = 5762252252234120941L;
+	private String id;//主键
     private String password;//密码
-    private String headImg;//头像
-    private Date createTime;//创建时间
+    private String headImg = "http://huangkami.oss-cn-shenzhen.aliyuncs.com/kblog-ico.png";//头像
+    private Timestamp createTime;//创建时间
     private String name;//用户名
     private boolean black;//黑名单
     private boolean admin;//是否管理员
@@ -38,11 +40,11 @@ public class User {
         this.headImg = headImg;
     }
 
-    public java.util.Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return this.createTime;
     }
 
-    public void setCreateTime(java.util.Date createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 

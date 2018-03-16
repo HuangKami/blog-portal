@@ -1,15 +1,14 @@
 package com.kami.blog.model;
 
-import java.io.Serializable;
+import java.sql.Timestamp;
 
-public class Article implements Serializable {
-	private static final long serialVersionUID = -4661366821839028568L;
+public class Article {
 	private Integer id;//主键
-    private java.util.Date createTime;//创建时间
+    private Timestamp createTime;//创建时间
     private String topic;//所属主题
-    private java.util.Date updateTime;//最新评论时间
+    private Timestamp updateTime;//最新评论时间
     private String title;//标题
-    private Integer readCount;//浏览数
+    private Integer readCount = 0;//浏览数
     private String userId;//所属人
     private String content;//内容
     public Integer getId() {
@@ -20,11 +19,11 @@ public class Article implements Serializable {
         this.id = id;
     }
 
-    public java.util.Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return this.createTime;
     }
 
-    public void setCreateTime(java.util.Date createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 
@@ -36,11 +35,11 @@ public class Article implements Serializable {
         this.topic = topic;
     }
 
-    public java.util.Date getUpdateTime() {
+    public Timestamp getUpdateTime() {
         return this.updateTime;
     }
 
-    public void setUpdateTime(java.util.Date updateTime) {
+    public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
     }
 

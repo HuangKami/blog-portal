@@ -2,6 +2,7 @@ package com.kami.blog.service;
 import java.util.Collection;
 import java.util.List;
 import com.kami.blog.model.Article;
+import com.kami.blog.model.ComposeArticle;
 import com.kami.blog.common.Assist;
 public interface ArticleService{
 	/**
@@ -84,7 +85,7 @@ public interface ArticleService{
 	 * @return
 	 */
     int updateNonEmptyArticle(Article value, Assist assist);
-    /*
+    /**
      * 格式化文章内容
      */
 	Collection<Article> formatArticle(Collection<Article> list, int contentLength);
@@ -92,4 +93,21 @@ public interface ArticleService{
      * 通过id更新阅读数
      */
     int updateArticleReadCountById(Integer id);
+    /**
+     * 查询文章
+     */
+    List<ComposeArticle> selectComposeArticle(Assist assist);
+    /**
+     * 格式化文章内容
+     */
+	Collection<ComposeArticle> formatComposeArticle(Collection<ComposeArticle> list, int contentLength);
+	/**
+     * 查询文章详情
+     */
+    ComposeArticle selectDetailArticle(Integer id);
+    /**
+     * 更新阅读数
+     * @param article
+     */
+	void updateReadCount(ComposeArticle article);
 }

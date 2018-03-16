@@ -175,11 +175,7 @@ body, input, button, textarea, select {
 }
 
 .user-select {
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-khtml-user-select: none;
-	user-select: none;
+
 }
 
 ::selection {
@@ -982,6 +978,7 @@ translate
 	clear: both;
 	border: 1px solid #EAEAEA;
 	padding: 20px 20px 20px 20px;
+	height: 200px;
 	overflow: hidden;
 	background-color: #fff;
 	margin-bottom: -1px;

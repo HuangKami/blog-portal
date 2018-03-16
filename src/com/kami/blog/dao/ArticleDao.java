@@ -1,5 +1,7 @@
 package com.kami.blog.dao;
 import com.kami.blog.model.Article;
+import com.kami.blog.model.ComposeArticle;
+
 import java.util.List;
 import com.kami.blog.common.Assist;
 import org.apache.ibatis.annotations.Param;
@@ -88,4 +90,12 @@ public interface ArticleDao{
      * 通过id更新阅读数
      */
     int updateArticleReadCountById(Integer id);
+    /**
+     * 查询文章
+     */
+    List<ComposeArticle> selectComposeArticle(Assist assist);
+    /**
+     * 查询文章详情
+     */
+    ComposeArticle selectDetailArticle(Integer id);
 }

@@ -4,9 +4,9 @@
     <!-- Article的resultMap,column是给数据库列起的别名,它对应property类的属性-->
     <resultMap id="result_Article_Map" type="com.kami.blog.model.Article">
         <id column="id" jdbcType="INTEGER" property="id" />
-        <result column="createTime" jdbcType="DATE" property="createTime" />
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
         <result column="topic" jdbcType="VARCHAR" property="topic" />
-        <result column="updateTime" jdbcType="DATE" property="updateTime" />
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
         <result column="title" jdbcType="VARCHAR" property="title" />
         <result column="readCount" jdbcType="INTEGER" property="readCount" />
         <result column="userId" jdbcType="VARCHAR" property="userId" />
@@ -107,9 +107,9 @@
             <if test="userId != null "> and article.userId = #{userId,jdbcType=VARCHAR}</if>
             <if test="readCount != null "> and article.readCount = #{readCount,jdbcType=INTEGER}</if>
             <if test="title != null "> and article.title = #{title,jdbcType=VARCHAR}</if>
-            <if test="updateTime != null "> and article.updateTime = #{updateTime,jdbcType=DATE}</if>
+            <if test="updateTime != null "> and article.updateTime = #{updateTime,jdbcType=TIMESTAMP}</if>
             <if test="topic != null "> and article.topic = #{topic,jdbcType=VARCHAR}</if>
-            <if test="createTime != null "> and article.createTime = #{createTime,jdbcType=DATE}</if>
+            <if test="createTime != null "> and article.createTime = #{createTime,jdbcType=TIMESTAMP}</if>
             <if test="id != null "> and article.id = #{id,jdbcType=INTEGER}</if>
         </where>
     </select> 
@@ -124,9 +124,9 @@
 
     <!-- 将Article插入到对应数据库的表中,包括属性值为null的数据-->
 
-    <insert id="insertArticle" parameterType="com.kami.blog.model.Article">
+    <insert id="insertArticle" useGeneratedKeys="true" keyProperty="id" parameterType="com.kami.blog.model.Article">
         insert into article(id,createTime,topic,updateTime,title,readCount,userId,content) 
-        values(#{id,jdbcType=INTEGER},#{createTime,jdbcType=DATE},#{topic,jdbcType=VARCHAR},#{updateTime,jdbcType=DATE},#{title,jdbcType=VARCHAR},#{readCount,jdbcType=INTEGER},#{userId,jdbcType=VARCHAR},#{content,jdbcType=DECIMAL})
+        values(#{id,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP},#{topic,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP},#{title,jdbcType=VARCHAR},#{readCount,jdbcType=INTEGER},#{userId,jdbcType=VARCHAR},#{content,jdbcType=DECIMAL})
     </insert>
 
     <!-- 将Article中属性值不为null的数据,插入到对应数据库的表中-->
@@ -144,9 +144,9 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null"> #{id,jdbcType=INTEGER},</if>
-            <if test="createTime != null"> #{createTime,jdbcType=DATE},</if>
+            <if test="createTime != null"> #{createTime,jdbcType=TIMESTAMP},</if>
             <if test="topic != null"> #{topic,jdbcType=VARCHAR},</if>
-            <if test="updateTime != null"> #{updateTime,jdbcType=DATE},</if>
+            <if test="updateTime != null"> #{updateTime,jdbcType=TIMESTAMP},</if>
             <if test="title != null"> #{title,jdbcType=VARCHAR},</if>
             <if test="readCount != null"> #{readCount,jdbcType=INTEGER},</if>
             <if test="userId != null"> #{userId,jdbcType=VARCHAR},</if>
@@ -158,7 +158,7 @@
     <insert id="insertArticleByBatch" parameterType="ArrayList">
         insert into article(id,createTime,topic,updateTime,title,readCount,userId,content) values
         <foreach collection="list" item="item" index="index" separator="," >
-            (#{item.id,jdbcType=INTEGER},#{item.createTime,jdbcType=DATE},#{item.topic,jdbcType=VARCHAR},#{item.updateTime,jdbcType=DATE},#{item.title,jdbcType=VARCHAR},#{item.readCount,jdbcType=INTEGER},#{item.userId,jdbcType=VARCHAR},#{item.content,jdbcType=DECIMAL})
+            (#{item.id,jdbcType=INTEGER},#{item.createTime,jdbcType=TIMESTAMP},#{item.topic,jdbcType=VARCHAR},#{item.updateTime,jdbcType=TIMESTAMP},#{item.title,jdbcType=VARCHAR},#{item.readCount,jdbcType=INTEGER},#{item.userId,jdbcType=VARCHAR},#{item.content,jdbcType=DECIMAL})
         </foreach>
     </insert>
 
@@ -177,9 +177,9 @@
     <!-- 通过Article的id将Article的数据更新到数据库中对应的表,包括值null的数据-->
     <update id="updateArticleById" parameterType="com.kami.blog.model.Article">
         update article set
-            createTime=#{createTime,jdbcType=DATE}
+            createTime=#{createTime,jdbcType=TIMESTAMP}
             ,topic=#{topic,jdbcType=VARCHAR}
-            ,updateTime=#{updateTime,jdbcType=DATE}
+            ,updateTime=#{updateTime,jdbcType=TIMESTAMP}
             ,title=#{title,jdbcType=VARCHAR}
             ,readCount=#{readCount,jdbcType=INTEGER}
             ,userId=#{userId,jdbcType=VARCHAR}
@@ -188,9 +188,9 @@
     </update>
     
     <!-- 通过Article的id将Article的数据更新到数据库中对应的表,包括值null的数据-->
-    <update id="updateArticleReadCountById" parameterType="Integer">
+    <update id="updateArticleReadCountById" parameterType="java.lang.Integer">
         update article set
-            readCount=#{readCount,jdbcType=INTEGER}
+            readCount = readCount + 1
         where id=#{id,jdbcType=INTEGER}
     </update>
 
@@ -199,13 +199,13 @@
         update article
         <set>
             <if test="createTime != null">
-                createTime=#{createTime,jdbcType=DATE},
+                createTime=#{createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="topic != null">
                 topic=#{topic,jdbcType=VARCHAR},
             </if>
             <if test="updateTime != null">
-                updateTime=#{updateTime,jdbcType=DATE},
+                updateTime=#{updateTime,jdbcType=TIMESTAMP},
             </if>
             <if test="title != null">
                 title=#{title,jdbcType=VARCHAR},
@@ -228,9 +228,9 @@
         update article
         <set>
                 id=#{enti.id,jdbcType=INTEGER},
-                createTime=#{enti.createTime,jdbcType=DATE},
+                createTime=#{enti.createTime,jdbcType=TIMESTAMP},
                 topic=#{enti.topic,jdbcType=VARCHAR},
-                updateTime=#{enti.updateTime,jdbcType=DATE},
+                updateTime=#{enti.updateTime,jdbcType=TIMESTAMP},
                 title=#{enti.title,jdbcType=VARCHAR},
                 readCount=#{enti.readCount,jdbcType=INTEGER},
                 userId=#{enti.userId,jdbcType=VARCHAR},
@@ -247,13 +247,13 @@
                 id=#{enti.id,jdbcType=INTEGER},
             </if>
             <if test="enti.createTime != null">
-                createTime=#{enti.createTime,jdbcType=DATE},
+                createTime=#{enti.createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="enti.topic != null">
                 topic=#{enti.topic,jdbcType=VARCHAR},
             </if>
             <if test="enti.updateTime != null">
-                updateTime=#{enti.updateTime,jdbcType=DATE},
+                updateTime=#{enti.updateTime,jdbcType=TIMESTAMP},
             </if>
             <if test="enti.title != null">
                 title=#{enti.title,jdbcType=VARCHAR},
@@ -270,5 +270,4 @@
         </set>
         <if test="assist.require!=null"><include refid="updateAssist" /></if>
     </update>
-
 </mapper>

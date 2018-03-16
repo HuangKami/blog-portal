@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kami.blog.dao.ArticleDao">
+	<resultMap id="article_user" type="com.kami.blog.model.ComposeArticle">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="topic" jdbcType="VARCHAR" property="topic" />
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="readCount" jdbcType="INTEGER" property="readCount" />
+        <result column="commentCount" jdbcType="INTEGER" property="commentCount" />
+        <result column="content" jdbcType="DECIMAL" property="content" />
+        
+        <association property="user" javaType="com.kami.blog.model.User">  
+        	<id column="userId" property="id"/>  
+            <result column="name" property="name"/>  
+            <result column="headImg" property="headImg"/>  
+        </association> 
+        
+        <collection property="replies" ofType="com.kami.blog.model.Reply">
+            <id property="id" column="replyId" javaType="java.lang.Integer" />
+            <result property="createTime" column="replyTime"/>
+            <result property="content" column="replyContent" />
+            <result property="parentId" column="parentId"  />
+        	
+        	<association property="user" javaType="com.kami.blog.model.User">  
+	        	<id column="replyUserId" property="id"/>  
+	            <result column="replyName" property="name"/>  
+	            <result column="replyHeadImg" property="headImg"/>  
+	        </association> 
+        </collection>
+    </resultMap>
+
+	<sql id="composeArticle_Column">
+        article.id as id
+        ,article.createTime as createTime
+        ,article.topic as topic
+        ,article.updateTime as updateTime
+        ,article.title as title
+        ,article.readCount as readCount
+        ,article.content as content
+    </sql>
+
+	<select id="selectComposeArticle" parameterType="com.kami.blog.common.Assist" resultMap="article_user">
+		SELECT <include refid="composeArticle_Column" /> , u.id as userId, name, headImg, (SELECT count(1) FROM reply WHERE articleId = article.id) as commentCount FROM 
+		(SELECT <include refid="composeArticle_Column" />, userId
+        FROM article
+        <choose>
+            <when test="rowSize ==null">
+                <if test="require!=null">
+                    <include refid="Assist" />
+                </if>
+                <if test="order !=null">${order}</if>
+            </when>
+            <otherwise>
+                <if test="require!=null">
+                    <include refid="Assist" />
+                </if>
+                <if test="order !=null">${order}</if>
+                <choose>
+                    <when test="startRow !=null and rowSize !=null">LIMIT #{startRow,jdbcType=INTEGER},#{rowSize,jdbcType=INTEGER} </when>
+                    <when test="rowSize !=null">LIMIT #{rowSize,jdbcType=INTEGER}</when>
+                 </choose>
+            </otherwise>
+        </choose>
+        ) article
+        inner join user u on article.userId = u.id
+	</select>
+	
+	<select id="selectDetailArticle" parameterType="java.lang.Integer" resultMap="article_user">
+		SELECT
+			article.id AS id,
+			article.createTime AS createTime,
+			article.topic AS topic,
+			article.updateTime AS updateTime,
+			article.title AS title,
+			article.readCount AS readCount,
+			article.content AS content,
+			u.id as userId,
+			u.name as name,
+			u.headImg as headImg,
+			r.id as replyId,
+			r.createTime as replyTime,
+			r.content as replyContent,
+			r.parentId as parentId,
+			u2.id as replyUserId,
+			u2.name as replyName,
+			u2.headImg as replyHeadImg
+		FROM article article 
+		INNER JOIN user u on article.userId = u.id
+		LEFT JOIN reply r on article.id = r.articleId
+		LEFT JOIN user u2 on r.userId = u2.id
+		WHERE article.id = #{id,jdbcType=INTEGER}
+	</select>
+</mapper>

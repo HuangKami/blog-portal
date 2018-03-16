@@ -72,22 +72,22 @@
 		<property name="cronExpression" value="0 0 0 * * ?" />
 	</bean>
 	
-	<!-- 刷新redis缓存 -->
-	<bean id="updateArticleIntoMysqlDetail"
+	<!-- 定时清除排行榜外的文章定时器 -->
+	<bean id="clearArticleRedisDetail"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<!-- 调用的类 -->
-		<property name="targetObject" ref="updateArticleIntoMysqlJob" />
+		<property name="targetObject" ref="clearArticleRedisJob" />
 		<!-- 调用类中的方法 -->
 		<property name="targetMethod" value="startTask" />
 		<property name="concurrent" value="false" />
 	</bean>
 
 	<!-- 定义触发时间 -->
-	<bean id="updateArticleIntoMysqlTrigger"
+	<bean id="clearArticleRedisTrigger"
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="updateArticleIntoMysqlDetail" />
+		<property name="jobDetail" ref="clearArticleRedisDetail" />
 		<!-- cron表达式 -->
-		<property name="cronExpression" value="*/30 * * * * ?" />
+		<property name="cronExpression" value="0 0 * * * ?" />
 	</bean>
 
 	<!-- 总管理类 -->
@@ -96,7 +96,7 @@
 		<property name="triggers">
 			<list>
 				<ref bean="clearUnactiveUserTrigger" />
-				<ref bean="updateArticleIntoMysqlTrigger" />
+				<ref bean="clearArticleRedisTrigger" />
 			</list>
 		</property>
 	</bean>

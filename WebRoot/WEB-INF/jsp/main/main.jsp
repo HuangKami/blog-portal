@@ -21,9 +21,9 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/nprogress.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/button.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-<link rel="apple-touch-icon-precomposed" href="images/icon.png">
-<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="shortcut icon" href="images/kblog-ico.png">
 
 <script src="js/jquery.js"></script>
 <script src="js/common.js"></script>
@@ -31,103 +31,19 @@
 <script src="js/jquery.lazyload.min.js"></script>
 </head>
 <body class="user-select">
-	<header class="header"> 
-	<nav class="navbar navbar-default" id="navbar">
-	<div class="container">
-		<div class="header-topbar hidden-xs link-border">
-			<ul id="login" class="site-nav topmenu">
-				<c:if test="${empty user}">
-					<li><a href="login"><i class="fa fa-sign-in"></i> 登录</a></li>
-					<li><a href="login" rel="nofollow"><i class="fa fa-sign-in"></i> 注册</a></li>
-				</c:if>
-				<c:if test="${not empty user}">
-					<li><a href="#"><i class="fa fa-user"></i> ${user.name}</a></li>
-					<li><a href="#" onclick="return logout();"><i class="fa fa-sign-out"></i> 注销</a></li>
-				</c:if>
-			</ul>
-			<ul id="logout" class="site-nav topmenu" style="display: none;">
-				<li><a href="login"><i class="fa fa-sign-in"></i> 登录</a></li>
-				<li><a href="login" rel="nofollow"><i class="fa fa-sign-in"></i> 注册</a></li>
-			</ul>
-			勤记录 懂分享
-		</div>
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#header-navbar"
-				aria-expanded="false">
-				<span class="sr-only"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-			</button>
-			<h1 class="logo hvr-bounce-in">
-				<a href="#" title="木庄网络博客"><img
-					src="images/201610171329086541.png" alt="木庄网络博客"></a>
-			</h1>
-		</div>
-		<div class="collapse navbar-collapse" id="header-navbar">
-			<form class="navbar-form visible-xs" action="/Search" method="post">
-				<div class="input-group">
-					<input type="text" name="keyword" class="form-control"
-						placeholder="请输入关键字" maxlength="20" autocomplete="off"> <span
-						class="input-group-btn">
-						<button class="btn btn-default btn-search" name="search"
-							type="submit">搜索</button>
-					</span>
-				</div>
-			</form>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a data-cont="木庄网络博客" title="木庄网络博客" href="index.html">首页</a></li>
-				<li><a data-cont="列表页" title="列表页" href="list.html">列表页</a></li>
-				<li><a data-cont="详细页" title="详细页" href="show.html">详细页</a></li>
-				<li><a data-cont="404" title="404" href="404.html">404</a></li>
-				<li><a data-cont="MZ-NetBolg主题" title="MZ-NetBolg主题" href="#">MZ-NetBolg主题</a></li>
-				<li><a data-cont="IT技术笔记" title="IT技术笔记" href="#">IT技术笔记</a></li>
-				<li><a data-cont="源码分享" title="源码分享" href="#">源码分享</a></li>
-				<li><a data-cont="靠谱网赚" title="靠谱网赚" href="#">靠谱网赚</a></li>
-				<li><a data-cont="资讯分享" title="资讯分享" href="#">资讯分享</a></li>
-			</ul>
-		</div>
-	</div>
-	</nav> 
-	</header>
+	<jsp:include page="header.jsp"></jsp:include>
 	<section class="container">
 	<div class="content-wrap">
 		<div class="content">
-			<div id="focusslide" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#focusslide" data-slide-to="0" class="active"></li>
-					<li data-target="#focusslide" data-slide-to="1"></li>
-				</ol>
-				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<a href="#" target="_blank" title="木庄网络博客源码"> <img
-							src="images//201610181557196870.jpg" alt="木庄网络博客源码"
-							class="img-responsive"></a>
-					</div>
-					<div class="item">
-						<a href="#" target="_blank" title="专业网站建设"> <img
-							src="images//201610241227558789.jpg" alt="专业网站建设"
-							class="img-responsive"></a>
-					</div>
-				</div>
-				<a class="left carousel-control" href="#focusslide" role="button"
-					data-slide="prev" rel="nofollow"> <span
-					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">上一个</span>
-				</a> <a class="right carousel-control" href="#focusslide" role="button"
-					data-slide="next" rel="nofollow"> <span
-					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">下一个</span>
-				</a>
+			<div class="excerpt-minic excerpt-minic-index">
+				<h2>
+					<span class="red">【推荐】</span><a target="_blank" href="#"
+						title="用DTcms做一个独立博客网站（响应式模板）">用DTcms做一个独立博客网站（响应式模板）</a>
+				</h2>
+				<p class="note">用DTcms做一个独立博客网站（响应式模板），采用DTcms
+					V4.0正式版（MSSQL）。开发环境：SQL2008R2+VS2010。DTcms
+					V4.0正式版功能修复和优化：1、favicon.ico图标后台上传。（解决要换图标时要连FTP或者开服务器的麻烦）</p>
 			</div>
-			<article class="excerpt-minic excerpt-minic-index">
-			<h2>
-				<span class="red">【推荐】</span><a target="_blank" href="#"
-					title="用DTcms做一个独立博客网站（响应式模板）">用DTcms做一个独立博客网站（响应式模板）</a>
-			</h2>
-			<p class="note">用DTcms做一个独立博客网站（响应式模板），采用DTcms
-				V4.0正式版（MSSQL）。开发环境：SQL2008R2+VS2010。DTcms
-				V4.0正式版功能修复和优化：1、favicon.ico图标后台上传。（解决要换图标时要连FTP或者开服务器的麻烦）</p>
-			</article>
 			<div class="title">
 				<h3>最新文章</h3>
 				<div class="more">
@@ -137,30 +53,34 @@
 				</div>
 			</div>
 			<c:forEach var="article" items="${latestArticles}">
-				<article class="excerpt" style=""> 
+				<div class="excerpt" style=""> 
 					<header>
 						<a class="cat" href="#">${article.topic }<i></i></a>
 						<h2>
-							<a href="#" target="_blank">${article.title }</a>
+							<a href="article/${article.id}" target="_blank">${article.title }</a>
 						</h2>
 					</header>
 					<p class="meta">
 						<time class="time">
-							<i class="glyphicon glyphicon-time"></i> 
+							<i class="glyphicon glyphicon-time"></i>
 							<fmt:formatDate value="${article.createTime}" pattern="yyyy-MM-dd HH:mm"/> 
 						</time>
+						<span class="views">
+							<i class="fa fa-user"></i>
+							${article.user.name}
+						</span>
 						<span class="views">
 							<i class="glyphicon glyphicon-eye-open"></i>
 							${article.readCount}
 						</span> 
 						<span class="views">
-							<i class="glyphicon glyphicon-comment"></i> 4
+							<i class="glyphicon glyphicon-comment"></i> ${article.commentCount}
 						</span>
 					</p>
 					<p class="note">${article.content}</p>
-				</article>
+				</div>
 			</c:forEach>
-			<div id="loader"></div>
+			<div id="loader" style="margin-top: 10px"><center><a href="#" class="button button-glow button-border button-rounded button-primary" onclick="return viewMore()">查看更多</a></center></div>
 		</div>
 	</div>
 	<aside class="sidebar">
@@ -211,21 +131,25 @@
 		<ul>
 			<c:forEach var="article" items="${hotestArticles}">
 				<li>
-					<a href="#">
+					<a href="article/${article.id}" target="_blank">
 						<span class="text">
 							<span class="cat">${article.topic }<i></i></span>
 							<span class="">${article.title }</span>
 						</span>
 						<span class="muted">
 							<i class="glyphicon glyphicon-time"></i> 
-							<fmt:formatDate value="${article.createTime}" pattern="yyyy-MM-dd HH:mm"/>
+							<fmt:formatDate value="${article.createTime}" pattern="yyyy-MM-dd HH:mm"/> 
 						</span>
 						<span class="muted">
-							<i class="glyphicon glyphicon-eye-open"></i> 
+							<i class="fa fa-user"></i>
+							${article.user.name}
+						</span>
+						<span class="muted">
+							<i class="glyphicon glyphicon-eye-open"></i>
 							${article.readCount}
-						</span>
+						</span> 
 						<span class="muted">
-							<i class="glyphicon glyphicon-comment"></i> 4
+							<i class="glyphicon glyphicon-comment"></i> ${article.commentCount}
 						</span>
 						<span class="text">${article.content}</span>
 					</a>

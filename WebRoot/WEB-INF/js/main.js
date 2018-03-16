@@ -67,27 +67,6 @@ $.fn.navSmartFloat = function() {
 	})
 };
 $("#navbar").navSmartFloat();
-$("#gotop").hide();
-$(window).scroll(function() {
-	if ($(window).scrollTop() > 100) {
-		$("#gotop").fadeIn()
-	} else {
-		$("#gotop").fadeOut()
-	}
-});
-$("#gotop").click(function() {
-	$('html,body').animate({
-		'scrollTop': 0
-	}, 500)
-});
-$("img.thumb").lazyload({
-	placeholder: "../images/occupying.png",
-	effect: "fadeIn"
-});
-$(".single .content img").lazyload({
-	placeholder: "../images/occupying.png",
-	effect: "fadeIn"
-});
 $('[data-toggle="tooltip"]').tooltip();
 jQuery.ias({
 	history: false,
@@ -162,23 +141,22 @@ function logout() {
  * 分页查询
  */
 var pageNow = 1;
-$(window).scroll(function(event){  
-    var wScrollY = window.scrollY; // 当前滚动条位置    
-    var wInnerH = window.innerHeight; // 设备窗口的高度（不会变）    
-    var bScrollH = document.body.scrollHeight; // 滚动条总高度        
-    if (wScrollY + wInnerH >= bScrollH) {  
-    	$.ajax( {  
-            type : "POST",  
-            url : "article/latestArticles/" + (pageNow + 1),  
-            dataType: "json",  
-            success : function(data) {  
-            	$.each(data, function(idx, article){  
+function viewMore() {  
+	$.ajax( {  
+        type : "POST",  
+        url : "article/latestArticles/" + (pageNow + 1),  
+        dataType: "json",  
+        success : function(data) {  
+        	if(data.length == 0) {
+        		$("#loader").hide();
+        	} else {
+        		$.each(data, function(idx, article){  
     				$("#loader").before(
-    						"<article class='excerpt' style=''> "
+    						"<div class='excerpt' style=''> "
     						+" <header>"
     						+"	<a class='cat' href='#'>"+ article.topic + "<i></i></a>"
     						+"	<h2>"
-    						+"		<a href='#' target='_blank'>"+ article.title +"</a>"
+    						+"		<a href='article/" + article.id + "' target='_blank'>"+ article.title +"</a>"
     						+"	</h2>"
     						+" </header>"
     						+" <p class='meta'>"
@@ -186,19 +164,24 @@ $(window).scroll(function(event){
     						+"		<i class='glyphicon glyphicon-time'></i> "
     						+		new Date(article.createTime).toLocaleString()
     						+"	</time>"
+    						+"  <span class='views'>"
+    						+"  <i class='fa fa-user'></i>"
+    						+   article.user.name
+    						+"  </span>"
     						+"	<span class='views'>"
     						+"		<i class='glyphicon glyphicon-eye-open'></i>"
     						+		 article.readCount
     						+"	</span> "
     						+"	<span class='views'>"
-    						+"		<i class='glyphicon glyphicon-comment'></i> 4"
+    						+"		<i class='glyphicon glyphicon-comment'></i> "+ article.commentCount
     						+"	</span>"
     						+" </p>"
     						+" <p class='note'>"+ article.content +"</p>"
-    						+" </article>"); 
+    						+" </div>"); 
                 });
             	pageNow = pageNow + 1;
-            }
-        });  
-    }    
-}); 
+        	}
+        }
+    });  
+    return false;
+}

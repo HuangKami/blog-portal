@@ -94,7 +94,7 @@
 			break;
 		case "repassword":
 		case "reset_repassword":
-			flag = document.getElementById("password").value == value
+			flag = (document.getElementById("password").value == value || document.getElementById("reset_password").value == value)
 					&& value != "" && value != null
 					&& (/^\S{6,16}$/.test(value));
 			id = "repassword";

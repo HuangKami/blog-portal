@@ -3,6 +3,7 @@ package com.kami.blog.util;
 import java.util.Date;
 import java.util.Properties;
 
+import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -11,7 +12,7 @@ import javax.mail.internet.MimeMessage;
 import org.apache.log4j.Logger;
 
 /**
- *	邮件攻击类
+ *	邮件帮助类
  */
 public class MailHelper {
 	public static final String HOST = "smtp.163.com";
@@ -39,6 +40,8 @@ public class MailHelper {
         //打印日志
         SESSION.setDebug(true);
 	}
+	 
+	private MailHelper() {}
 	
 	/**
 	 * 发送邮件
@@ -49,13 +52,19 @@ public class MailHelper {
 	 */
 	public static void sendEmail(String account, String name, String theme, String content) {
 		MimeMessage message = createMimeMessage(account, name, theme, content);
+		Transport transport = null;
 		try {
-			Transport transport = SESSION.getTransport();
+			transport = SESSION.getTransport();
 			transport.connect(ACCOUNT, PASSWORD);
 			transport.sendMessage(message, message.getAllRecipients());
-			transport.close();
 		} catch (Exception e) {
 			logger.error(e + ":发送邮件时发生异常");
+		} finally {
+			try {
+				transport.close();
+			} catch (MessagingException e) {
+				logger.error(e, e);
+			}
 		}
 		
 	}
@@ -78,7 +87,7 @@ public class MailHelper {
 			message.saveChanges();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e, e);
 		}
 		return message;
 	}

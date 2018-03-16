@@ -1,6 +1,6 @@
 package com.kami.blog.controller;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -103,7 +103,7 @@ public class LoginController {
 		}
 		try {
 			user.setPassword(MD5Helper.md5(user.getPassword()));
-			user.setCreateTime(new Date());
+			user.setCreateTime(new Timestamp(System.currentTimeMillis()));
 			userService.insertUser(user);
 		} catch (Exception e) {
 			logger.error("插入用户失败:" + user.toString() + e);

@@ -11,7 +11,7 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
 import com.kami.blog.common.Assist;
-import com.kami.blog.model.Article;
+import com.kami.blog.model.ComposeArticle;
 import com.kami.blog.service.ArticleService;
 import com.kami.blog.util.KeyHelper;
 
@@ -23,15 +23,16 @@ public class ArticleRedis {
 	@Autowired
 	private ArticleService articleService;
 	@Autowired
-	private RedisTemplate<String, Article> redisTemplate;
-	private ZSetOperations<String, Article> zSetOperations;
-	public static final int SIZE = 20;
+	private RedisTemplate<String, ComposeArticle> redisTemplate;
+	private ZSetOperations<String, ComposeArticle> zSetOperations;
+	public static final int SIZE = 15;
 	
 	@PostConstruct
 	private void init() {
 		zSetOperations = redisTemplate.opsForZSet();
+		zSetOperations.removeRange(KeyHelper.HOTEST_ARTICLE, 0, Integer.MAX_VALUE);
 		Assist assist = new Assist().setStartRow(0).setRowSize(SIZE).setOrder(Assist.order("Article.readCount", false));
-		for(Article article : articleService.selectArticle(assist)) {
+		for(ComposeArticle article : articleService.selectComposeArticle(assist)) {
 			zSetOperations.add(KeyHelper.HOTEST_ARTICLE, article, article.getReadCount());
 		}
 	}
@@ -39,7 +40,7 @@ public class ArticleRedis {
 	/**
 	 * 获取top 20最热文章
 	 */
-	public Set<Article> getArticles(String key) {
+	public Set<ComposeArticle> getArticles(String key) {
 		if(!redisTemplate.hasKey(key)) {
 			return new HashSet<>();
 		}
@@ -49,10 +50,8 @@ public class ArticleRedis {
 	/**
 	 * 增加最热文章
 	 */
-	public void addArticle(String key, Article article) {
-		synchronized (this) {
-			zSetOperations.add(KeyHelper.HOTEST_ARTICLE, article, article.getReadCount());
-		}
+	public void addArticle(String key, ComposeArticle article) {
+		zSetOperations.add(KeyHelper.HOTEST_ARTICLE, article, article.getReadCount());
 	}
 	
 	/**
@@ -62,8 +61,8 @@ public class ArticleRedis {
 		if(!redisTemplate.hasKey(key)) {
 			return 0;
 		}
-		Set<Article> set = zSetOperations.reverseRangeByScore(key, 0, Integer.MAX_VALUE, Math.min(SIZE, zSetOperations.size(key)) - 1, 1);
-		for (Article article : set) {
+		Set<ComposeArticle> set = zSetOperations.reverseRangeByScore(key, 0, Integer.MAX_VALUE, Math.min(SIZE, zSetOperations.size(key)) - 1, 1);
+		for (ComposeArticle article : set) {
 			return article.getReadCount();
 		}
 		return 0;
@@ -72,29 +71,46 @@ public class ArticleRedis {
 	/**
 	 * 更新分数
 	 */
-	public void updateScore(String key, int articleId, int delta) {
-		Set<Article> set = zSetOperations.range(key, 0, Integer.MAX_VALUE);
-		for (Article article : set) {
+	public boolean updateScore(String key, int articleId, int delta) {
+		Set<ComposeArticle> set = zSetOperations.range(key, 0, Integer.MAX_VALUE);
+		ComposeArticle composeArticle = null;
+		for (ComposeArticle article : set) {
 			if(article.getId() == articleId) {
-				synchronized (this) {
-					zSetOperations.incrementScore(key, article, delta);
-				}
+				composeArticle = article;
+				break;
 			}
 		}
+		if(composeArticle != null) {
+			zSetOperations.remove(KeyHelper.HOTEST_ARTICLE, composeArticle);
+			composeArticle.setReadCount(composeArticle.getReadCount() + delta);
+			addArticle(KeyHelper.HOTEST_ARTICLE, composeArticle);
+			return true;
+		}
+		return false;
 	}
 	
 	/**
-	 * 定时刷进数据库
+	 * 移除缓存
 	 */
-	public int updateIntoMysql(String key) {
-		int result = 0;
-		synchronized(this) {
-			Set<Article> set = zSetOperations.reverseRange(key, 0, Integer.MAX_VALUE);
-			for (Article article : set) {
-				result += articleService.updateArticleReadCountById(article.getId());
+	public long removeArticle(int articleId) {
+		Set<ComposeArticle> set = zSetOperations.range(KeyHelper.HOTEST_ARTICLE, 0, Integer.MAX_VALUE);
+		ComposeArticle article = null;
+		for (ComposeArticle composeArticle : set) {
+			if(composeArticle.getId() == articleId) {
+				article = composeArticle;
+				break;
 			}
-			zSetOperations.removeRange(key, SIZE, Integer.MAX_VALUE);
 		}
-		return result;
+		if(article != null) {
+			return zSetOperations.remove(KeyHelper.HOTEST_ARTICLE, article);
+		}
+		return 0;
+	}
+	
+	/**
+	 *	定时清除排行榜外的文章
+	 */
+	public long removeHotestArticle() {
+		return zSetOperations.removeRange(KeyHelper.HOTEST_ARTICLE, 2 * SIZE, Integer.MAX_VALUE);
 	}
 }
