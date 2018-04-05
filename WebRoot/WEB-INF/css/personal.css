@@ -1,0 +1,3499 @@
+
+.nav .nav_content {
+  width: 1170px;
+  height: 43px;
+  line-height: 43px;
+  margin: 0 auto;
+}
+.nav .nav_content li {
+  float: left;
+  margin-right: 34px;
+  list-style: none;
+  line-height: 40px;
+}
+.nav .nav_content li a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #4F4F4F;
+}
+.nav .nav_content .active {
+  border-bottom: 3px solid #c92027;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+}
+.nav .nav_content .active:hover a {
+  color: #4F4F4F;
+}
+.nav .nav_content li:hover a{
+  color: #8E9499;
+  /* border-bottom: 2px solid #dc3c00; */
+}
+.csdn-toolbar .container {
+  width: 1170px;
+}
+.err {
+  background: #fff0f0;
+  position: fixed;
+  border-top: 1px solid #ffd2d2;
+  border-bottom: 1px solid #ffd2d2;
+  font-size: 12px;
+  width: 1170px;
+  height: 28px;
+  line-height: 28px;
+  left: 50%;
+  margin-left: -585px;
+  top: 0;
+  text-align: left;
+  padding-left: 5px;
+  z-index: 5000;
+}
+.err i {
+  color: #dc3c00;
+  margin-right: 6px;
+  font-size: 16px;
+}
+.err em {
+  font-style: normal;
+  color: #b74d46;
+}
+.autocomplete-suggestions {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+}
+.autocomplete-suggestions .autocomplete-suggestion {
+  padding: 5px;
+  color: #999;
+  font-size: 14px;
+}
+.autocomplete-suggestions .autocomplete-selected {
+  color: #2b81a9;
+}
+.main {
+  width: 1200px;
+  margin: 0 auto;
+}
+.main .persional_property {
+  clear: both;
+  margin: 10px 0;
+}
+.main .persional_property .person-status {
+  float: left;
+  margin: 0;
+  width: 950px;
+}
+.main .persional_property .person-status .rechargeBtn{
+  display: inline-block;
+  background: rgba(238,94,83,1);
+  width: 35px ;
+  height: 20px;
+  margin-left: 15px;
+  border-radius: 2px ;
+  color: #fff;
+  text-align: center;
+  line-height: 20px ;
+  font-size: 12px;
+}
+
+.main .persional_property .person-status .status {
+  display: table;
+  margin-left: -18px;
+}
+.main .persional_property .person-status .status em,
+.main .persional_property .person-status .status i {
+  font-style: normal;
+}
+.main .persional_property .person-status .status span {
+  border-left: 1px solid #999;
+  padding: 0 18px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.main .persional_property .person-status .status span:first-child {
+  border-left: none;
+  padding-right: 12px;
+}
+.main .persional_property .person-status .status span:first-child .cb {
+  margin-right: 5px;
+  color: #666;
+  font-size: 18px;
+  font-weight: 700;
+  cursor:default;
+}
+.main .persional_property .person-status .status span:first-child i {
+  display: inline-block;
+  background: url("//csdnimg.cn/release/my/assets2/images/cb-icon.png") no-repeat;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  padding-left: 17px;
+  color: #f8b62d;
+  font-size: 16px;
+}
+.main .persional_property .person-status .status .scores {
+  white-space: nowrap;
+}
+.main .persional_property .person-status .status .scores em {
+  display: inline-block;
+  width: 48px;
+  height: 16px;
+  padding-left: 10px;
+  vertical-align: middle;
+}
+.main .persional_property .person-status .status .scores em:first-child {
+  margin-left: 0;
+  border-left: 0;
+}
+.main .persional_property .person-status .status .scores .blog1 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog1.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog2 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog2.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog3 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog3.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog4 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog4.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog5 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog5.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog6 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog6.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog7 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog7.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog8 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog8.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog9 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog9.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog10 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog10.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog11 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog11.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog12 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog12.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog13 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog13.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog14 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog14.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .blog15 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/blog15.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down1 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down1.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down2 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down2.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down3 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down3.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down4 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down4.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down5 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down5.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down6 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down6.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down7 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down7.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down8 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down8.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down9 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down9.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down10 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down10.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down11 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down11.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down12 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down12.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down13 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down13.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down14 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down14.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .down15 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/down15.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs1 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs1.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs2 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs2.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs3 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs3.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs4 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs4.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs5 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs5.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs6 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs6.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs7 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs7.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs8 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs8.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs9 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs9.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs10 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs10.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs11 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs11.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs12 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs12.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs13 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs13.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs14 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs14.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .bbs15 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/bbs15.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .code1 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code1.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code2 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code2.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code3 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code3.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code4 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code4.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code5 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code5.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code6 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code6.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code7 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code7.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code8 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code8.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code9 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code9.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code10 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code10.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code11 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code11.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code12 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code12.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code13 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code13.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code14 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code14.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .code15 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/code15.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student1 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club1.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student2 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club2.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student3 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club3.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student4 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club4.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student5 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club5.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student6 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club6.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student7 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club7.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student8 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club8.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student9 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club9.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student10 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club10.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student11 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club11.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student12 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club12.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student13 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club13.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student14 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club14.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .student15 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/club15.png") no-repeat;
+}
+.main .persional_property .person-status .status .scores .ask1 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask1.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask2 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask2.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask3 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask3.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask4 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask4.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask5 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask5.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask6 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask6.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask7 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask7.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask8 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask8.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask9 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask9.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask10 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask10.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask11 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask11.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask12 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask12.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask13 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask13.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask14 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask14.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask15 {
+  background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask15.png") no-repeat  ;
+}
+.main .persional_property .person-status .status .scores .ask16{background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask16.png") no-repeat  ;}
+.main .persional_property .person-status .status .scores .ask17{background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask17.png") no-repeat  ;}
+.main .persional_property .person-status .status .scores .ask18{background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask18.png") no-repeat  ;}
+.main .persional_property .person-status .status .scores .ask19{background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask19.png") no-repeat  ;}
+.main .persional_property .person-status .status .scores .ask20{background: url("//csdnimg.cn/jifen/images/xunzhang/jianzhang/ask20.png") no-repeat  ;}
+
+.main .persional_property .person-status .status .medals {
+  position: relative;
+}
+.main .persional_property .person-status .status .medals .wraper {
+  border: none;
+  display: inline-block;
+  padding: 0;
+  width: 100%;
+}
+.main .persional_property .person-status .status .medals .medal {
+  display: inline-block;
+  zoom: 1;
+  background: url("https://csdnimg.cn/release/my/assets2/images/medal-icon.png");
+  background: url("https://csdnimg.cn/release/my/assets2/images/medal-icon.svg") ,none;
+  width: 21px;
+  height: 24px;
+  vertical-align: middle;
+  margin-left: 10px;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.main .persional_property .person-status .status .medals .medal:first-child {
+  margin-left: 0;
+}
+.main .persional_property .person-status .status .medals .medal:hover {
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+.main .persional_property .person-status .status .medals .m203 {
+  background-position: -155px 0;
+}
+.main .persional_property .person-status .status .medals .m204 {
+  background-position: -217px 0;
+}
+.main .persional_property .person-status .status .medals .m205 {
+  background-position: -186px 0;
+}
+.main .persional_property .person-status .status .medals .m206 {
+  background-position: -248px 0;
+}
+.main .persional_property .person-status .status .medals .m207 {
+  background-position: -279px 0;
+}
+.main .persional_property .person-status .status .medals .m208 {
+  background-position: -310px 0;
+}
+.main .persional_property .person-status .status .medals .m209 {
+  background-position: 0px 0;
+}
+.main .persional_property .person-status .status .medals .m210 {
+  background-position: -31px 0;
+}
+.main .persional_property .person-status .status .medals .m211 {
+  background-position: -62px 0;
+}
+.main .persional_property .person-status .status .medals .m212 {
+  background-position: -124px 0;
+}
+.main .persional_property .person-status .status .medals .m213 {
+  background-position: -93px 0;
+}
+.main .persional_property .person-status .status .medals .m214 {
+  background-position: -403px 0;
+}
+.main .persional_property .person-status .status .medals .m301 {
+  background-position: -372px 0;
+  width:24px;
+}
+.main .persional_property .person-status .status .medals .m302 {
+  background-position: -496px 0;
+}
+.main .persional_property .person-status .status .medals .m304 {
+  background-position: -465px 0;
+}
+.main .persional_property .person-status .status .medals .m305 {
+  background-position: -527px 0;
+}
+.main .persional_property .person-status .status .medals .m306 {
+  background-position: -558px 0;
+}
+.main .persional_property .person-status .status .medals .m307 {
+  background-position: -341px 0;
+}
+.main .persional_property .person-status .status .medals .m701{
+  background-position: -589px 0;
+}
+.main .persional_property .person-status .status .medals .m702{
+  background-position: -620px 0;
+}
+.main .persional_property .person-status .status .medals .m703{
+  background-position: -651px 0;
+}
+.main .persional_property .person-status .status .medals .m704{
+  background-position: -682px 0;
+}
+.main .persional_property .person_info_con {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  margin: 10px auto 0;
+  overflow: hidden;
+  position: relative;
+}
+.main .persional_property .person_info_con:hover .person-info-edit {
+  display: block;
+}
+.main .persional_property .person-info-edit {
+  display: none;
+  color: #a6a9ac;
+  cursor: pointer;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+}
+.main .persional_property .person-photo {
+  width: 150px;
+  height: 200px;
+  float: left;
+  margin: 15px 30px 15px 20px;
+}
+.main .persional_property .person-photo img {
+  width: 150px;
+  height: 150px;
+  border: none;
+}
+.main .persional_property .person-photo dt {
+  width: 150px;
+  height: 160px;
+  float: left;
+}
+.main .persional_property .person-photo dt a {
+  display: block;
+  width: 150px;
+  height: 150px;
+  position: relative;
+  cursor: default;
+}
+.main .persional_property .person-photo dt a .edit_person_pic {
+  display: block;
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  background: url("../images/edit_photo.png") no-repeat;
+  left: 59px;
+  top: 110px;
+  display: none;
+  cursor: pointer;
+}
+.main .persional_property .person-photo dt a:hover .edit_person_pic {
+  display: block;
+}
+.main .persional_property .person-photo .focus_num {
+  width: 72px;
+  height: 32px;
+  border-right: 1px solid #f0f0f0;
+  float: left;
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  overflow: hidden;
+}
+.main .persional_property .person-photo .focus_num b {
+  color: #333;
+  display: block;
+  width: 72px;
+  text-align: center;
+  line-height: 14px;
+  float: left;
+}
+.main .persional_property .person-photo .focus_num b a {
+  color: #000;
+  text-decoration: none;
+}
+.main .persional_property .person-photo .fans_num {
+  width: 72px;
+  height: 32px;
+  float: left;
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  overflow: hidden;
+}
+.main .persional_property .person-photo .fans_num b {
+  color: #333;
+  display: block;
+  width: 72px;
+  text-align: center;
+  line-height: 14px;
+  float: left;
+}
+.main .persional_property .person-photo .fans_num b a {
+  color: #000;
+  text-decoration: none;
+}
+.main .persional_property .person-info {
+  float: left;
+  width: 950px;
+  margin-top: 30px;
+}
+.main .persional_property .person-info dt {
+  overflow: hidden;
+}
+.main .persional_property .person-info .person-nick-name span {
+  display: block;
+  float: left;
+  font-size: 24px;
+  color: #333;
+  font-weight: normal;
+}
+.main .persional_property .person-info .person-nick-name .cto {
+  display: block;
+  float: left;
+  width: 25px;
+  height: 17px;
+  background: url("../images/cto.png");
+  margin: 8px 0 0 10px;
+}
+.main .persional_property .person-info .person-nick-name .pro {
+  display: block;
+  float: left;
+  width: 55px;
+  height: 17px;
+  background: url("../images/pro.png");
+  margin: 8px 0 0 10px;
+}
+.main .persional_property .person-info .person-detail {
+  overfolw: hidden;
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+}
+.main .persional_property .person-info .person-detail span {
+  font-size: 14px;
+  color: #999;
+  padding: 0 15px;
+}
+.main .persional_property .person-info .person-sign {
+  overflow: hidden;
+  font-size: 14px;
+  color: #999;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 8px;
+  margin-top: 10px;
+  line-height: 22px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.main .persional_property .person_deliver_letter {
+  display: block;
+  height: 22px;
+  line-height: 22px;
+  background: #79b51f;
+  color: #fff;
+  font-size: 12px;
+  padding: 0px 10px;
+  cursor: pointer;
+  position: absolute;
+  right: 29px;
+  top: 23px;
+}
+.main .persional_property .person_deliver_letter:hover {
+  text-decoration: none;
+  color: #fff;
+  background: #89c530;
+}
+.main .persional_property .person_add_focus {
+  display: block;
+  height: 22px;
+  line-height: 22px;
+  background: #e96f5d;
+  color: #fff;
+  font-size: 12px;
+  padding: 0px 10px;
+  cursor: pointer;
+  position: absolute;
+  right: 114px;
+  top: 23px;
+}
+.main .persional_property .person_add_focus:hover {
+  text-decoration: none;
+  color: #fff;
+  background: #eb8171;
+}
+.main .persion_section,
+.main .persion_article {
+  float: left;
+}
+.main .persion_section {
+  width: 1170px;
+  margin-bottom: 0;
+}
+.main .persion_section .aboutMe {
+  background: #fff;
+  padding: 0 20px 28px;
+  border: 1px solid #dcdcdc;
+  border-top: none;
+}
+.main .persion_section .aboutMe > div {
+  display: none;
+}
+.main .persion_section .aboutMe .myNews,
+.main .persion_section .aboutMe .myConnection {
+  padding-top: 20px;
+}
+.main .persion_section .aboutMe .current_content {
+  display: block;
+}
+.main .persion_section .aboutMe .myCollect {
+  overflow: hidden;
+}
+.main .persion_section .aboutMe .myCollect-temp {
+  display: block;
+}
+.main .persion_section .mod_product {
+  display: none;
+  margin-bottom: 10px;
+}
+.main .persion_section .mod_product .prod_fans {
+  height: 148px;
+  background: #fff;
+  position: relative;
+  border: 1px solid #dcdcdc;
+  border-bottom: none;
+  padding: 0 46px;
+}
+.main .persion_section .mod_product .prod_fans .box {
+  position: absolute;
+  top: 50%;
+  margin-top: -60px;
+  width: 89px;
+  height: 89px;
+  text-align: center;
+}
+.main .persion_section .mod_product .prod_fans .box .IE-fans {
+  position: absolute;
+  background-repeat: no-repeat;
+  width: 89px;
+  height: 89px;
+  z-index: 100;
+  left: 0;
+  top: 0;
+}
+.main .persion_section .mod_product .prod_fans .box .info {
+  position: absolute;
+  width: 77px;
+  height: 77px;
+  line-height: 77px;
+  top: 50%;
+  left: 50%;
+  margin-top: -39px;
+  margin-left: -39px;
+  font-size: 24px;
+  color: #fff;
+  z-index: 100;
+  cursor: pointer;
+}
+.main .persion_section .mod_product .prod_fans .box .box_title {
+  position: absolute;
+  bottom: -33px;
+  left: 50%;
+  margin-left: -15px;
+  font-size: 16px;
+  color: #333;
+  z-index: 200;
+  text-decoration: none;
+}
+.main .persion_section .mod_product .prod_fans .box .wraper_left,
+.main .persion_section .mod_product .prod_fans .box .wraper_right {
+  position: absolute;
+  width: 89px;
+  height: 89px;
+  -webkit-border-radius: 89px;
+  border-radius: 89px;
+}
+.main .persion_section .mod_product .prod_fans .box .wraper_left .fan,
+.main .persion_section .mod_product .prod_fans .box .wraper_right .fan {
+  position: absolute;
+  background: #fff;
+  width: 89px;
+  height: 89px;
+}
+.main .persion_section .mod_product .prod_fans .box .orange {
+  background: url("../images/1_orange.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .green {
+  background: url("../images/1_green.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .greenDark {
+  background: url("../images/1_greenDark.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .blue {
+  background: url("../images/1_blue.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .blueDark {
+  background: url("../images/1_blueDark.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .white {
+  background: url("../images/1_white.png") no-repeat;
+  color: #999;
+}
+.main .persion_section .mod_product .prod_fans .box .fanOrange {
+  background: url("../images/1_orange_op.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .fanGreen {
+  background: url("../images/1_green_op.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .fanGreenDark {
+  background: url("../images/1_greenDark_op.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .fanBlue {
+  background: url("../images/1_blue_op.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .fanBlueDark {
+  background: url("../images/1_blueDark_op.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .fanWhite {
+  background: url("../images/1_white_op.png") no-repeat;
+}
+.main .persion_section .mod_product .prod_fans .box .fanWhite .fan {
+  background: none;
+}
+.main .persion_section .mod_product .prod_fans .box .wraper_right {
+  clip: rect(0, 89px, 89px, 44px);
+}
+.main .persion_section .mod_product .prod_fans .box .wraper_right .fan {
+  clip: rect(0, 89px, 89px, 44px);
+  -webkit-transition: all 1s ease-in;
+  -moz-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+  -ms-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+}
+.main .persion_section .mod_product .prod_fans .box .wraper_left {
+  clip: rect(0, 45px, 89px, 0);
+}
+.main .persion_section .mod_product .prod_fans .box .wraper_left .fan {
+  clip: rect(0, 44px, 89px, 0);
+  -webkit-transition: all 1s ease-out 1s;
+  -moz-transition: all 1s ease-out 1s;
+  -o-transition: all 1s ease-out 1s;
+  -ms-transition: all 1s ease-out 1s;
+  transition: all 1s ease-out 1s;
+}
+.main .persion_section .mod_product .prod_fans div[class~="box_4"] .box_title {
+  margin-left: -22px;
+}
+.main .persion_section .mod_product .prod_fans .box_1 .IE-60 {
+  background-image: url("../images/Blog_1.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_1 .IE-120 {
+  background-image: url("../images/Blog_2.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_1 .IE-180 {
+  background-image: url("../images/Blog_3.png");
+}
+.main .persion_section .mod_product .prod_fans .box_1 .IE-240 {
+  background-image: url("../images/Blog_4.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_1 .IE-300 {
+  background-image: url("../images/Blog_5.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_1 .IE-360 {
+  background-image: url("../images/Blog_6.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_2 .IE-60 {
+  background-image: url("../images/Download_1.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_2 .IE-120 {
+  background-image: url("../images/Download_2.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_2 .IE-180 {
+  background-image: url("../images/Download_3.png");
+}
+.main .persion_section .mod_product .prod_fans .box_2 .IE-240 {
+  background-image: url("../images/Download_4.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_2 .IE-300 {
+  background-image: url("../images/Download_5.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_2 .IE-360 {
+  background-image: url("../images/Download_6.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_3 .IE-60 {
+  background-image: url("../images/bbs_1.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_3 .IE-120 {
+  background-image: url("../images/bbs_2.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_3 .IE-180 {
+  background-image: url("../images/bbs_3.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_3 .IE-240 {
+  background-image: url("../images/bbs_4.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_3 .IE-300 {
+  background-image: url("../images/bbs_5.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_3 .IE-360 {
+  background-image: url("../images/bbs_6.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_4 .IE-60 {
+  background-image: url("../images/code_1.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_4 .IE-120 {
+  background-image: url("../images/code_2.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_4 .IE-180 {
+  background-image: url("../images/code_3.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_4 .IE-240 {
+  background-image: url("../images/code_4.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_4 .IE-300 {
+  background-image: url("../images/code_5.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_4 .IE-360 {
+  background-image: url("../images/code_6.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_5 .IE-60 {
+  background-image: url("../images/school_1.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_5 .IE-120 {
+  background-image: url("../images/school_2.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_5 .IE-180 {
+  background-image: url("../images/school_3.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_5 .IE-240 {
+  background-image: url("../images/school_4.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_5 .IE-300 {
+  background-image: url("../images/school_5.png")\9;
+}
+.main .persion_section .mod_product .prod_fans .box_5 .IE-360 {
+  background-image: url("../images/school_6.png")\9;
+}
+.main .persion_section .mod_product .money {
+  background: #fff;
+  position: relative;
+  height: 39px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #dcdcdc;
+  border-top: 1px solid #f0f0f0;
+}
+.main .persion_section .mod_product .money a {
+  color: #666;
+  font-weight: 700;
+  margin: 0 10px;
+  padding-right: 20px;
+  display: inline-block;
+  zoom: 1;
+  text-decoration: none;
+}
+.main .persion_section .mod_product .money ul {
+  padding-top: 7px;
+}
+.main .persion_section .mod_product .money li {
+  float: left;
+  list-style: none;
+  padding-left: 20px;
+  border-left: 1px solid #dcdcdc;
+  padding-right: 20px;
+  margin-left: -1px;
+  margin-bottom: 0;
+}
+.main .persion_section .mod_product .money li .medal {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  background: url("../images/medal-icon.png") no-repeat;
+  width: 20px;
+  height: 24px;
+  vertical-align: middle;
+  margin-left: 10px;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.main .persion_section .mod_product .money li .medal:hover {
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+}
+.main .persion_section .mod_product .money li .m203 {
+  background-position: -150px 0;
+}
+.main .persion_section .mod_product .money li .m204 {
+  background-position: -210px 0;
+}
+.main .persion_section .mod_product .money li .m205 {
+  background-position: -180px 0;
+}
+.main .persion_section .mod_product .money li .m206 {
+  background-position: -240px 0;
+}
+.main .persion_section .mod_product .money li .m207 {
+  background-position: -270px 0;
+}
+.main .persion_section .mod_product .money li .m208 {
+  background-position: -300px 0;
+}
+.main .persion_section .mod_product .money li .m209 {
+  background-position: 0px 0;
+}
+.main .persion_section .mod_product .money li .m210 {
+  background-position: -30px 0;
+}
+.main .persion_section .mod_product .money li .m211 {
+  background-position: -60px 0;
+}
+.main .persion_section .mod_product .money li .m212 {
+  background-position: -120px 0;
+}
+.main .persion_section .mod_product .money li .m213 {
+  background-position: -90px 0;
+}
+.main .persion_section .mod_product .money li .m214 {
+  background-position: -390px 0;
+}
+.main .persion_section .mod_product .money li .m301 {
+  background-position: -330px 0;
+}
+.main .persion_section .mod_product .money li .m302 {
+  background-position: -480px 0;
+}
+.main .persion_section .mod_product .money li .m304 {
+  background-position: -450px 0;
+}
+.main .persion_section .mod_product .money li .m305 {
+  background-position: -510px 0;
+}
+.main .persion_section .mod_product .money li .m306 {
+  background-position: -540px 0;
+}
+.main .persion_section .mod_field_skill h3 {
+  font-size: 16px;
+  color: #333;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+.main .persion_section .mod_field_skill h3 span {
+  font-size: 12px;
+  color: #999;
+  margin-left: 10px;
+}
+.main .persion_section .mod_field_skill .field,
+.main .persion_section .mod_field_skill .skill {
+  padding-top: 34px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.main .persion_section .mod_field_skill .field .no-mess,
+.main .persion_section .mod_field_skill .skill .no-mess {
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+  display: inherit;
+}
+.main .persion_section .mod_field_skill .field .no-mess span,
+.main .persion_section .mod_field_skill .skill .no-mess span {
+  margin-left: 5px;
+  font-family: 'Microsoft YaHei';
+}
+.main .persion_section .mod_field_skill .field .tags,
+.main .persion_section .mod_field_skill .skill .tags {
+  margin-right: -39px;
+  margin-bottom: -20px;
+  zoom: 1;
+}
+.main .persion_section .mod_field_skill .field .tags .mod_stars,
+.main .persion_section .mod_field_skill .skill .tags .mod_stars {
+  position: relative;
+}
+.main .persion_section .mod_field_skill .field .tags .mod_stars > div,
+.main .persion_section .mod_field_skill .skill .tags .mod_stars > div {
+  position: absolute;
+  width: 103px;
+  height: 22px;
+  line-height: normal;
+  overflow: hidden;
+  text-align: left;
+  font-size: 16px;
+}
+.main .persion_section .mod_field_skill .field .tags .mod_stars .stars_bg,
+.main .persion_section .mod_field_skill .skill .tags .mod_stars .stars_bg {
+  color: #80c8e9;
+}
+.main .persion_section .mod_field_skill .field .tags .mod_stars .stars_fg,
+.main .persion_section .mod_field_skill .skill .tags .mod_stars .stars_fg {
+  color: #80c8e9;
+}
+.main .persion_section .mod_field_skill .field .tags .ok,
+.main .persion_section .mod_field_skill .skill .tags .ok,
+.main .persion_section .mod_field_skill .field .tags .del,
+.main .persion_section .mod_field_skill .skill .tags .del {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 58px;
+  display: none;
+}
+.main .persion_section .mod_field_skill .field .tags .ok,
+.main .persion_section .mod_field_skill .skill .tags .ok {
+  background: url("../images/ok.png") no-repeat;
+  left: 22px;
+}
+.main .persion_section .mod_field_skill .field .tags .del,
+.main .persion_section .mod_field_skill .skill .tags .del {
+  background: url("../images/del.png") no-repeat;
+  right: 24px;
+}
+.main .persion_section .mod_field_skill .field .tags .tag,
+.main .persion_section .mod_field_skill .skill .tags .tag {
+  position: relative;
+  background: #f5f5f5;
+  float: left;
+  width: 132px;
+  height: 68px;
+  line-height: 70px;
+  border: 1px solid #02c4b9;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin-right: 37px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+}
+.main .persion_section .mod_field_skill .field .tags .tag span,
+.main .persion_section .mod_field_skill .skill .tags .tag span {
+  display: block;
+  margin-top: -5px;
+}
+.main .persion_section .mod_field_skill .field .tags .tag span:first-child,
+.main .persion_section .mod_field_skill .skill .tags .tag span:first-child {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main .persion_section .mod_field_skill .field .tags .tag .stars,
+.main .persion_section .mod_field_skill .skill .tags .tag .stars {
+  margin-left: 21px;
+  margin-top: -27px;
+}
+.main .persion_section .mod_field_skill .field .tags .tag:hover,
+.main .persion_section .mod_field_skill .skill .tags .tag:hover {
+  cursor: pointer;
+}
+.main .persion_section .mod_field_skill .field .tags .tag:hover .del,
+.main .persion_section .mod_field_skill .skill .tags .tag:hover .del {
+  background: url("../images/del.png") no-repeat;
+  display: block;
+  right: 24px;
+}
+.main .persion_section .mod_field_skill .field .tags .recommendTag,
+.main .persion_section .mod_field_skill .skill .tags .recommendTag {
+  border: 1px dashed #dcdcdc;
+  font-size: 16px;
+  color: #c0c0c0;
+  background: #fff;
+}
+.main .persion_section .mod_field_skill .field .tags .recommendTag .stars,
+.main .persion_section .mod_field_skill .skill .tags .recommendTag .stars {
+  display: none;
+}
+.main .persion_section .mod_field_skill .field .tags .recommendTag:hover .ok,
+.main .persion_section .mod_field_skill .skill .tags .recommendTag:hover .ok,
+.main .persion_section .mod_field_skill .field .tags .recommendTag:hover .del,
+.main .persion_section .mod_field_skill .skill .tags .recommendTag:hover .del {
+  display: block;
+}
+.main .persion_section .mod_field_skill .field .tags .addTag,
+.main .persion_section .mod_field_skill .skill .tags .addTag {
+  border: 1px dashed #dcdcdc;
+  font-size: 16px;
+  color: #c0c0c0;
+  background: #fff;
+  font-size: 25px;
+  font-weight: 700;
+  color: #a6a9ac;
+}
+.main .persion_section #divDetail .tag {
+  cursor: default;
+}
+.main .persion_section #divDetail .tag:hover .ok,
+.main .persion_section #divDetail .tag:hover .del {
+  display: none;
+}
+.main .persion_section .person_detail_tab {
+  width: 1168px;
+  height: 48px;
+  border-left: 1px solid #dcdcdc;
+  border-right: 1px solid #dcdcdc;
+  margin: 0 auto;
+}
+.main .persion_section .person_detail_tab ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.main .persion_section .person_detail_tab li {
+  width: 287px;
+  height: 48px;
+  line-height: 48px;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+  background: #eee;
+  margin: 0px;
+  padding: 0px;
+  border-right: 1px solid #fff;
+  cursor: pointer;
+}
+.main .persion_section .person_detail_tab .lastli {
+  position: relative;
+  border-right: 0px;
+  text-align: center;
+  padding-right: 16px;
+  width: 288px;
+}
+.main .persion_section .person_detail_tab .lastli span {
+  position: absolute;
+  padding: 0;
+  line-height: 0;
+  right: 30px;
+  top: 50%;
+  margin-top: -3px;
+  padding: 0 10px 20px;
+}
+.main .persion_section .person_detail_tab .lastli span:hover #more {
+  display: block;
+}
+.main .persion_section .person_detail_tab .current_detail {
+  background: #fff;
+  height: 46px;
+  line-height: 46px;
+  border-top: 2px solid #8d8d8d;
+}
+.main .persion_section .person_detail_tab2 {
+  width: 858px;
+  height: 48px;
+  overflow: hidden;
+  margin: 0 auto;
+  border-left: 1px solid #dcdcdc;
+  border-right: 1px solid #dcdcdc;
+}
+.main .persion_section .person_detail_tab2 ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.main .persion_section .person_detail_tab2 li {
+  width: 429px;
+  height: 48px;
+  line-height: 48px;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  color: #000;
+  background: #eee;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+.main .persion_section .person_detail_tab2 .current_detail {
+  background: #fff;
+  height: 46px;
+  line-height: 46px;
+  border-top: 2px solid #8d8d8d;
+}
+.main .persion_section .person_detail_tab #more {
+  width: 101px;
+  /*height: 100px;*/
+  position: absolute;
+  left: 50%;
+  top: 26px;
+  margin-left: -87px;
+  padding: 0 10px;
+  z-index: 9999;
+  font-size: 14px;
+  color: #a5a9ab;
+  border: 1px solid #eaeaea;
+  background: #fff;
+  display: none;
+}
+.main .persion_section .person_detail_tab .lastli .textMore {
+  padding-right: 65px;
+}
+.main .persion_section .jian_jiao_a {
+  left: 75%;
+  top: -8px;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #ededed;
+}
+.main .persion_section .jian_jiao_b {
+  left: 75%;
+  top: -7px;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+}
+.main .persion_section .shou_cang,
+.main .persion_section .xiang_ce,
+.main .persion_section .ji_fen {
+  height: 33px;
+  line-height: 33px;
+  text-align: left;
+  border-bottom: 1px solid #ededed;
+}
+.main .persion_section .xiang_ce {
+  border: none;
+}
+.main .persion_section #more a,
+.main .persion_section #more a:link,
+.main .persion_section #more a:visited,
+.main .persion_section #more a:focus,
+.main .persion_section #more a:hover {
+  font-size: 12px;
+  text-decoration: none;
+  color: #999;
+}
+.main .persion_section .person_education {
+  margin: 10px 0px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.main .persion_section .person_education .no-mess {
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+  display: none;
+}
+.main .persion_section .person_education .no-mess span {
+  margin-left: 5px;
+  font-family: 'Microsoft YaHei';
+}
+.main .persion_section .person_education h3 {
+  height: 58px;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+}
+.main .persion_section .person_education h3 span {
+  height: 58px;
+  line-height: 58px;
+  font-size: 16px;
+  color: #333;
+  font-weight: normal;
+  display: block;
+  float: left;
+  font-family: 'microsoft yahei';
+}
+.main .persion_section .person_education h3 .add-icon {
+  font-size: 14px;
+  color: #a6a9ac;
+  cursor: pointer;
+  display: block;
+  float: right;
+  height: 58px;
+  line-height: 58px;
+}
+.main .persion_section .person_education .education_list {
+  padding-top: 50px;
+  background: url("../images/time_line.jpg") 121px repeat-y;
+}
+.main .persion_section .person_education .education_list .icon-large {
+  display: none;
+}
+.main .persion_section .person_education .education_list:hover .icon-large {
+  display: inline;
+}
+.main .persion_section .person_education .first_list {
+  padding-top: 0px;
+}
+.main .persion_section .person_education .icon-angle-down {
+  position: relative;
+}
+.main .persion_section .person_education .education_list .time-range {
+  width: 127px;
+  background: url("../images/time_bg.png") no-repeat;
+  /*height: 57px;*/
+  float: left;
+  overflow: hidden;
+}
+.main .persion_section .person_education .education_list .time-range span {
+  width: 70px;
+  font-size: 12px;
+  color: #333;
+  display: block;
+  margin: 5px 0 0 12px;
+  text-align: center;
+  line-height: 24px;
+  background: url("../images/time-bend.jpg") center center no-repeat;
+}
+.main .persion_section .person_education .education_list .time-range .tonow {
+  background: none;
+}
+.main .persion_section .person_education .education_list .time-range b {
+  width: 92px;
+  height: 37px;
+  line-height: 37px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #aac6d7;
+  display: block;
+}
+.main .persion_section .person_education .education_list dl {
+  overflow: hidden;
+  float: left;
+  margin: 0px 0px 0px 24px;
+  width: 625px;
+}
+.main .persion_section .person_education .education_list dt {
+  overflow: hidden;
+  margin-bottom: 15px;
+  margin-right: -15px;
+}
+.main .persion_section .person_education .education_list dt span {
+  display: block;
+  float: left;
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+}
+.main .persion_section .person_education .education_list dt i {
+  display: block;
+  float: right;
+  color: #a6a9ac;
+  cursor: pointer;
+  font-weight: normal;
+  padding-right: 15px;
+}
+.main .persion_section .person_education .education_list dd span {
+  font-size: 14px;
+  color: #2b81a9;
+}
+.main .persion_section .person_education .education_list dd b {
+  font-size: 14px;
+  color: #333;
+  font-weight: normal;
+  padding-left: 15px;
+}
+.main .persion_section .person_education .education_list dd em {
+  font-size: 12px;
+  color: #999;
+  font-style: normal;
+  padding-left: 20px;
+  background: url("../images/interval-line.jpg") 10px center no-repeat;
+}
+.main .persion_section .person_education .education_list .major-detail {
+  font-size: 12px;
+  color: #999;
+  margin-top: 3px;
+}
+.main .persion_section .person_education .icon-angle-down {
+  float: right;
+  position: relative;
+}
+.main .persion_section .person_education .more {
+  display: none;
+  width: 28px;
+  height: 67px;
+  text-align: center;
+  position: absolute;
+  right: -20px;
+  padding: 0 10px;
+  z-index: 9999;
+  font-size: 14px;
+  color: #a5a9ab;
+  border: 1px solid #eaeaea;
+  background: #fff;
+  overflow: hidden;
+}
+.main .persion_section .more .shou_cang a {
+  text-align: center !important;
+}
+.main .persion_section .more a {
+  display: inline-block !important;
+  width: 100% !important;
+}
+.main .persion_section .more .xiang_ce a {
+  text-align: center !important;
+}
+.main .persion_section .more a,
+.main .persion_section .more a:link,
+.main .persion_section .more a:visited,
+.main .persion_section .more a:focus,
+.main .persion_section .more a:hover {
+  font-size: 12px;
+  text-decoration: none;
+  color: #999;
+  cursor: pointer;
+}
+.main .persion_section .icon-angle-down {
+  cursor: pointer;
+  color: #a6a9ac;
+  font-weight: bolder;
+}
+.main .persion_section .mod_per_dy h3 {
+  font-size: 16px;
+  color: #333;
+  font-weight: normal;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.main .persion_section .mod_per_dy h3 .mineTab,
+.main .persion_section .mod_per_dy h3 .focusTab {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #333;
+}
+.main .persion_section .mod_per_dy h3 .mineTab em,
+.main .persion_section .mod_per_dy h3 .focusTab em {
+  font-style: normal;
+}
+.main .persion_section .mod_per_dy h3 .icon {
+  display: none;
+}
+.main .persion_section .mod_per_dy h3 .active .icon {
+  display: block;
+  position: absolute;
+  background: url("../images/active.png") no-repeat;
+  width: 15px;
+  height: 7px;
+  left: 50%;
+  top: 36px;
+  margin-left: -13px;
+}
+.main .persion_section .mod_per_dy h3 span {
+  display: inline-block;
+  background: #d2d2d2;
+  width: 1px;
+  height: 10px;
+  margin: 0 39px;
+}
+.main .persion_section .mod_per_dy .focus {
+  display: none;
+}
+.main .persion_section .mod_per_dy li {
+  position: relative;
+  list-style: none;
+  padding: 20px 0;
+  font-size: 12px;
+  color: #333;
+  border-bottom: 1px dashed #f0f0f0;
+  margin-right: 0;
+  margin-bottom: 0;
+  -webkit-transition: all 0.7s ease-out 10s;
+  -moz-transition: all 0.7s ease-out 10s;
+  -o-transition: all 0.7s ease-out 10s;
+  -ms-transition: all 0.7s ease-out 10s;
+  transition: all 0.7s ease-out 10s;
+}
+.main .persion_section .mod_per_dy li .info {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  width: 730px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main .persion_section .mod_per_dy li .info a {
+  color: #5694b5;
+  text-decoration: none;
+  font-size: 14px;
+}
+.main .persion_section .mod_per_dy li .cont li {
+  border-bottom: 0;
+  padding: 0;
+}
+.main .persion_section .mod_per_dy li .time {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  margin-top: -10px;
+  color: #999;
+}
+.main .persion_section .mod_per_dy li .no-mess {
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  color: #bcbcbc;
+}
+.main .persion_section .mod_per_dy li .no-mess span {
+  font-family: 'Microsoft YaHei';
+  margin-left: 5px;
+}
+.main .persion_section .mod_per_dy .more {
+  position: relative;
+  padding-top: 20px;
+  text-align: center;
+}
+.main .persion_section .mod_per_dy .more a {
+  font-size: 12px;
+  text-decoration: none;
+  color: #999;
+}
+.main .persion_section .mod_per_dy .more span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: 30px;
+  margin-top: 0;
+  font-size: 18px;
+  color: #b3b6b8;
+}
+.main .persion_section .connection_title_con {
+  height: 52px;
+  background: url("../images/connection_title_bg.jpg");
+  margin: 0 auto;
+}
+.main .persion_section .connection_title_con ul {
+  list-style: none;
+  height: 72px;
+  width: 600px;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  float: left;
+}
+.main .persion_section .connection_title_con .connection_search_form {
+  width: 217px;
+  height: 26px;
+  border: 1px solid #f1f1f1;
+  float: right;
+  background: #fdfdfd;
+  margin-top: 5px;
+}
+.main .persion_section .connection_title_con .connection_search_form .input_text {
+  width: 182px;
+  height: 20px;
+  color: #999;
+  border: 0px;
+  margin: 2px 0 0 5px;
+}
+.main .persion_section .connection_title_con .connection_search_form .connection_search {
+  border: none;
+  width: 17px;
+  height: 18px;
+  background: url("../images/search_zoon_btn.png");
+}
+.main .persion_section .connection_title_con ul li {
+  float: left;
+  height: 52px;
+  line-height: 40px;
+  display: block;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.main .persion_section .my_connections .no-mess {
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  color: #bcbcbc;
+}
+.main .persion_section .my_connections .no-mess span {
+  font-family: 'Microsoft YaHei';
+  margin-left: 5px;
+}
+.main .persion_section .connection_title_con ul .current_foucus {
+  background: url("../images/connection_title_cur_bg.jpg") center no-repeat;
+}
+.main .persion_section .connection_title_con ul .interval_line {
+  width: 70px;
+  background: url("../images/interval-line.jpg") center 16px no-repeat;
+}
+.main .persion_section .connection_list_con {
+  width: 820px;
+  background: #fff;
+}
+.main .persion_section .connection_list_con .more {
+  position: relative;
+  padding-top: 20px;
+  text-align: center;
+}
+.main .persion_section .connection_list_con .more a {
+  font-size: 12px;
+  text-decoration: none;
+  color: #999;
+}
+.main .persion_section .connection_list_con .more span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: 30px;
+  margin-top: 0;
+  font-size: 18px;
+  color: #b3b6b8;
+}
+.main .persion_section .connection_list_con ul {
+  width: 840px;
+  list-style: none;
+  padding: 0px;
+}
+.main .persion_section .connection_list_con li {
+  width: 255px;
+  height: 125px;
+  float: left;
+  margin-right: 25px;
+  margin-bottom: 20px;
+}
+.main .persion_section .connection_list_con li dl {
+  width: 253px;
+  height: 80px;
+  border: 1px solid #f0f0f0;
+  margin: 0px;
+  padding: 0px;
+}
+.main .persion_section .connection_list_con li dl dt {
+  width: 60px;
+  height: 50px;
+  margin-left: 16px;
+  margin-top: 15px;
+  float: left;
+}
+.main .persion_section .connection_list_con li dl .connection_name {
+  width: 165px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+.main .persion_section .connection_list_con li dl .connection_name a {
+  font-size: 18px;
+  color: #333;
+  display: block;
+  float: left;
+  text-decoration: none;
+}
+.main .persion_section .connection_list_con li dl .connection_name a:hover {
+  text-decoration: none;
+}
+.main .persion_section .connection_list_con li dl .connection_name b {
+  width: 15px;
+  height: 13px;
+  background: url("../images/v2.png");
+  display: block;
+  float: left;
+  margin: 7px 0 0 5px;
+}
+.main .persion_section .connection_list_con li dl .connection_pos {
+  width: 165px;
+  overflow: hidden;
+  font-size: 12px;
+  color: #333;
+  height: 18px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main .persion_section .connection_list_con .letter-btn-con {
+  width: 253px;
+  height: 42px;
+  border: 1px solid #f0f0f0;
+  border-top: none;
+  overflow: hidden;
+}
+.main .persion_section .connection_list_con .letter-btn-con a {
+  width: 80px;
+  height: 22px;
+  line-height: 22px;
+  display: block;
+  background: #f3f3f3;
+  text-align: center;
+  margin: 10px 0 0 16px;
+  color: #999;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.main .persion_section .connection_list_con .letter-btn-con a .icon-large {
+  font-size: 1em;
+  color: #999;
+  padding-right: 3px;
+  padding-top: 1px;
+}
+.main .persion_section .connection_list_con .letter-btn-con a:hover {
+  text-decoration: none;
+}
+.main .persion_section .connection_list_con ul li dl dt img {
+  width: 50px;
+  height: 50px;
+}
+.main .persion_section .mod_contact {
+  position: relative;
+  padding-top: 30px;
+  overflow: hidden;
+}
+.main .persion_section .mod_contact:hover .modify {
+  display: block;
+}
+.main .persion_section .mod_contact .modify {
+  position: absolute;
+  display: none;
+  right: 0;
+  color: #a6a9ac;
+  font-size: 18px;
+}
+.main .persion_section .mod_contact h3 {
+  font-size: 16px;
+  color: #333;
+  font-weight: normal;
+  margin-bottom: 22px;
+}
+.main .persion_section .mod_contact ul {
+  margin-bottom: -20px;
+  margin-right: -126px;
+}
+.main .persion_section .mod_contact li {
+  float: left;
+  list-style: none;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  margin-right: 0;
+  width: 410px;
+  overflow:hidden;
+}
+.main .persion_section .mod_contact li i{
+  float:left;
+  font-style:nomarl;
+}
+.main .persion_section .mod_contact li span {
+  float:left;
+  margin-right: 0;
+  width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.main .persion_section .person_job {
+  margin: 10px 0px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.main .persion_section .person_job .no-mess {
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+  display: none;
+}
+.main .persion_section .person_job .no-mess span {
+  margin-left: 5px;
+  font-family: 'Microsoft YaHei';
+}
+.main .persion_section .person_job h3 {
+  height: 58px;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+}
+.main .persion_section .person_job h3 span {
+  height: 58px;
+  line-height: 58px;
+  font-size: 16px;
+  color: #333;
+  font-weight: normal;
+  display: block;
+  float: left;
+  font-family: 'microsoft yahei';
+}
+.main .persion_section .person_job h3 .add-icon {
+  font-size: 14px;
+  color: #a6a9ac;
+  cursor: pointer;
+  display: block;
+  float: right;
+  height: 58px;
+  line-height: 58px;
+}
+.main .persion_section .person_job .job_list {
+  padding-top: 50px;
+  background: url("../images/time_line.jpg") 121px repeat-y;
+}
+.main .persion_section .person_job .job_list .icon-large {
+  display: none;
+}
+.main .persion_section .person_job .job_list:hover .icon-large {
+  display: inline;
+}
+.main .persion_section .person_job .first_list {
+  padding-top: 0px;
+}
+.main .persion_section .person_job .job_list .time-range {
+  width: 127px;
+  background: url("../images/time_bg.png") no-repeat;
+  float: left;
+  height: 57px;
+  overflow: hidden;
+}
+.main .persion_section .person_job .job_list .time-range span {
+  width: 70px;
+  font-size: 12px;
+  color: #333;
+  display: block;
+  margin: 5px 0 0 12px;
+  text-align: center;
+  line-height: 24px;
+  background: url("../images/time-bend.jpg") center center no-repeat;
+}
+.main .persion_section .person_job .job_list .time-range .tonow {
+  background: none;
+}
+.main .persion_section .person_job .job_list .time-range b {
+  width: 92px;
+  height: 37px;
+  line-height: 37px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #aac6d7;
+  display: block;
+}
+.main .persion_section .person_job .job_list dl {
+  overflow: hidden;
+  float: left;
+  margin: 0px 0px 0px 24px;
+  width: 625px;
+}
+.main .persion_section .person_job .job_list dt {
+  overflow: hidden;
+  margin-bottom: 15px;
+  margin-right: -15px;
+}
+.main .persion_section .person_job .job_list dt span {
+  display: block;
+  float: left;
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+}
+.main .persion_section .person_job .job_list dt i {
+  display: block;
+  float: right;
+  color: #a6a9ac;
+  cursor: pointer;
+  font-weight: normal;
+  padding-right: 15px;
+}
+.main .persion_section .person_job .job_list dd span {
+  font-size: 14px;
+  color: #2b81a9;
+}
+.main .persion_section .person_job .job_list dd b {
+  font-size: 14px;
+  color: #333;
+  font-weight: normal;
+  padding-left: 15px;
+}
+.main .persion_section .person_job .job_list dd em {
+  font-size: 12px;
+  color: #999;
+  font-style: normal;
+  padding-left: 20px;
+  background: url("../images/interval-line.jpg") 10px center no-repeat;
+}
+.main .persion_section .person_job .job_list .major-detail {
+  font-size: 12px;
+  color: #999;
+  margin-top: 3px;
+}
+.main .persion_section .person_job .icon-angle-down {
+  float: right;
+  position: relative;
+}
+.main .persion_section .person_job .more {
+  display: none;
+  width: 28px;
+  height: 67px;
+  text-align: center;
+  position: absolute;
+  right: -20px;
+  padding: 0 10px;
+  z-index: 9999;
+  font-size: 14px;
+  color: #a5a9ab;
+  border: 1px solid #eaeaea;
+  background: #fff;
+  overflow: hidden;
+}
+.main .persion_section .person_job .more .shou_cang {
+  text-align: center;
+}
+.main .persion_section .person_job .more .xiang_ce {
+  text-align: center;
+}
+.main .persion_section .more a,
+.main .persion_section .more a:link,
+.main .persion_section .more a:visited,
+.main .persion_section .more a:focus,
+.main .persion_section .more a:hover {
+  font-size: 12px;
+  text-decoration: none;
+  color: #999;
+  cursor: pointer;
+}
+.main .persion_section .mod-my-collect {
+  padding-top: 27px;
+  text-align: center;
+}
+.main .persion_section .mod-my-collect .silder-wraper {
+  position: relative;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 17px;
+}
+.main .persion_section .mod-my-collect .silder {
+  width: 790px;
+  overflow: hidden;
+}
+.main .persion_section .mod-my-collect .silder .active {
+  position: absolute;
+  background: url("../images/active.png") no-repeat;
+  width: 15px;
+  height: 7px;
+  left: 7px;
+  top: 50%;
+  margin-top: 19px;
+  -webkit-transition: all 1s ease-in;
+  -moz-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+  -ms-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+}
+.main .persion_section .mod-my-collect .silder .wraper {
+  width: 10000px;
+  overflow: hidden;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+.main .persion_section .mod-my-collect .silder .wraper ul {
+  margin-right: -20px;
+}
+.main .persion_section .mod-my-collect .silder .wraper ul li {
+  position: static;
+  float: left;
+  margin: 0;
+}
+.main .persion_section .mod-my-collect .silder .wraper ul li:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+.main .persion_section .mod-my-collect .silder .wraper ul li span {
+  display: inline-block;
+  /*width: 50px;*/
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  padding: 0;
+  font-size: 16px;
+  color: #333;
+  vertical-align: middle;
+  padding:0;
+  cursor: pointer;
+}
+.main .persion_section .mod-my-collect .silder .wraper ul li em {
+  display: inline-block;
+  border-left: 1px solid #d2d2d2;
+  height: 10px;
+  line-height: 10px;
+  padding: 0;
+  margin: 0 20px;
+  vertical-align: middle;
+}
+.main .persion_section .mod-my-collect .silder .wraper ul li:first-child em {
+  display: none;
+}
+.main .persion_section .mod-my-collect .operate {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -18px;
+  padding-right: 0px;
+}
+.main .persion_section .mod-my-collect .map_tag{
+  padding-top: 8px;
+  color: #666;
+}
+.main .persion_section .mod-my-collect .map_tag a{
+  color: #428bca;
+}
+.main .persion_section .mod-my-collect .map_tag a:hover{
+  color: #2a6496;
+}
+
+.main .persion_section .mod-my-collect .operate span{
+  padding-right: 0px;
+}
+.main .persion_section .mod-my-collect .operate .none {
+  color: #cdcdcd;
+}
+.main .persion_section .mod-my-collect .operate span {
+  font-size: 20px;
+  padding: 0;
+  margin-right: 5px;
+  color: #777;
+  cursor: pointer;
+}
+.main .persion_section .mod-my-collect .silder-content {
+  margin-bottom: 73px;
+  text-align: left;
+}
+.main .persion_section .mod-my-collect .silder-content .no-mess {
+  display: block;
+  font-size: 16px;
+  width: 100%;
+  color: #bcbcbc;
+  padding: 0;
+  border-bottom: 0;
+  margin-top: 30px;
+}
+.main .persion_section .mod-my-collect .silder-content .no-mess span {
+  font-family: 'Microsoft YaHei';
+  margin-left: 10px;
+}
+.main .persion_section .mod-my-collect .silder-content ul li {
+  position: relative;
+  padding: 26px 0;
+  margin: 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .header,
+.main .persion_section .mod-my-collect .silder-content ul li .content {
+  vertical-align: top;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .header {
+  margin-right: 10px;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .header img {
+  width: 30px;
+  height: 30px;
+  border: 0;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .content {
+  display: inline-block;
+  width: 650px;
+  font-size: 14px;
+  word-break: break-all;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .content a[data-bind="cont"] {
+  color: #428bca;
+  text-decoration: none;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .content .tags {
+  display: inline;
+  margin-left: 13px;
+  padding: 0;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .content .tags .tag {
+  background: #f3f3f3;
+  display: inline-block;
+  height: 20px;
+  line-height: 17px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin-left: 12px;
+  padding: 0 12px;
+  color: #333;
+  text-align: center;
+  font-size: 12px;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .content .tags .tag:first-child {
+  margin-left: 0;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .content .tags .tag:hover {
+  background: #be1a21;
+  color: #fff;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .operate {
+  position: absolute;
+  top: 26px;
+  right: 0;
+  margin-top: 0px;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .operate em,
+.main .persion_section .mod-my-collect .silder-content ul li .operate span {
+  display: inline-block;
+  padding: 0;
+  vertical-align: middle;
+  color: #999;
+  font-size: 18px;
+  cursor: pointer;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .operate .time {
+  font-size: 12px;
+  margin-right: 25px;
+}
+.main .persion_section .mod-my-collect .silder-content ul li .operate .edit {
+  margin-right: 8px;
+}
+.main .persion_section .mod-my-collect .more {
+  color: #999;
+}
+.main .persion_section .mod-my-collect .more i {
+  margin-left: 5px;
+  font-size: 14px;
+}
+.main .persion_article {
+  width: 300px;
+}
+.main .persion_article .mod_personal_info {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  padding: 17px 23px 20px;
+  margin-bottom: 10px;
+}
+.main .persion_article .mod_personal_info .per_info {
+  margin-bottom: 20px;
+}
+.main .persion_article .mod_personal_info .per_info .percentage,
+.main .persion_article .mod_personal_info .per_info .prog {
+  float: left;
+}
+.main .persion_article .mod_personal_info .per_info .percentage {
+  background: url("../images/per_info.png") no-repeat;
+  width: 61px;
+  height: 61px;
+  line-height: 61px;
+  font-size: 25px;
+  color: #fff;
+  text-align: center;
+}
+.main .persion_article .mod_personal_info .per_info .percentage em {
+  font-style: normal;
+}
+.main .persion_article .mod_personal_info .per_info .percentage span {
+  font-size: 12px;
+}
+.main .persion_article .mod_personal_info .per_info .prog {
+  position: relative;
+}
+.main .persion_article .mod_personal_info .per_info .prog .prog_bg,
+.main .persion_article .mod_personal_info .per_info .prog .prog_fg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 196px;
+  height: 11px;
+  margin-top: 25px;
+}
+.main .persion_article .mod_personal_info .per_info .prog .prog_bg {
+  background: #e7e7e7;
+}
+.main .persion_article .mod_personal_info .per_info .prog .prog_fg {
+  width: 0;
+  background: url("../images/prog_info.png") repeat-y;
+  -webkit-transition: all 1.3s ease-out 1s;
+  -moz-transition: all 1.3s ease-out 1s;
+  -o-transition: all 1.3s ease-out 1s;
+  -ms-transition: all 1.3s ease-out 1s;
+  transition: all 1.3s ease-out 1s;
+}
+.main .persion_article .mod_personal_info .money_info {
+  position: relative;
+  font-size: 14px;
+  color: #5d5d5d;
+  clear: both;
+  margin-bottom: 17px;
+}
+.main .persion_article .mod_personal_info .money_info > span {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+.main .persion_article .mod_personal_info .money_info .modify {
+  display: block;
+}
+.main .persion_article .mod_personal_info .money_info .modify .info,
+.main .persion_article .mod_personal_info .money_info .modify .money {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+.main .persion_article .mod_personal_info .money_info .perfect {
+  display: none;
+}
+.main .persion_article .mod_personal_info .money_info .info {
+  width: 63px;
+  margin-right: 15px;
+}
+.main .persion_article .mod_personal_info .money_info .complate {
+  display: block;
+  width: 108px;
+}
+.main .persion_article .mod_personal_info .money_info .complate i,
+.main .persion_article .mod_personal_info .money_info .complate em {
+  font-style: normal;
+}
+.main .persion_article .mod_personal_info .money_info .complate i {
+  margin-left: 5px;
+  color: #f8b62d;
+  font-weight: 700;
+}
+.main .persion_article .mod_personal_info .money_info .complate i em {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  background: url("../images/money_icon.png") no-repeat;
+  width: 13px;
+  height: 13px;
+  vertical-align: middle;
+  margin: 0 1px;
+}
+.main .persion_article .mod_personal_info .money_info .money {
+  position: relative;
+  width: 84px;
+  height: 37px;
+  line-height: 37px;
+  text-align: center;
+  border: 1px solid #f0f0f0;
+  font-size: 14px;
+  color: #f39c11;
+  vertical-align: top;
+}
+.main .persion_article .mod_personal_info .money_info .money .icon-angle-left {
+  background: none repeat scroll 0 0 #fff;
+  color: #f0f0f0;
+  font-size: 15px;
+  font-style: normal;
+  left: -5px;
+  line-height: 9px;
+  margin-top: -5px;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+}
+.main .persion_article .mod_personal_info .money_info .money span {
+  font-size: 25px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.main .persion_article .mod_personal_info .money_info .money .icon {
+  font-style: normal;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  background: url("//csdnimg.cn/release/my/assets2/images/cb-icon.png") no-repeat;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin: 0 1px;
+}
+.main .persion_article .mod_personal_info .money_info .money .fix {
+  font-size: 16px;
+  vertical-align: middle;
+}
+.main .persion_article .mod_personal_info .money_info .receive {
+  position: absolute;
+  top: 50%;
+  margin-top: -12px;
+  right: 63px;
+  background: #f3af7e;
+  text-decoration: none;
+  width: 64px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  border: 1px solid #f0f0f0;
+}
+.main .persion_article .mod_personal_info .money_info .receive:hover {
+  background: #eb7d64;
+}
+.main .persion_article .mod_personal_info .money_info .receive_over {
+  background: #eee;
+  color: #999;
+}
+.main .persion_article .mod_personal_info .money_info .receive_over:hover {
+  background: #eee;
+  color: #999;
+}
+.main .persion_article .mod_personal_info .info {
+  margin-bottom: -5px;
+}
+.main .persion_article .mod_personal_info .info ul li {
+  list-style: none;
+  font-size: 12px;
+  color: #c0c0c0;
+  margin-bottom: 5px;
+}
+.main .persion_article .mod_personal_info .info ul li i {
+  font-size: 15px;
+  margin-right: 10px;
+}
+.main .persion_article .mod_personal_info .info ul li .icon-exclamation-sign {
+  color: #c0c0c0;
+}
+.main .persion_article .mod_personal_info .info ul li em {
+  font-style: normal;
+  display: inline-block;
+  font-size: 12px;
+  padding: 0;
+}
+.main .persion_article .mod_jobs {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  display: none;
+}
+.main .persion_article .mod_jobs h3 {
+  position: relative;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f0f0;
+  text-indent: 20px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+}
+.main .persion_article .mod_jobs h3 a {
+  position: absolute;
+  right: 23px;
+  top: 50%;
+  margin-top: -6px;
+  font-size: 13px;
+  color: #a6a9ac;
+}
+.main .persion_article .mod_jobs .job_list {
+  padding: 15px 20px;
+}
+.main .persion_article .mod_jobs .job_list .tips {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 16px;
+}
+.main .persion_article .mod_jobs .job_list .tips em {
+  font-style: normal;
+  color: #2b81a9;
+  margin: 0 3px;
+}
+.main .persion_article .mod_jobs .job_list .list {
+  margin-bottom: -16px;
+}
+.main .persion_article .mod_jobs .job_list .list li {
+  list-style: none;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.main .persion_article .mod_jobs .job_list .list li .header,
+.main .persion_article .mod_jobs .job_list .list li .info {
+  float: left;
+}
+.main .persion_article .mod_jobs .job_list .list li .header {
+  margin-right: 20px;
+}
+.main .persion_article .mod_jobs .job_list .list li .header img {
+  width: 50px;
+  height: 50px;
+  border: 0;
+  outline: 0;
+  zoom: 1;
+}
+.main .persion_article .mod_jobs .job_list .list li .info .tit,
+.main .persion_article .mod_jobs .job_list .list li .info .dis,
+.main .persion_article .mod_jobs .job_list .list li .info em {
+  display: block;
+  font-style: normal;
+  line-height: normal;
+}
+.main .persion_article .mod_jobs .job_list .list li .info .tit {
+  font-size: 14px;
+  color: #2b81a9;
+  text-decoration: none;
+  width: 186px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main .persion_article .mod_jobs .job_list .list li .info .dis {
+  font-size: 14px;
+  color: #333;
+}
+.main .persion_article .mod_jobs .job_list .list li .info em {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 0;
+  padding: 0;
+}
+.main .persion_article .interested_con {
+  width: 298px;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  margin-bottom: 10px;
+  display: none;
+}
+.main .persion_article .interested_con h3 {
+  height: 44px;
+  line-height: 44px;
+  font-size: 16px;
+  color: #333;
+  font-family: 'microsoft yahei';
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0px;
+  margin: 0px;
+  text-indent: 19px;
+  font-weight: normal;
+}
+.main .persion_article .interested_con ul {
+  list-style: none;
+  margin: 20px 0 20px 20px;
+  padding: 0px;
+  width: 280px;
+}
+.main .persion_article .interested_con ul li {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 20px;
+}
+.main .persion_article .interested_con ul li a {
+  display: inline-block;
+}
+.main .persion_article .interested_con ul li img {
+  width: 50px;
+  height: 50px;
+  border: none;
+}
+.main .persion_article .count-and-more {
+  width: 262px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.main .persion_article .count-and-more span {
+  font-size: 12px;
+  color: #666;
+  display: block;
+  float: left;
+}
+.main .persion_article .count-and-more span em {
+  font-style: normal;
+  color: #2b81a9;
+  padding: 0 3px;
+}
+.main .persion_article .count-and-more a {
+  display: block;
+  float: right;
+  color: #666;
+  font-size: 12px;
+  text-decoration: none;
+}
+.main .persion_article .count-and-more a:hover {
+  text-decoration: none;
+}
+.main .marker {
+  position: absolute;
+  background: #000;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  -webkit-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  -ms-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+.main .pop_edit {
+  clear: both;
+  position: absolute;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  top: -400px;
+  left: 50%;
+  margin-left: -333px;
+  margin-top: -205px;
+  z-index: 1000;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+.main .pop_edit h3 {
+  position: relative;
+  font-weight: normal;
+  font-size: 18px;
+  color: #666;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 19px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 30px;
+}
+.main .pop_edit h3 .err {
+  position: absolute;
+  font-size: 12px;
+  width: 99%;
+  left: 0;
+  top: inherit;
+  margin: 0;
+  bottom: -23px;
+  text-align: left;
+  padding-left: 5px;
+}
+.main .pop_edit .close {
+  position: absolute;
+  text-decoration: none;
+  right: 30px;
+  top: 5px;
+  font-size: 30px;
+  color: #ccc;
+}
+.main .pop_edit .context {
+  padding: 0 20px 10px;
+  font-size: 16px;
+  color: #333;
+}
+.main .pop_edit .context form {
+  position: relative;
+}
+.main .pop_edit .red {
+  position: absolute;
+  display: inline-block;
+  left: -11px;
+  top: 50%;
+  margin-top: -10px;
+  padding: 0;
+  color: #f00;
+}
+.main .edit_intro {
+  width: 667px;
+}
+.main li {
+  position: relative;
+  list-style: none;
+  margin-bottom: 20px;
+  margin-right: -40px;
+}
+.main li span {
+  padding-right: 20px;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+.main li em,
+.main li .nick_tip {
+  color: #be0000;
+  padding-left: 20px;
+  font-style: normal;
+  display: none;
+}
+.main li i {
+  font-style: normal;
+}
+.main li em {
+  font-size: 16px;
+  color: #999;
+}
+.main li em i {
+  font-size: 12px;
+  color: #bcbcbc;
+  margin-left: 12px;
+}
+.main li input {
+  height: 28px;
+  border: 1px solid #dcdcdc;
+}
+.main li .radio_sex {
+  width: 20px;
+  height: auto;
+}
+.main li select {
+  width: 183px;
+  height: 28px;
+  border: 1px solid #dcdcdc;
+  color: #666;
+  font-size: 14px;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+.main li .district {
+  display: none;
+}
+.main li textarea {
+  height: 87px;
+  color: #666;
+  font-size: 14px;
+  padding-top: 11px;
+  padding-left: 14px;
+  border: 1px solid #dcdcdc;
+  vertical-align: top;
+}
+.main li .info-alert {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-right: 20px;
+  color: #bc0000;
+}
+.main li .info-alert em {
+  display: inline;
+  padding: 0;
+  font-style: normal;
+  font-size: 12px;
+  color: #bc0000;
+}
+.main .industry {
+  width: 272px;
+}
+.main .mp_dl {
+  display: inline-block;
+  width: 100%;
+}
+.main .mp_field1 {
+  width: 232px;
+}
+.main .mp_field2 {
+  width: 112px;
+}
+.main .mp_label {
+  display: inline-block;
+}
+.main .mp_em_i {
+  font-size: 12px;
+  color: #bcbcbc;
+  margin-left: 12px;
+}
+.main .mp_wid {
+  width: 550px;
+}
+/*.main li .intro_info {
+  width: 560px !important;
+}*/
+.main li input,
+.main li select {
+  vertical-align: middle;
+}
+.main li .edit_edu {
+  width: 591px;
+}
+.main li .school {
+  width: 499px;
+  height: 28px;
+  border: 1px solid #dcdcdc;
+}
+.main li .pro {
+  width: 205px;
+  height: 28px;
+  border: 1px solid #dcdcdc;
+}
+.main li .edu {
+  width: 221px;
+  border: 1px solid #dcdcdc;
+}
+.main li .date {
+  width: 181px;
+  height: 28px;
+  border: 1px solid #dcdcdc;
+}
+.main li .time {
+  margin: 0 5px;
+  color: #bcbcbc;
+  padding: 0;
+}
+.main li .now {
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+}
+.main li i {
+  font-size: 14px;
+  color: #333;
+}
+.main li .intro_info {
+  width: 483px;
+  height: 100px;
+  border: 1px solid #dcdcdc;
+}
+.main .edit_job {
+  width: 591px;
+}
+.main .edit_job .job {
+  width: 205px;
+  height: 28px;
+  border: 1px solid #dcdcdc;
+}
+.main .edit_job .textara_Mes {
+  float: right;
+  color: #f00;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+.main .edit_intro .textara_Mes {
+  float: right;
+  color: #f00;
+  font-size: 12px;
+  margin-right: 15px;
+
+}
+.main .edit_contact {
+  width: 591px;
+  margin-top: -170px;
+}
+.main .edit_contact input {
+  width: 464px;
+  height: 28px;
+  width: 460px\9;
+  border: 1px solid #dcdcdc;
+}
+.main .edit_contact ul li {
+  margin-right: -3px;
+  text-align: right;
+}
+.main .add_fields {
+  width: 500px;
+  margin-top: -99px;
+}
+.main .add_fields .fields {
+  width: 460px;
+  height: 28px;
+  line-height: 28px;
+  border: 1px solid #dcdcdc;
+  margin-bottom: 20px;
+  padding: 0 5px;
+}
+.main .del_confirm {
+  height: 252px;
+  width: 430px;
+}
+.main .del_confirm .del_content {
+  height: 150px;
+  text-align: center;
+  margin-top: -39px;
+  line-height: 150px;
+  font-family: 'Microsoft YaHei';
+  font-size: 18px;
+  font-weight: normal;
+}
+.main .add_pro {
+  width: 500px;
+}
+.main .add_pro .pro,
+.main .add_pro .add_stars {
+  margin-bottom: 20px;
+  vertical-align: middle;
+}
+.main .add_pro .pro {
+  width: 317px;
+  height: 28px;
+  line-height: 28px;
+  border: 1px solid #dcdcdc;
+  padding: 0 5px;
+}
+.main .add_pro .add_stars {
+  width: 122px;
+  height: 28px;
+  padding-left: 10px;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #dcdcdc;
+}
+.main .edit_header {
+  background: #fff;
+  width: 685px;
+  border: 1px solid #f0f0f0;
+  padding: 20px 20px 0;
+}
+.main .edit_header .change {
+  position: relative;
+  background: #be0000;
+  width: 97px;
+  height: 28px;
+  line-height: 28px;
+  color: #fff;
+  font-size: 14px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.main .edit_header .change span {
+  margin-right: 5px;
+}
+.main .edit_header .change .file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  line-height: 0;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+.main .edit_header .des {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 20px;
+}
+.main .edit_header .headers {
+  margin-bottom: 30px;
+  margin-right: -41px;
+}
+.main .edit_header .headers .pic,
+.main .edit_header .headers .big {
+  float: left;
+  text-align: center;
+  padding-right: 40px;
+}
+.main .edit_header .headers .pic span,
+.main .edit_header .headers .big span {
+  margin-top: 5px;
+  display: inline-block;
+  font-size: 14px;
+  color: #666;
+}
+.main .edit_header .headers .big {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+.main .edit_header .headers .big #drag {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+}
+.main .edit_header .headers .p150 {
+  width: 150px;
+  height: 150px;
+}
+.main .edit_header .headers .p75 {
+  width: 75px;
+  height: 75px;
+}
+.main .edit_header .headers .p50 {
+  width: 50px;
+  height: 50px;
+}
+.main .edit_header .operate {
+  border-top: 1px solid #f0f0f0;
+  padding: 10px 0;
+  text-align: right;
+}
+.main .edit_header .operate a {
+  text-decoration: none;
+  display: inline-block;
+  width: 80px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  margin-left: 10px;
+}
+.main .edit_header .operate .cancel {
+  background: #999;
+}
+.main .edit_header .operate .submit {
+  background: #be0000;
+}
+.main .se_key {
+  background-color: #f2f2f2;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 0px 15px;
+  height: 21px;
+  text-align: center;
+  line-height: 21px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #656565;
+  margin-right: 15px;
+}
+.main .se_key:hover {
+  background-color: #bd1921;
+  color: #fff;
+}
+.main .ask_first {
+  position: absolute;
+  left: 50%;
+  top: 250px;
+  height: 560px;
+  width: 667px;
+}
+.main .ask_first .askFirst_desc {
+  height: 370px;
+}
+.main .ask_first .askFirst_desc .afd_p {
+  line-height: 21px;
+  font-size: 14px;
+  color: #333;
+}
+.main .ask_first .askFirst_desc .afd_p a {
+  color: #2b81a9;
+  cursor: pointer;
+}
+.main .ask_first .askFirst_se {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+.main .ask_first .search_div {
+  width: 100%;
+  height: 35px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+.main .ask_first .search_div input {
+  width: 100%;
+}
+.main .ask_second {
+  position: absolute;
+  top: 250px;
+  width: 670px;
+  height: 590px;
+}
+.main .ask_second .err_div {
+  width: 100%;
+  border: 1px solid #ffdada;
+  margin-bottom: 5px;
+}
+.main .ask_second .err_div .err_ico {
+  background: url("../images/ph_pop_err_icon.fw.png") no-repeat 0px 0px;
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+}
+.main .ask_second .err_div .err_txt {
+  font-size: 12px;
+  color: #b74d46;
+}
+.main .ask_second .input_div {
+  width: 100%;
+  height: 35px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+.main .ask_second .input_div input {
+  font-size: 16px;
+  color: #656565;
+  width: 100%;
+}
+.main .ask_second .second_se {
+  font-size: 16px;
+  color: #656565;
+}
+.main .ask_second .div_rich_editor {
+  height: 245px;
+  width: 630px;
+  border: 1px solid #ddd;
+  position: relative;
+}
+.main .ask_second .div_tags {
+  width: 100%;
+  height: 35px;
+  margin-top: 15px;
+}
+.main .ask_second .tags_con {
+  width: 630px;
+  height: 35px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  padding: 0 5px;
+  float: left;
+}
+.main .ask_second .tags_con input {
+  height: 20px;
+  width: 82px;
+  border: 0px;
+  margin-top: 7px;
+  float: left;
+  outline: none;
+}
+.main .ask_second .tags_con .tag {
+  display: block;
+  background: #e0eaf1;
+  float: left;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 15px;
+  border-right: 1px solid #7f9fb6;
+  border-bottom: 1px solid #3e6d8e;
+  margin-top: 5px;
+  margin-right: 5px;
+  color: #5d6daf;
+  overflow: hidden;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}
+.main .ask_second .tags_con .tag span {
+  display: block;
+  float: left;
+}
+.main .ask_second .tags_con .tag a {
+  display: block;
+  float: left;
+  color: #82ad2b;
+  height: 20px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+.main .ask_second .tags_con .tag a:hover {
+  text-decoration: none;
+}
+.main .ask_second .drt_tagRecomm {
+  height: 20px;
+  margin-top: 15px;
+}
+.main .ask_second .drt_tagRecomm .drt_tit {
+  font-size: 14px;
+  color: #656565;
+}
+.main .ask_second .left_area {
+  display: inline-block;
+  margin-left: 20px;
+  float: left;
+}
+.main .ask_second .left_area .wyxs {
+  font-size: 14px;
+  color: #999;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.main .ask_second .left_area .cb_num {
+  width: 70;
+  line-height: 23px;
+}
+.main .ask_second .left_area .phib_rii {
+  text-align: left;
+  margin-left: 10px;
+  width: 185px;
+  display: inline-block;
+  color: #f9bf47;
+}
+.main .ask_second .left_area .phib_rii span {
+  background: url("../images/ph_right_cb.fw.png") no-repeat 0px 0px;
+  display: inline-block;
+  padding-left: 20px;
+}
+.main .div_del_confirm {
+  position: absolute;
+  left: 50%;
+  top: 250px;
+  height: 240px;
+  width: 370px;
+}
+.main .div_del_confirm .del_content {
+  text-align: center;
+  height: 90px;
+}
+.main .dySetting {
+  position: absolute;
+  left: 50%;
+  top: 250px;
+  height: 545px;
+  width: 680px;
+}
+.main .dySetting .dy_content {
+  overflow-y: scroll;
+  owverflow-x: hidden;
+  height: 400px;
+}
+.main .dySetting .dy_content .div_input {
+  /*border 1px solid #EBEBEB*/
+  width: 600px;
+  height: 35px;
+}
+.main .dySetting .dy_content .div_input .input_dy {
+  margin-top: 1px;
+  margin-left: 1px;
+  padding-right: 35px;
+  padding-left: 10px;
+  font-size: 16px;
+  color: #656565;
+  width: 600px;
+  display: block;
+  border: 1px solid #ebebeb;
+  height: 33px;
+  line-height: 33px\9;
+  float: left;
+}
+.main .dySetting .dy_content .div_input .div_btn {
+  display: inline-block;
+  width: 30px;
+  height: 35px;
+  float: right;
+  margin-top: -34px;
+}
+.main .dySetting .dy_content .div_input .div_btn .btn_dy {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: block;
+}
+.main .dySetting .dy_content .div_input .div_btn .btn_dy .btn_dy_img {
+  margin-top: 10px;
+  margin-left: 7px;
+}
+.main .dySetting .dy_content .div_reco_topic {
+  width: 590px;
+  margin-top: 15px;
+}
+.main .dySetting .dy_content .div_reco_topic .drt_title {
+  font-size: 14px;
+  color: #656565;
+}
+.main .dySetting .dy_content .div_reco_topic .drt_topic {
+  display: inline-block;
+}
+.main .dySetting .dy_content .div_reco_topic .drt_topic .ph_key {
+  cursor: pointer;
+  background-color: #f3f3f3;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 0px 15px;
+  height: 21px;
+  text-align: center;
+  line-height: 22px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #656565;
+  margin-right: 20px;
+  zoom: 1;
+}
+.main .dySetting .dy_content .div_reco_topic .drt_topic .ph_key:hover {
+  background-color: #bd1921 !important;
+  color: #fff !important;
+}
+.main .dySetting .dy_content .div_myDy {
+  width: 620px;
+  margin-top: 15px;
+}
+.main .dySetting .dy_content .div_myDy .sp_myDy_tit {
+  font-size: 16px;
+  color: #333;
+}
+.main .dySetting .dy_content .div_myDy .myDy_Data {
+  width: 100%;
+}
+.main .dySetting .dy_content .div_myDy .myDy_Data .dy_key {
+  position: relative;
+  margin-top: 20px;
+  display: inline-block;
+  width: 130px;
+  background-color: #f3f3f3;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 0px 0px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+  margin-right: 19px;
+  border: 1px solid #d9e5e5;
+}
+.main .dySetting .dy_content .div_myDy .myDy_Data .dy_key span {
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+.main .dySetting .dy_content .div_myDy .myDy_Data .dy_key .btn_del {
+  position: absolute;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: none;
+  left: 43%;
+  top: 30px;
+  background: url("../images/ph_dy_del.fw.png") no-repeat 0px 0px;
+}
+.main .dySetting .dy_content .div_myDy .myDy_Data .dy_key:hover {
+  border: 1px solid #41d3cb;
+}
+.main .dySetting .dy_content .div_myDy .myDy_Data .dy_key:hover .btn_del {
+  display: block;
+}
+.main .dySetting .dy_content .div_myDy .myDy_Data .dy_key_Hover {
+  border: 1px solid #41d3cb;
+}
+.main .dySetting .dy_content .div_myDy .myDy_Data .dy_key_Hover .btn_del {
+  display: block;
+}
+.main .ask_success {
+  position: absolute;
+  left: 50%;
+  top: 250px;
+  height: 470px;
+  width: 430px;
+}
+.main .ask_success .s_first {
+  height: 180px;
+  border-bottom: 1px dashed #ddd;
+}
+.main .ask_success .s_first .s_success {
+  margin-top: 20px;
+}
+.main .ask_success .s_first .s_success .ss_img {
+  margin-right: 10px;
+  margin-left: 90px;
+  margin-top: -5px;
+}
+.main .ask_success .s_first .s_success .ss_txt {
+  font-size: 18px;
+  color: #656565;
+}
+.main .ask_success .s_first .ss_desc {
+  margin-top: 15px;
+  text-align: center;
+}
+.main .ask_success .s_first .ss_desc .ss_desc_txt {
+  font-size: 14px;
+  color: #656565;
+}
+.main .ask_success .s_first .hot_p_list {
+  margin-top: 25px;
+  width: 415px;
+}
+.main .ask_success .s_first .hot_p_list .hot_p_item {
+  cursor: pointer;
+  margin-right: 30px;
+  width: 53px;
+  height: 52px;
+}
+.main .ask_success .s_first .hot_p_foot {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #999;
+}
+.main .ask_success .s_second {
+  margin-top: 15px;
+  height: 150px;
+}
+.main .ask_success .s_second .ss_pable {
+  font-size: 16px;
+  color: #333;
+}
+.main .ask_success .s_second .ss_like_list {
+  margin-top: 15px;
+}
+.main .ask_success .s_second .ss_like_list .ss_like_item {
+  margin-top: 5px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+.main .ask_success .s_second .ss_like_list .ss_like_item .ss_num {
+  background-color: #5399d1;
+  color: #fff;
+  margin-right: 10px;
+  font-size: 10px;
+  width: 25px;
+  height: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.main .ask_success .s_second .ss_like_list .ss_like_item .ss_a {
+  font-size: 14px;
+  color: #656565;
+}
+.main .ask_success .s_second .ss_like_list .ss_like_item:link .ss_a,
+.main .ask_success .s_second .ss_like_list .ss_like_item:visited .ss_a {
+  color: #be1a21;
+}
+.main .ask_success .s_second .ss_like_list .ss_like_item:hover .ss_a,
+.main .ask_success .s_second .ss_like_list .ss_like_item:focus .ss_a {
+  color: #be1a21;
+}
+.main .edit-myCollect input {
+  padding: 0 5px;
+  width: 426px;
+  height: 26px;
+  border: 1px solid #ddd;
+}
+.main .edit-myCollect li {
+  padding: 0;
+  margin: 0 0 20px;
+  text-align: right;
+}
+.main .edit-myCollect li em {
+  display: inline-block;
+  padding: 0;
+  margin-right: 4px;
+  color: #f00;
+  vertical-align: middle;
+}
+.main .success {
+  border-top: 1px solid #f0f0f0;
+  text-align: right;
+  padding: 10px 0;
+  padding-right: 20px;
+}
+.main .success a {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  width: 80px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: 14px;
+}
+.main .success .cancel {
+  background: #999;
+}
+.main .success .ok {
+  background: #be0000;
+}
+.main .success .del {
+  background: #999;
+  display: none;
+}
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+/*# sourceMappingURL=persion_space_A.css.map */

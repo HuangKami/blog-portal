@@ -89,6 +89,24 @@
 		<!-- cron表达式 -->
 		<property name="cronExpression" value="0 0 * * * ?" />
 	</bean>
+	
+	<!-- Lucene -->
+	<bean id="luceneTaskDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="luceneTask" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="startTask" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!-- 定义触发时间 -->
+	<bean id="luceneTaskTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="luceneTaskDetail" />
+		<!-- cron表达式 -->
+		<property name="cronExpression" value="0/20 * * * * ?" />
+	</bean>
 
 	<!-- 总管理类 -->
 	<bean id="startQuertz" lazy-init="false" autowire="no"
@@ -97,6 +115,7 @@
 			<list>
 				<ref bean="clearUnactiveUserTrigger" />
 				<ref bean="clearArticleRedisTrigger" />
+				<ref bean="luceneTaskTrigger" />
 			</list>
 		</property>
 	</bean>

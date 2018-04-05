@@ -110,4 +110,13 @@ public interface ArticleService{
      * @param article
      */
 	void updateReadCount(ComposeArticle article);
+	/**
+     * 通过用户查询文章
+     */
+    List<Article> selectArticleByUserId(String userId);
+    /**
+     * 查询收藏的文章
+     */
+    List<Article> selectCollectArticleByUserId(String userId);
+	String format(String content);
 }

@@ -6,12 +6,12 @@
 	<div class="container">
 		<div class="header-topbar hidden-xs link-border" style="margin-bottom: 25px">
 			<ul id="login" class="site-nav topmenu">
-				<c:if test="${empty user}">
+				<c:if test="${empty sessionScope.user}">
 					<li><a href="login"><i class="fa fa-sign-in"></i> 登录</a></li>
 					<li><a href="login" rel="nofollow"><i class="fa fa-sign-in"></i> 注册</a></li>
 				</c:if>
-				<c:if test="${not empty user}">
-					<li><a href="#"><i class="fa fa-user"></i> ${user.name}</a></li>
+				<c:if test="${not empty sessionScope.user}">
+					<li><a href="personal/${sessionScope.user.id}"><i class="fa fa-user"></i> ${sessionScope.user.name}</a></li>
 					<li><a href="#" onclick="return logout();"><i class="fa fa-sign-out"></i> 注销</a></li>
 				</c:if>
 			</ul>
@@ -45,13 +45,7 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right" style="margin-top: 20px; ">
 				<li><a href="main">首页</a></li>
-				<li><a href="list.html">列表页</a></li>
-				<li><a href="show.html">详细页</a></li>
-				<li><a href="404.html">404</a></li>
-				<li><a href="#">MZ-NetBolg主题</a></li>
-				<li><a href="#">IT技术笔记</a></li>
-				<li><a href="#">源码分享</a></li>
-				<li><a href="#">靠谱网赚</a></li>
+				<li><a href="personal/${sessionScope.user.id }">个人中心</a></li>
 				<li><a href="article/articlePage">写博客</a></li>
 			</ul>
 		</div>

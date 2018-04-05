@@ -83,4 +83,12 @@ public interface UserService{
      * 删除3天内未激活的用户
      */
 	int deleteUnactiveUser();
+	/**
+     * 查询关注
+     */
+    List<User> selectFollowByUserId(String userId);
+    /**
+     * 查询粉丝
+     */
+    List<User> selectFollowedByUserId(String userId);
 }

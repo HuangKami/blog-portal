@@ -177,4 +177,14 @@ public class UserServiceImpl implements UserService {
 		}
 		return KeyHelper.SUCCESS;
 	}
+
+	@Override
+	public List<User> selectFollowByUserId(String userId) {
+		return userDao.selectFollowByUserId(userId);
+	}
+
+	@Override
+	public List<User> selectFollowedByUserId(String userId) {
+		return userDao.selectFollowedByUserId(userId);
+	}
 }

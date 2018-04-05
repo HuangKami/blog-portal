@@ -121,6 +121,23 @@
         from article
         where article.id = #{id,jdbcType=INTEGER}
     </select> 
+    
+    <!-- 通过Article的id获得对应数据库中表的数据对象-->
+    <select id="selectArticleByUserId" parameterType="java.lang.String" resultMap="result_Article_Map">
+        select 
+            id, title, readCount, createTime
+        from article
+        where userId = #{userId,jdbcType=VARCHAR}
+    </select> 
+    
+    <select id="selectCollectArticleByUserId" parameterType="java.lang.String" resultMap="result_Article_Map">
+        select 
+            id, title, readCount, createTime
+        from article
+        where id in (
+        	select articleId from collect where userId = #{userId,jdbcType=VARCHAR}
+        )
+    </select> 
 
     <!-- 将Article插入到对应数据库的表中,包括属性值为null的数据-->
 

@@ -330,4 +330,19 @@
     	where user.active = 0 and datediff(now(), user.createTime) >= 3
     </delete>
 
+	
+	<select id="selectFollowByUserId" parameterType="java.lang.String" resultMap="result_User_Map">
+		select u.id, u.name, u.headImg
+		from follow inner join user u
+		on beFollowed = u.id
+		where follower = #{userId, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectFollowedByUserId" parameterType="java.lang.String" resultMap="result_User_Map">
+		select u2.id, u2.name, u2.headImg
+	  	from follow inner join user u2
+	 	on follower = u2.id
+		where beFollowed = #{userId, jdbcType=VARCHAR}
+	</select>
+	
 </mapper>

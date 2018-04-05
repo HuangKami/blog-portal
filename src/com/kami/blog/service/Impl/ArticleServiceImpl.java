@@ -88,7 +88,8 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Collection<Article> formatArticle(Collection<Article> list, int contentLength) {
     	for (Article article : list) {
-    		article.setContent(formate(article.getContent(), contentLength).substring(0, contentLength));
+    		String format = format(article.getContent());
+    		article.setContent(format.substring(0, Math.min(contentLength, format.length())));
 		}
     	return list;
     }
@@ -96,12 +97,14 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Collection<ComposeArticle> formatComposeArticle(Collection<ComposeArticle> list, int contentLength) {
     	for (ComposeArticle article : list) {
-			article.setContent(formate(article.getContent(), contentLength).substring(0, contentLength));
+    		String format = format(article.getContent());
+			article.setContent(format.substring(0, Math.min(contentLength, format.length())));
 		}
     	return list;
     }
     
-    private String formate(String content, int length) {
+    @Override
+    public String format(String content) {
     	Pattern pattern = Pattern.compile(">(.*?)<");
 		Matcher matcher = pattern.matcher(content);
 		StringBuilder sbBuilder = new StringBuilder();
@@ -134,5 +137,13 @@ public class ArticleServiceImpl implements ArticleService {
 				articleRedis.addArticle(KeyHelper.HOTEST_ARTICLE, article);
 			}
 		}
+	}
+	@Override
+	public List<Article> selectArticleByUserId(String userId) {
+		return articleDao.selectArticleByUserId(userId);
+	}
+	@Override
+	public List<Article> selectCollectArticleByUserId(String userId) {
+		return articleDao.selectCollectArticleByUserId(userId);
 	}
 }

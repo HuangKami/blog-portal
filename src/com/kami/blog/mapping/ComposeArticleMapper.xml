@@ -65,6 +65,7 @@
         </choose>
         ) article
         inner join user u on article.userId = u.id
+        order by createTime DESC
 	</select>
 	
 	<select id="selectDetailArticle" parameterType="java.lang.Integer" resultMap="article_user">

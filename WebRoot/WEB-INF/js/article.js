@@ -64,3 +64,27 @@ function deleteArticle(articleId) {
     });  
 	return false;
 }
+
+function collectArticle(articleId) {
+	$.ajax( {  
+        type : "POST",  
+        url : "article/collect", 
+        data : {
+        	"articleId" : articleId
+        },
+        dataType: "json",  
+        success : function(data) {  
+        	if(data == "error") {
+        		alert("您已收藏该文章");
+        	} else {
+				alert("收藏成功");
+			}
+        	
+        },
+        error : function() {
+        	alert("请先登录");
+        	window.location.href = "login";
+        }
+    });  
+	return false;
+}

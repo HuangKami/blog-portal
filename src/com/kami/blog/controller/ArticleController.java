@@ -15,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kami.blog.common.Assist;
+import com.kami.blog.lucene.LuceneService;
+import com.kami.blog.lucene.LuceneTask;
 import com.kami.blog.model.Article;
+import com.kami.blog.model.Collect;
 import com.kami.blog.model.ComposeArticle;
 import com.kami.blog.model.User;
 import com.kami.blog.redis.ArticleRedis;
 import com.kami.blog.service.ArticleService;
+import com.kami.blog.service.CollectService;
 import com.kami.blog.service.ReplyService;
 import com.kami.blog.util.KeyHelper;
 import com.kami.blog.util.SessionHelper;
@@ -34,6 +38,10 @@ public class ArticleController {
 	private ReplyService replyService;
 	@Autowired
 	private ArticleRedis articleRedis;
+	@Autowired
+	private CollectService collectService;
+	@Autowired
+	private LuceneService luceneService;
 	private Logger logger = Logger.getLogger(ArticleController.class);
 	
 	@RequestMapping("/latestArticles/{pageNow}")
@@ -82,6 +90,11 @@ public class ArticleController {
 		article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 		try {
 			articleService.insertArticle(article);
+			LuceneTask.addTask(new Runnable() {
+				public void run() {
+					luceneService.createIndex(article);
+				}
+			});
 			return StringHelper.integerToString(article.getId());
 		} catch (Exception e) {
 			logger.error(e, e);
@@ -98,11 +111,37 @@ public class ArticleController {
 			replyService.deleteReplyByArticleId(articleId);
 			articleService.deleteArticleById(articleId);
 			articleRedis.removeArticle(articleId);
+			LuceneTask.addTask(new Runnable() {
+				public void run() {
+					luceneService.deleteIndex(articleId);;
+				}
+			});
 			return KeyHelper.SUCCESS;
 		} catch (Exception e) {
 			logger.error(e, e);
 			return KeyHelper.ERROR;
 		}
 		 
+	}
+	
+	@RequestMapping("/collect")
+	@ResponseBody
+	public String collectArticle(HttpServletRequest request, Integer articleId) {
+		try {
+			User user = (User) SessionHelper.getAttribute(request, KeyHelper.USER);
+			Collect collect = new Collect();
+			collect.setArticleId(articleId);
+			collect.setUserId(user.getId());
+			collectService.insertCollect(collect);
+			return KeyHelper.SUCCESS;
+		} catch (Exception e) {
+			return KeyHelper.ERROR;
+		}
+	}
+	
+	@RequestMapping("/search")
+	public String search(Model model, String keyword) {
+		model.addAttribute("searchList", luceneService.search(keyword));
+		return "lucene/search";
 	}
 }

@@ -48,7 +48,7 @@
 					</time>
 				</span> 
 				<span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom">
-					<i class="fa fa-user"></i> ${detailArticle.user.name}
+					<a href="personal/${detailArticle.user.id }" target="_blank"><i class="fa fa-user"></i> ${detailArticle.user.name}</a>
 				</span> 
 				<span
 					class="item article-meta-category" data-toggle="tooltip" data-placement="bottom">
@@ -63,10 +63,16 @@
 					class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom">
 					<i class="glyphicon glyphicon-comment"></i> ${fn:length(detailArticle.replies)}
 				</span>
-				<span
-					class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom">
-					<i class="fa fa-remove"></i> <a href="#" onclick="return deleteArticle(${detailArticle.id})">删除</a>
-				</span>
+				<c:if test="${sessionScope.user.id eq detailArticle.user.id}">
+					<span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom">
+						<i class="fa fa-remove"></i> <a href="#" onclick="return deleteArticle('${detailArticle.id}')">删除</a>
+					</span>
+				</c:if>
+				<c:if test="${not empty sessionScope.user}">
+					<span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom">
+						<i class="fa fa-star"></i> <a href="#" onclick="return collectArticle('${detailArticle.id}')">收藏</a>
+					</span>
+				</c:if>
 			</div>
 			</header>
 			<article class="article-content">

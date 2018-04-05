@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kami.blog.dao.CollectDao">
+    <!-- Collect的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_Collect_Map" type="com.kami.blog.model.Collect">
+        <id column="id" property="id" />
+        <result column="articleId" property="articleId" />
+        <result column="userId" property="userId" />
+    </resultMap>
+
+	   <!-- Assist用于辅助工具类setRequires设置的条件,${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+    <sql id="Assist">
+        <where>
+            <foreach collection="require" item="req" separator=" ">
+                ${req.require} 
+                <if test="req.value != null"> #{req.value}</if> 
+                <if test="req.values != null">
+                    <foreach collection="req.values" item="val" separator=","> 
+                        #{val} 
+                    </foreach> 
+                </if> 
+                <if test="req.suffix != null"> ${req.suffix}</if> 
+            </foreach>
+        </where>
+    </sql>
+
+	   <!-- updateAssist用于更新数据的使用它拓展自Assist,用于辅助工具类setRequires设置的条件,${req.require}表示列名,#{req.value}表示值它是防SQL注入的 -->
+    <sql id="updateAssist">
+        <where>
+            <foreach collection="assist.require" item="req" separator=" ">
+                ${req.require} 
+                <if test="req.value != null"> #{req.value}</if> 
+                <if test="req.values != null">
+                    <foreach collection="req.values" item="val" separator=","> 
+                        #{val} 
+                    </foreach> 
+                </if> 
+                <if test="req.suffix != null"> ${req.suffix}</if> 
+            </foreach>
+        </where>
+    </sql>
+
+    <!-- 数据库中表名为:collect的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="collect_Column">
+        collect.id as id
+        ,collect.articleId as articleId
+        ,collect.userId as userId
+    </sql>
+
+    <!--获得类名为:Collect对应的数据库表的数据总行数 -->
+    <select id="getCollectRowCount" parameterType="com.kami.blog.common.Assist" resultType="java.lang.Long">
+        select count(id) from collect
+        <if test="require!=null"><include refid="Assist" /></if>
+    </select>
+    <!-- 获得类名为:Collect对应数据库中表的数据集合 -->
+    <select id="selectCollect" parameterType="com.kami.blog.common.Assist"  resultMap="result_Collect_Map">
+        select  <if test="distinct !=null">${distinct}</if>
+        <choose>
+            <when test="resultColumn!=null">${resultColumn}</when>
+            <otherwise>
+        <include refid="collect_Column" /> 
+            </otherwise>
+        </choose>
+        from collect
+        <choose>
+            <when test="rowSize ==null">
+                <if test="require!=null">
+                    <include refid="Assist" />
+                </if>
+                <if test="order !=null">${order}</if>
+            </when>
+            <otherwise>
+                inner join
+                (
+                SELECT id as primary_key FROM collect
+                <if test="require!=null">
+                    <include refid="Assist" />
+                </if>
+                <if test="order !=null">${order}</if>
+                <choose>
+                    <when test="startRow !=null and rowSize !=null">LIMIT #{startRow},#{rowSize} </when>
+                    <when test="rowSize !=null">LIMIT #{rowSize}</when>
+                 </choose>
+                 ) as tmp
+                 on tmp.primary_key=collect.id
+            </otherwise>
+        </choose>
+    </select> 
+
+    <!-- 获得一个Collect对象,以参数Collect对象中不为空的属性作为条件进行查询-->
+    <select id="selectCollectByObj" parameterType="com.kami.blog.model.Collect" resultMap="result_Collect_Map">
+        select 
+            <include refid="collect_Column" /> 
+        from collect
+        <where>
+            <if test="userId != null "> and collect.userId = #{userId}</if>
+            <if test="articleId != null "> and collect.articleId = #{articleId}</if>
+            <if test="id != null "> and collect.id = #{id}</if>
+        </where>
+    </select> 
+
+    <!-- 通过Collect的id获得对应数据库中表的数据对象-->
+    <select id="selectCollectById" parameterType="java.lang.Integer" resultMap="result_Collect_Map">
+        select 
+            <include refid="collect_Column" /> 
+        from collect
+        where collect.id = #{id}
+    </select> 
+
+    <!-- 将Collect插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertCollect" parameterType="com.kami.blog.model.Collect">
+        insert into collect(id,articleId,userId) 
+        values(#{id},#{articleId},#{userId})
+    </insert>
+
+    <!-- 将Collect中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptyCollect" parameterType="com.kami.blog.model.Collect">
+        insert into collect
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="articleId != null">articleId,</if>
+            <if test="userId != null">userId,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id},</if>
+            <if test="articleId != null"> #{articleId},</if>
+            <if test="userId != null"> #{userId},</if>
+        </trim>
+    </insert>
+
+    <!-- 将Collect批量插入到对应数据库的表中-->
+    <insert id="insertCollectByBatch" parameterType="ArrayList">
+        insert into collect(id,articleId,userId) values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.articleId},#{item.userId})
+        </foreach>
+    </insert>
+
+    <!-- 通过Collect的id将数据库表中对应的数据删除-->
+    <delete id="deleteCollectById" parameterType="java.lang.Integer">
+        delete from collect
+        where id = #{id}
+    </delete>
+
+    <!-- 通过辅助工具Assist中的条件将Collect对应的数据库表的数据删除-->
+    <delete id="deleteCollect" parameterType="com.kami.blog.common.Assist">
+        delete from collect
+        <if test="require!=null"><include refid="Assist" /></if>
+    </delete>
+
+    <!-- 通过Collect的id将Collect的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateCollectById" parameterType="com.kami.blog.model.Collect">
+        update collect set
+            articleId=#{articleId}
+            ,userId=#{userId}
+        where id=#{id}
+    </update>
+
+    <!-- 通过Collect的id将Collect中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyCollectById" parameterType="com.kami.blog.model.Collect">
+        update collect
+        <set>
+            <if test="articleId != null">
+                articleId=#{articleId},
+            </if>
+            <if test="userId != null">
+                userId=#{userId},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <!-- 通过辅助工具Assist中的条件将Collect中的数据更新到数据库对应的表中,包括值为null的数据-->
+    <update id="updateCollect" parameterType="map">
+        update collect
+        <set>
+                id=#{enti.id},
+                articleId=#{enti.articleId},
+                userId=#{enti.userId},
+        </set>
+        <if test="assist.require!=null"><include refid="updateAssist" /></if>
+    </update>
+
+    <!-- 通过辅助工具Assist中的条件将Collect中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptyCollect" parameterType="map">
+        update collect
+        <set>
+            <if test="enti.id != null">
+                id=#{enti.id},
+            </if>
+            <if test="enti.articleId != null">
+                articleId=#{enti.articleId},
+            </if>
+            <if test="enti.userId != null">
+                userId=#{enti.userId},
+            </if>
+        </set>
+        <if test="assist.require!=null"><include refid="updateAssist" /></if>
+    </update>
+
+</mapper>

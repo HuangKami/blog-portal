@@ -94,33 +94,28 @@
 			</ul>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane contact active" id="notice">
-					<h2>日志总数: 888篇</h2>
-					<h2>
-						网站运行: <span id="sitetime">88天 </span>
-					</h2>
 				</div>
 				<div role="tabpanel" class="tab-pane contact" id="contact">
 					<h2>
 						QQ: <a href="" target="_blank" rel="nofollow"
 							data-toggle="tooltip" data-placement="bottom" title=""
-							data-original-title="QQ:"></a>
+							data-original-title="243313689" onclick="return false;">243313689</a>
 					</h2>
 					<h2>
 						Email: <a href="#" target="_blank" data-toggle="tooltip"
 							rel="nofollow" data-placement="bottom" title=""
-							data-original-title="#"></a>
+							data-original-title="243313689@qq.com" onclick="return false;">243313689@qq.com</a>
 					</h2>
 				</div>
 			</div>
 		</div>
 		<div class="widget widget_search">
-			<form class="navbar-form" action="/Search" method="post">
+			<form class="navbar-form" action="article/search" method="post">
 				<div class="input-group">
 					<input type="text" name="keyword" class="form-control" size="35"
-						placeholder="请输入关键字" maxlength="15" autocomplete="off"> <span
-						class="input-group-btn">
-						<button class="btn btn-default btn-search" name="search"
-							type="submit">搜索</button>
+						placeholder="请输入关键字" maxlength="15" autocomplete="off">
+						 <span class="input-group-btn">
+						<button class="btn btn-default btn-search" name="search" type="submit">搜索</button>
 					</span>
 				</div>
 			</form>

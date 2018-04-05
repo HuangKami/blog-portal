@@ -31,7 +31,7 @@ public class UploadController {
 	
 	@RequestMapping("/head")
 	@ResponseBody
-	public String uploadHead(HttpServletRequest request, @RequestParam("file") MultipartFile file) {
+	public String uploadHead(HttpServletRequest request, @RequestParam("uploadHeadImg") MultipartFile uploadHeadImg) {
 		User user = (User) SessionHelper.getAttribute(request, KeyHelper.USER);
         if(user == null) {
         	logger.error("错误：用户未登录请求修改头像");
@@ -40,7 +40,7 @@ public class UploadController {
         
         String imgUrl = "";
         try {
-        	imgUrl = OSSHelper.save(file);
+        	imgUrl = OSSHelper.save(uploadHeadImg);
         	if(StringHelper.equals(KeyHelper.ERROR, imgUrl)) {
         		logger.error("头像上传失败");
             	return KeyHelper.ERROR;

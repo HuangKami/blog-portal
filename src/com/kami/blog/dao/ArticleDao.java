@@ -98,4 +98,12 @@ public interface ArticleDao{
      * 查询文章详情
      */
     ComposeArticle selectDetailArticle(Integer id);
+    /**
+     * 通过用户查询文章
+     */
+    List<Article> selectArticleByUserId(String userId);
+    /**
+     * 查询收藏的文章
+     */
+    List<Article> selectCollectArticleByUserId(String userId);
 }

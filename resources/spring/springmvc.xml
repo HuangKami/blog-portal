@@ -23,6 +23,7 @@
 	</mvc:annotation-driven>
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	   	<property name="defaultEncoding" value="UTF-8"></property>
 	    <property name="maxInMemorySize">
 	        <value>1638400</value>
 	    </property>
@@ -65,7 +66,11 @@
 			<mvc:mapping path="/article/articlePage" />
 			<mvc:mapping path="/article/publishArticle" />
 			<mvc:mapping path="/article/delete/*" />
+			<mvc:mapping path="/article/collect" />
+			<mvc:mapping path="/personal/follow" />
+			<mvc:mapping path="/upload/head" />
 			<mvc:mapping path="/reply" />
+			<mvc:mapping path="/personal" />
 			<bean class="com.kami.blog.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
