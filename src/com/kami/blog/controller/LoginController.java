@@ -1,7 +1,9 @@
 package com.kami.blog.controller;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,14 +48,21 @@ public class LoginController {
 	 */
 	@RequestMapping("/login")
 	@ResponseBody
-	public String login(HttpServletRequest request, @ModelAttribute User loginUser,
+	public String login(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute User loginUser,
 			@RequestParam(value="loginAuthCode") String loginAuthCode) {
 		loginUser.setEmail(loginUser.getName());
-		String result = userService.login(request, loginUser, loginAuthCode);
-		if(StringHelper.equals(KeyHelper.SUCCESS, result)) {
-			return KeyHelper.SUCCESS;
-		}
+		String result = userService.login(request, response, loginUser, loginAuthCode);
 		return result;
+	}
+	
+	@RequestMapping("/toAdmin")
+	public void toAdmin(HttpServletResponse response) {
+		try {
+			response.sendRedirect(KeyHelper.ADMIN_URL + "/sso");
+		} catch (IOException e) {
+			logger.error(e, e);
+		}
 	}
 	
 	/**
@@ -212,7 +221,7 @@ public class LoginController {
 		}
 		user.setPassword(MD5Helper.md5(password));
 		try {
-			userService.updateUserById(user);
+			userService.updateNonEmptyUserById(user);
 		} catch (Exception e) {
 			logger.error("重置密码失败" + e);
 			return "重置密码失败";

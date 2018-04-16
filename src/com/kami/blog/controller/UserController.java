@@ -8,7 +8,7 @@ import com.kami.blog.model.User;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-	@RequestMapping("/resetPassword")
+	@RequestMapping("/editPassword")
 	public void resetPassword(User user) {
 		
 	}

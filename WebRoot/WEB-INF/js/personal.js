@@ -44,3 +44,68 @@ function uploadImg() {
         }  
    });  
 };
+
+function show(id) {
+	$("" + id).modal();
+	return false;
+}
+
+function editUser() {
+	$.ajax({
+        type: "POST",
+        url: "personal/editUser",
+        data:$("#editForm").serialize(),
+        error: function(request) {
+            alert("未登录");
+        },
+        success: function(data) {
+          if(data == "success"){
+        	  alert("修改成功");
+              $("#editModal").modal("hide");
+          }else{
+              alert(data);
+          }
+        }
+    });
+}
+
+function editPassword() {
+	var password = $("#password").val();
+	if(password == "") {
+		alert("原密码不能为空");
+		return;
+	}
+	var newPassword = $("#newPassword").val();
+	if(newPassword == "") {
+		alert("新密码不能为空");
+		return;
+	}
+	var renewPassword = $("#renewPassword").val();
+	if(renewPassword == "") {
+		alert("确认密码不能为空");
+		return;
+	}
+	if(newPassword != renewPassword) {
+		alert("两次密码不一致");
+		return;
+	}
+	$.ajax({
+        type: "POST",
+        url: "personal/editPassword",
+        data: {
+        	"password" : password,
+        	"newPassword" : newPassword
+        },
+        error: function(request) {
+            alert("未登录");
+        },
+        success: function(data) {
+          if(data == "success"){
+        	  alert("修改成功");
+              $("#editPasswordModal").modal("hide");
+          }else{
+              alert(data);
+          }
+        }
+    });
+}

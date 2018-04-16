@@ -1,4 +1,4 @@
-package com.kami.blog.lucene;
+package com.kami.blog.quartz;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LuceneTask {
+public class ExecutorTask {
 	private static final BlockingQueue<Runnable> queue = new ArrayBlockingQueue<>(16);
 	private static Executor EXECUTOR = new ThreadPoolExecutor(1, 1, 10, TimeUnit.SECONDS, queue);
 	

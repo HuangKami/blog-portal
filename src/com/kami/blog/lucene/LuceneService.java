@@ -22,10 +22,6 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
-import org.apache.lucene.search.highlight.Highlighter;
-import org.apache.lucene.search.highlight.QueryScorer;
-import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
-import org.apache.lucene.search.highlight.SimpleSpanFragmenter;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
@@ -42,7 +38,7 @@ import net.paoding.analysis.analyzer.PaodingAnalyzer;
 
 @Service
 public class LuceneService {
-	public static final String PATH = "lucene";
+	public static final String PATH = "kami";
 	public static final int SIZE = 1000 ;
 	private Logger logger = Logger.getLogger(LuceneService.class);
 	@Autowired
@@ -107,18 +103,14 @@ public class LuceneService {
 			Query multiFieldQuery = MultiFieldQueryParser.parse(Version.LUCENE_48, keyword, fields, clauses, analyzer);
 			TopDocs topDocs = searcher.search(multiFieldQuery, SIZE);
 			ScoreDoc[] scoreDocs = topDocs.scoreDocs;
-			QueryScorer scorer = new QueryScorer(multiFieldQuery, "content");
-	        // 自定义高亮代码
-	        SimpleHTMLFormatter htmlFormatter = new SimpleHTMLFormatter("<span style=\"backgroud:red\">", "</span>");
-	        Highlighter highlighter = new Highlighter(htmlFormatter, scorer);
-	        highlighter.setTextFragmenter(new SimpleSpanFragmenter(scorer));
 	        Article article = null;
 	        for (ScoreDoc scoreDoc : scoreDocs) {
 				Document document = searcher.doc(scoreDoc.doc);
 				article = new Article();
 				article.setId(StringHelper.stringToInteger(document.get("id")));
 				article.setTitle(document.get("title"));
-				article.setContent(document.get("content"));
+				String content = document.get("content");
+				article.setContent(content.substring(0, Math.min(300, content.length())));
 				article.setTopic(document.get("topic"));
 				articles.add(article);
 			}
@@ -139,7 +131,7 @@ public class LuceneService {
 	
 	private Document createDocument(Article article) {
 		Document document = new Document();
-		document.add(new IntField("id", article.getId(), Field.Store.NO));
+		document.add(new IntField("id", article.getId(), Field.Store.YES));
 		document.add(new TextField("title", article.getTitle(), Field.Store.YES));
 		document.add(new TextField("content", articleService.format(article.getContent()), Field.Store.YES));
 		document.add(new TextField("topic", article.getTopic(), Field.Store.YES));

@@ -37,27 +37,19 @@
 		<div class="content">
 			<div class="excerpt-minic excerpt-minic-index">
 				<h2>
-					<span class="red">【推荐】</span><a target="_blank" href="#"
-						title="用DTcms做一个独立博客网站（响应式模板）">用DTcms做一个独立博客网站（响应式模板）</a>
+					<span class="red">【推荐】</span><a href="article/${recommendAticle.id }">${recommendAticle.title }</a>
 				</h2>
-				<p class="note">用DTcms做一个独立博客网站（响应式模板），采用DTcms
-					V4.0正式版（MSSQL）。开发环境：SQL2008R2+VS2010。DTcms
-					V4.0正式版功能修复和优化：1、favicon.ico图标后台上传。（解决要换图标时要连FTP或者开服务器的麻烦）</p>
+				<p class="note">${recommendAticle.content }</p>
 			</div>
 			<div class="title">
 				<h3>最新文章</h3>
-				<div class="more">
-					<a href="#" title="MZ-NetBlog主题">MZ-NetBlog主题</a> <a href="#"
-						title="IT技术笔记">IT技术笔记</a> <a href="#" title="源码分享">源码分享</a> <a
-						href="#" title="靠谱网赚">靠谱网赚</a> <a href="#" title="资讯分享">资讯分享</a>
-				</div>
 			</div>
 			<c:forEach var="article" items="${latestArticles}">
 				<div class="excerpt" style=""> 
 					<header>
 						<a class="cat" href="#">${article.topic }<i></i></a>
 						<h2>
-							<a href="article/${article.id}" target="_blank">${article.title }</a>
+							<a href="article/${article.id}">${article.title }</a>
 						</h2>
 					</header>
 					<p class="meta">
@@ -94,7 +86,12 @@
 			</ul>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane contact active" id="notice">
-				</div>
+				<h2>帖子总数:
+					  ${COUNT }条
+				  </h2>
+				  <h2>网站运行:
+				  <span id="sitetime">${TIME }天 </span></h2>
+			  </div>
 				<div role="tabpanel" class="tab-pane contact" id="contact">
 					<h2>
 						QQ: <a href="" target="_blank" rel="nofollow"
@@ -126,7 +123,7 @@
 		<ul>
 			<c:forEach var="article" items="${hotestArticles}">
 				<li>
-					<a href="article/${article.id}" target="_blank">
+					<a href="article/${article.id}">
 						<span class="text">
 							<span class="cat">${article.topic }<i></i></span>
 							<span class="">${article.title }</span>

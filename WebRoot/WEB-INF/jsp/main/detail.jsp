@@ -24,7 +24,15 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/button.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/commons.css">
 <link rel="shortcut icon" href="images/kblog-ico.png">
+<style type="text/css">
+.line-limit-length {
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap; //文本不换行，这样超出一行的部分被截取，显示...
+}
+</style>
 
 <script src="js/jquery.js"></script>
 <script src="js/common.js"></script>
@@ -63,15 +71,17 @@
 					class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom">
 					<i class="glyphicon glyphicon-comment"></i> ${fn:length(detailArticle.replies)}
 				</span>
-				<c:if test="${sessionScope.user.id eq detailArticle.user.id}">
+				<c:if test="${(sessionScope.user.id eq detailArticle.user.id) || (sessionScope.user.admin == true)}">
 					<span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom">
 						<i class="fa fa-remove"></i> <a href="#" onclick="return deleteArticle('${detailArticle.id}')">删除</a>
 					</span>
 				</c:if>
 				<c:if test="${not empty sessionScope.user}">
-					<span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom">
-						<i class="fa fa-star"></i> <a href="#" onclick="return collectArticle('${detailArticle.id}')">收藏</a>
-					</span>
+					<c:if test="${sessionScope.user.id != detailArticle.user.id }">
+						<span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom">
+							<i class="fa fa-star"></i> <a href="#" onclick="return collectArticle('${detailArticle.id}')">收藏</a>
+						</span>
+					</c:if>
 				</c:if>
 			</div>
 			</header>
@@ -87,43 +97,17 @@
 					class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
 			</div>
 
-			<script>
-				window._bd_share_config = {
-					"common" : {
-						"bdSnsKey" : {},
-						"bdText" : "",
-						"bdMini" : "2",
-						"bdMiniList" : false,
-						"bdPic" : "",
-						"bdStyle" : "1",
-						"bdSize" : "32"
-					},
-					"share" : {}
-				};
-				with (document)
-					0[(getElementsByTagName('head')[0] || body)
-							.appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=0.js?cdnversion='
-							+ ~(-new Date() / 36e5)];
-			</script>
 			</article>
-			<div class="article-tags">
-				标签：<a href="#list/2/" rel="tag">DTcms博客</a><a href="#list/3/"
-					rel="tag">木庄网络博客</a><a href="#list/4/" rel="tag">独立博客</a><a
-					href="#list/5/" rel="tag">修复优化</a>
-			</div>
+			<br />
+			<br />
 			<div class="relates">
 				<div class="title">
 					<h3>相关推荐</h3>
 				</div>
 				<ul>
-					<li><a href="#" title="">阿里JAVA开发手册零度的思考理解(一)-Java编程主题</a></li>
-					<li><a href="#" title="">阿里JAVA开发手册零度的思考理解(二)-Java编程主题</a></li>
-					<li><a href="#" title="">阿里JAVA开发手册零度的思考理解(三)-Java编程主题</a></li>
-					<li><a href="#" title="">阿里JAVA开发手册零度的思考理解(四)-Java编程主题</a></li>
-					<li><a href="#" title="">阿里JAVA开发手册零度的思考理解(五)-Java编程主题</a></li>
-					<li><a href="#" title="">阿里JAVA开发手册零度的思考理解(六)-Java编程主题</a></li>
-					<li><a href="#" title="">阿里JAVA开发手册零度的思考理解(七)-Java编程主题</a></li>
-					<li><a href="#" title="">阿里JAVA开发手册零度的思考理解(八)-Java编程主题</a></li>
+					<c:forEach var="article" items="${recommendArticles }">
+						<li><a href="article/${article.id }" title="">${article.title } - ${article.topic }</a></li>
+					</c:forEach>
 				</ul>
 			</div>
 			<div class="title" id="comment">
@@ -135,7 +119,7 @@
 						<jsp:param name="editorHeight" value="20%"/> 
 					</jsp:include>
 				</form>
-				<div><input class="button button-article" type="button" onclick="reply(${detailArticle.id})" value="回复" /> </div>
+			   <div><input class="button button-article" type="button" onclick="reply(${detailArticle.id})" value="回复" /> </div>
 			</div>
 			<div id="postcomments">
 				<ol id="comment_list" class="commentlist">
@@ -157,128 +141,63 @@
 		</div>
 	</div>
 	<aside class="sidebar">
-	<div class="fixed">
-		<div class="widget widget-tabs">
-			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active"><a href="#notice"
-					aria-controls="notice" role="tab" data-toggle="tab"
-					draggable="false">统计信息</a></li>
-				<li role="presentation"><a href="#contact"
-					aria-controls="contact" role="tab" data-toggle="tab"
-					draggable="false">联系站长</a></li>
-			</ul>
-			<div class="tab-content">
-				<div role="tabpanel" class="tab-pane contact active" id="notice">
-					<h2>日志总数: 888篇</h2>
-					<h2>
-						网站运行: <span id="sitetime">88天 </span>
-					</h2>
+	<div class="content-wrap">
+		<div class="widget" style="padding-bottom: 10px;">
+			<div style="height: 30px;line-height:30px;background-color: #3399CC;padding-left: 5px;margin-bottom: 5px;"><a style="color: white;" href="personal/${detailArticle.user.id }" target="_blank">个人资料</a></div>
+			<div style="padding: 5px 8px 0;">
+				<div style="float: left;">
+					<a href="personal/${detailArticle.user.id }" target="_blank"><img style="width: 80px;height: 80px;border-radius:50%;margin-right: 10px;" src="${detailArticle.user.headImg }" /></a>
 				</div>
-				<div role="tabpanel" class="tab-pane contact" id="contact">
-					<h2>
-						QQ: <a href="" target="_blank" rel="nofollow"
-							data-toggle="tooltip" data-placement="bottom" title=""
-							draggable="false" data-original-title="QQ:577211782">577211782</a>
-					</h2>
-					<h2>
-						Email: <a href="mailto:577211782@qq.com" target="_blank"
-							data-toggle="tooltip" rel="nofollow" data-placement="bottom"
-							title="" draggable="false"
-							data-original-title="Email:577211782@qq.com">577211782@qq.com</a>
-					</h2>
+				<div style="margin-top:10px;color: #5B5B5B;font-size: 16px;font-weight: bold;float: right">
+					<div><a style="color: #5B5B5B;" target="_blank" href="personal/${detailArticle.user.id }"> ${detailArticle.user.name} - ${detailArticle.user.introduction }</a></div>
+					<div style="margin-top: 10px;">
+						<span style="margin-right: 15px;">帖子(${count.articleCount })</span>
+						<span style="margin-right: 15px">关注(${count.followCount})</span>
+						<span style="margin-right: 20px">粉丝(${count.fansCount})</span>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="widget widget_search">
-			<form class="navbar-form" action="/Search" method="post">
-				<div class="input-group">
-					<input type="text" name="keyword" class="form-control" size="35"
-						placeholder="请输入关键字" maxlength="15" autocomplete="off"> <span
-						class="input-group-btn">
-						<button class="btn btn-default btn-search" name="search"
-							type="submit">搜索</button>
-					</span>
-				</div>
-			</form>
+		
+		<div class="widget">
+			<div style="height: 30px;line-height:30px;background-color: #3399CC;padding-left: 5px;margin-bottom: 5px;color:white;">帖子分类</div>
+			<ul>
+				<c:forEach var="topic" items="${topics }">
+					<li style="margin-bottom: 10px;"><a href="article/search?keyword=${topic.topic }" target="_blank" style="color: #5B5B5B;font-weight: bold;font-size: 16px;margin-right: 20px">【${topic.topic }】</a>  <span style="float: right;">【${topic.total }】</span> </li>
+				</c:forEach>
+			</ul>
 		</div>
-	</div>
-	<div class="widget widget_hot">
-		<h3>最新评论文章</h3>
-		<ul>
-
-			<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#"><span
-					class="thumbnail"> <img class="thumb"
-						data-original="images/201610181739277776.jpg"
-						src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-						style="display: block;">
-				</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i
-						class="glyphicon glyphicon-time"></i> 2016-11-01 </span><span
-					class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-			<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#"><span
-					class="thumbnail"> <img class="thumb"
-						data-original="images/201610181739277776.jpg"
-						src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-						style="display: block;">
-				</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i
-						class="glyphicon glyphicon-time"></i> 2016-11-01 </span><span
-					class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-			<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#"><span
-					class="thumbnail"> <img class="thumb"
-						data-original="images/201610181739277776.jpg"
-						src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-						style="display: block;">
-				</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i
-						class="glyphicon glyphicon-time"></i> 2016-11-01 </span><span
-					class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-			<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#"><span
-					class="thumbnail"> <img class="thumb"
-						data-original="images/201610181739277776.jpg"
-						src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-						style="display: block;">
-				</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i
-						class="glyphicon glyphicon-time"></i> 2016-11-01 </span><span
-					class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-			<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#"><span
-					class="thumbnail"> <img class="thumb"
-						data-original="images/201610181739277776.jpg"
-						src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-						style="display: block;">
-				</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i
-						class="glyphicon glyphicon-time"></i> 2016-11-01 </span><span
-					class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-			<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#"><span
-					class="thumbnail"> <img class="thumb"
-						data-original="images/201610181739277776.jpg"
-						src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-						style="display: block;">
-				</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i
-						class="glyphicon glyphicon-time"></i> 2016-11-01 </span><span
-					class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-			<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#"><span
-					class="thumbnail"> <img class="thumb"
-						data-original="images/201610181739277776.jpg"
-						src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-						style="display: block;">
-				</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i
-						class="glyphicon glyphicon-time"></i> 2016-11-01 </span><span
-					class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-			<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="#"><span
-					class="thumbnail"> <img class="thumb"
-						data-original="images/201610181739277776.jpg"
-						src="images/201610181739277776.jpg" alt="用DTcms做一个独立博客网站（响应式模板）"
-						style="display: block;">
-				</span><span class="text">用DTcms做一个独立博客网站（响应式模板）</span><span class="muted"><i
-						class="glyphicon glyphicon-time"></i> 2016-11-01 </span><span
-					class="muted"><i class="glyphicon glyphicon-eye-open"></i>88</span></a></li>
-
+		<div class="widget widget_hot">
+			<div style="height: 30px;line-height:30px;background-color: #3399CC;padding-left: 5px;margin-bottom: 5px;color:white;">阅读排行榜</div>
+			<ul>
+			<c:forEach var="article" items="${reads}">
+				<li>
+					<a href="article/${article.id}">
+						<span class="text">
+							<span class="cat">${article.topic }<i></i></span>
+							<span class="">${article.title }</span>
+						</span>
+						<span class="muted">
+							<i class="glyphicon glyphicon-time"></i> 
+							<fmt:formatDate value="${article.createTime}" pattern="yyyy-MM-dd HH:mm"/> 
+						</span>
+						<span class="muted">
+							<i class="fa fa-user"></i>
+							${article.user.name}
+						</span>
+						<span class="muted">
+							<i class="glyphicon glyphicon-eye-open"></i>
+							${article.readCount}
+						</span> 
+						<span class="muted">
+							<i class="glyphicon glyphicon-comment"></i> ${article.commentCount}
+						</span>
+						<span class="text">${article.content}</span>
+					</a>
+				</li>
+			</c:forEach>
 		</ul>
 	</div>
-	<div class="widget widget_sentence">
-
-		<a href="#" target="_blank" rel="nofollow" title="MZ-NetBlog主题">
-			<img style="width: 100%" src="images/ad.jpg" alt="MZ-NetBlog主题">
-		</a>
-
 	</div>
 	</aside> </section>
 	<script src="js/bootstrap.min.js"></script>

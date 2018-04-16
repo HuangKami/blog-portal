@@ -3,6 +3,7 @@ import java.util.Collection;
 import java.util.List;
 import com.kami.blog.model.Article;
 import com.kami.blog.model.ComposeArticle;
+import com.kami.blog.model.Topic;
 import com.kami.blog.common.Assist;
 public interface ArticleService{
 	/**
@@ -119,4 +120,8 @@ public interface ArticleService{
      */
     List<Article> selectCollectArticleByUserId(String userId);
 	String format(String content);
+	 /**
+     * 分类详情
+     */
+    List<Topic> selectTopicDetail();
 }

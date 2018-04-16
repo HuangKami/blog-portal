@@ -11,6 +11,7 @@ public class Article {
     private Integer readCount = 0;//浏览数
     private String userId;//所属人
     private String content;//内容
+    private boolean del;
     public Integer getId() {
         return this.id;
     }
@@ -74,5 +75,13 @@ public class Article {
     public void setContent(String content) {
         this.content = content;
     }
+
+	public boolean isDel() {
+		return del;
+	}
+
+	public void setDel(boolean del) {
+		this.del = del;
+	}
 
 }

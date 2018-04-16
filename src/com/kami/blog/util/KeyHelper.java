@@ -5,8 +5,10 @@ package com.kami.blog.util;
  */
 public class KeyHelper {
 	//项目地址
-	//public static final String URL = "http://localhost:8080/blog-portal";
+//	public static final String URL = "http://localhost:8080/blog-portal";
+//	public static final String ADMIN_URL = "http://localhost:8080/blog-admin";
 	public static final String URL = "http://www.kami.org.cn/kblog";
+	public static final String ADMIN_URL = "http://www.kami.org.cn/kblog-admin";
 	//成功信息
 	public static final String SUCCESS = "success";
 	//失败信息
@@ -29,4 +31,8 @@ public class KeyHelper {
 	public static final String EMAIL = "email";
 	//最热文章
 	public static final String HOTEST_ARTICLE = "hotestArticle";
+	//主题分类
+	public static final String TOPIC = "topic";
+	//token
+	public static final String TOKEN = "kami-token-sso";
 }

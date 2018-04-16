@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import com.kami.blog.dao.ArticleDao;
 import com.kami.blog.model.Article;
 import com.kami.blog.model.ComposeArticle;
+import com.kami.blog.model.Topic;
 import com.kami.blog.redis.ArticleRedis;
 import com.kami.blog.common.Assist;
 import com.kami.blog.service.ArticleService;
@@ -145,5 +146,9 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public List<Article> selectCollectArticleByUserId(String userId) {
 		return articleDao.selectCollectArticleByUserId(userId);
+	}
+	@Override
+	public List<Topic> selectTopicDetail() {
+		return articleDao.selectTopicDetail();
 	}
 }

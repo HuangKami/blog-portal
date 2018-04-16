@@ -1,4 +1,5 @@
 package com.kami.blog.dao;
+import com.kami.blog.model.Count;
 import com.kami.blog.model.User;
 import java.util.List;
 import com.kami.blog.common.Assist;
@@ -80,4 +81,8 @@ public interface UserDao{
      * 查询粉丝
      */
     List<User> selectFollowedByUserId(String userId);
+    /**
+     * 查询用户文章，关注，粉丝数
+     */
+    Count selectPersonalDetail(String userId);
 }

@@ -2,7 +2,9 @@ package com.kami.blog.service;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import com.kami.blog.model.Count;
 import com.kami.blog.model.User;
 import com.kami.blog.common.Assist;
 public interface UserService{
@@ -74,7 +76,8 @@ public interface UserService{
     /**
      * 用户登陆校验
      */
-    String login(HttpServletRequest request, User loginUser, String authCode);
+    public String login(HttpServletRequest request, HttpServletResponse response,
+			User loginUser, String authCode);
     /**
      * 用户注册检验
      */
@@ -91,4 +94,8 @@ public interface UserService{
      * 查询粉丝
      */
     List<User> selectFollowedByUserId(String userId);
+    /**
+     * 查询用户文章，关注，粉丝数
+     */
+    Count selectPersonalDetail(String userId);
 }

@@ -36,7 +36,7 @@
 </head>
 <body class="user-select single">
 	<jsp:include page="../main/header.jsp"></jsp:include>
-	
+	<script src="js/bootstrap.min.js"></script>
 	<div class="main clearfix">
       <div class="persional_property">
         <div class="person_info_con"><i class="icon-edit icon-large person-info-edit"></i><a name="M_base"></a>
@@ -46,7 +46,7 @@
             		<c:if test="${sessionScope.user.id eq person.id}">
             			<input type="file" id="uploadHeadImg" name="uploadHeadImg" style="display: none" onchange="uploadImg()"/>
 	            		<label for="uploadHeadImg">
-	            			<img id="headImgUp" src="${person.headImg }" class="header">
+	            			<img style="cursor:hand;" id="headImgUp" src="${person.headImg }" class="header">
 	            		</label>
             		</c:if>
 	            	<c:if test="${sessionScope.user.id != person.id}">
@@ -65,10 +65,15 @@
 	            	<c:if test="${sessionScope.user.id != person.id}">
 	            		<span style="margin-left: 20px; float: right;"><a href="#" onclick="return follow('${person.id}')"><i class="fa fa-github"></i> 关注</a></span>
 	            	</c:if>
+	            	<c:if test="${sessionScope.user.id == person.id}">
+	            		<span style="margin-left: 20px; float: right;"><a onclick="return show('#editPasswordModal')"><i class="fa fa-github"></i> 修改密码</a></span>
+	            		<span style="margin-left: 20px; float: right;"><a  onclick="return show('#editModal')"><i class="fa fa-github"></i> 编辑资料</a></span>
+	            	</c:if>
             	</c:if>
             </dt>
             <dd class="person-detail"> 
-            		<span class="info_null">未填写行业</span><span>|</span><span class="info_null">未填写职位</span><span>|</span><span class="info_null">未填写姓名</span><span>|</span>中国<span>|</span><span class="info_null">未填写性别</span><span>|</span><span class="info_null">未填写生日</span> </dd>
+           		<span class="info_null">计算机</span><span>|</span><span class="info_null"><c:if test="${empty person.introduction }">未填写职位</c:if>${person.introduction }</span><span>|</span><span class="info_null">${person.name }</span><span>|</span>中国 
+            </dd>
             <dd style="margin: 10px 0px"> 
 	            <div class="person-status clearfix">
 	          </div>
@@ -80,62 +85,7 @@
       <div class="persion_section">
         <div class="mod_product">
           <div class="prod_fans">
-            <div style="left: 34px" nodetype="box_1" id="box_1" class="box box_1">
-              <div nodetype="ie-fans" class="IE-fans"></div>
-              <div nodetype="fanInfo" class="info level orange">V1</div><a href="http://blog.csdn.net/huangkami" target="_blank" nodetype="fanText" class="box_title">博客</a>
-              <div class="wraper_right fanOrange">
-                <div nodetype="moveFan-right" class="fan"></div>
-              </div>
-              <div class="wraper_left fanOrange">
-                <div nodetype="moveFan-left" class="fan"></div>
-              </div>
-            </div>
-            <div style="left: 209px" nodetype="box_2" id="box_2" class="box box_2">
-              <div nodetype="ie-fans" class="IE-fans"></div>
-              <div nodetype="fanInfo" class="info level green">V1</div><a href="https://download.csdn.net/my" target="_blank" nodetype="fanText" class="box_title">下载</a>
-              <div class="wraper_right fanGreen">
-                <div nodetype="moveFan-right" class="fan"></div>
-              </div>
-              <div class="wraper_left fanGreen">
-                <div nodetype="moveFan-left" class="fan"></div>
-              </div>
-            </div>
-            <div style="left: 384px" nodetype="box_3" id="box_3" class="box box_3">
-              <div nodetype="ie-fans" class="IE-fans"></div>
-              <div nodetype="fanInfo" class="info level blue">V1</div><a href="https://bbs.csdn.net" target="_blank" nodetype="fanText" class="box_title">论坛</a>
-              <div class="wraper_right fanBlue">
-                <div nodetype="moveFan-right" class="fan"></div>
-              </div>
-              <div class="wraper_left fanBlue">
-                <div nodetype="moveFan-left" class="fan"></div>
-              </div>
-            </div>
-            <div style="left: 559px" nodetype="box_4" id="box_4" class="box box_4">
-              <div nodetype="ie-fans" class="IE-fans"></div>
-              <div nodetype="fanInfo" class="info level blueDark">V1</div><a href="https://code.csdn.net/dashboard/index" target="_blank" nodetype="fanText" class="box_title">CODE</a>
-              <div class="wraper_right fanBlueDark">
-                <div nodetype="moveFan-right" class="fan"></div>
-              </div>
-              <div class="wraper_left fanBlueDark">
-                <div nodetype="moveFan-left" class="fan"></div>
-              </div>
-            </div>
-            <div style="left: 734px" nodetype="box_5" id="box_5" class="box box_5">
-              <div nodetype="ie-fans" class="IE-fans"></div>
-              <div nodetype="fanInfo" class="info level greenDark">V1</div><a href="http://student.csdn.net/" target="_blank" nodetype="fanText" class="box_title">高校</a>
-              <div class="wraper_right fanGreenDark">
-                <div nodetype="moveFan-right" class="fan"></div>
-              </div>
-              <div class="wraper_left fanGreenDark">
-                <div nodetype="moveFan-left" class="fan"></div>
-              </div>
-            </div>
-          </div>
-          <div class="money">
-            <ul class="clearfix">
-              <li>C币<a href="#" target="_blank" class="cb">0</a></li>
-              <li>勋章<span class="medals"></span></li>
-            </ul>
+            
           </div>
         </div>
 		<script>
@@ -165,7 +115,6 @@
             <div id="blog_content" nodetype="myBlog" nodeindex="my4" data-modal="tab-layer" class="myBlog current_content">
 				<div class="mod-my-collect">
                     <div class="silder-wraper">
-                        <div class="operate clearfix"><a style="font-size:16px;color: #e9733a;" href="https://my.csdn.net/my/favorite" target="_blank">按标签查看</a></div>
                     </div>
                     <div class="silder-content">
                         <ul>
@@ -197,7 +146,6 @@
                     </ul>
                   </div>
                 </div>
-                <div class="operate clearfix"><a style="font-size:16px;color: #e9733a;" href="https://my.csdn.net/my/favorite" target="_blank">按标签查看</a></div>
               </div>
               <div class="silder-content">
                 <ul data-bind="list">
@@ -220,11 +168,11 @@
           </div>
 
           <div id="focus_content" nodetype="myConnection" nodeindex="my2" data-modal="tab-layer" class="myConnection">
-            <div class="connection_list_con clearfix">
+            <div class=" clearfix">
            	 <ul id="myConnect1" class="my_connections clearfix">
            	 	 <c:forEach var="user" items="${followUsers }">
-           	 	 	<li class="icon-th-list" style="margin-bottom: 0; height: auto;">
-	              		<span><a href="personal/${user.id }" target="_blank"><img alt="${user.name }" title="${user.name }" src="${user.headImg }"></a></span>
+           	 	 	<li class="icon-th-list" style="margin: 0; height: auto;float: left;" >
+	              		<span><a href="personal/${user.id }" target="_blank"><img style="width: 100px;height: 100px;border-radius: 50%" alt="${user.name }" title="${user.name }" src="${user.headImg }"></a></span>
 	             	</li>
            	 	 </c:forEach>
               </ul>
@@ -239,11 +187,11 @@
             </div>
           </div>
 			<div id="fans_content" nodetype="myConnection" nodeindex="my1" data-modal="tab-layer" class="myConnection">
-            <div class="connection_list_con clearfix">
+            <div class=" clearfix">
            	 <ul id="myConnect3" class="my_connections clearfix">
            	 	 <c:forEach var="user" items="${followedUsers }">
-           	 	 	<li class="icon-th-list" style="margin-bottom: 0; height: auto;">
-	              		<span><a href="personal/${user.id }" target="_blank"><img alt="${user.name }" title="${user.name }" src="${user.headImg }"></a></span>
+           	 	 	<li class="icon-th-list" style="margin: 0; height: auto;float: left;" >
+	              		<span><a href="personal/${user.id }" target="_blank"><img style="width: 100px;height: 100px;border-radius: 50%" alt="${user.name }" title="${user.name }" src="${user.headImg }"></a></span>
 	             	</li>
            	 	 </c:forEach>
               </ul>
@@ -262,5 +210,73 @@
 
         </div>
       </div>
+      
+      <div class="container">
+        <div class="modal fade" id="editPasswordModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="btn-info modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4>修改密码</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="editPassowrdForm" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="password" class="col-sm-2 control-label">原密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" id="password" name="password" class="form-control well" placeholder="请输入原密码"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword" class="col-sm-2 control-label">新密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" id="newPassword" name="newPassword" class="form-control well" placeholder="请输入新密码"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="renewPassword" class="col-sm-2 control-label">确认密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" id="renewPassword" name="renewPassword" class="form-control well" placeholder="请输入新密码"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="editPassword()" class="btn btn-info">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+	
+	<div class="container">
+        <div class="modal fade" id="editModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="btn-info modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4>编辑资料</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="editForm" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="introduction" class="col-sm-2 control-label">职业</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="introduction" name="introduction" class="form-control well" placeholder="请输入职业"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="editUser()" class="btn btn-info">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
 </body>
 </html>

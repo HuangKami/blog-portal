@@ -46,7 +46,7 @@ public class UploadController {
             	return KeyHelper.ERROR;
         	}
             user.setHeadImg(imgUrl);
-            userService.updateUserById(user);
+            userService.updateNonEmptyUserById(user);
         } catch (Exception e) {
         	logger.error("头像上传失败" + e);
         	return KeyHelper.ERROR;

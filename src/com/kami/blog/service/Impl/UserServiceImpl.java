@@ -1,21 +1,27 @@
 package com.kami.blog.service.Impl;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.kami.blog.dao.UserDao;
+import com.kami.blog.model.Count;
 import com.kami.blog.model.User;
 import com.kami.blog.redis.UserSessionRedis;
 import com.kami.blog.common.Assist;
 import com.kami.blog.service.UserService;
 import com.kami.blog.spring.UserExistBloomFilter;
+import com.kami.blog.util.CookieHelper;
 import com.kami.blog.util.KeyHelper;
 import com.kami.blog.util.MD5Helper;
 import com.kami.blog.util.SessionHelper;
 import com.kami.blog.util.StringHelper;
+import com.kami.blog.util.UUIDHelper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,6 +30,8 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	@Autowired
 	private UserSessionRedis userSessionRedis;
+	@Autowired
+	private RedisTemplate<String, User> redisTemplate;
 
 	@Override
 	public long getUserRowCount(Assist assist) {
@@ -120,7 +128,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String login(HttpServletRequest request, User loginUser, String authCode) {
+	public String login(HttpServletRequest request, HttpServletResponse response,
+			User loginUser, String authCode) {
 		String result = "";
 		Object loginAuthCode = SessionHelper.getAttribute(request, KeyHelper.LOGIN_AUTHCODE);
 		if(loginAuthCode == null) {
@@ -142,6 +151,10 @@ public class UserServiceImpl implements UserService {
 				SessionHelper.setAttribute(request, KeyHelper.USER, user);
 				SessionHelper.removeAttribute(request, KeyHelper.LOGIN_AUTHCODE);
 				userSessionRedis.saveUserSession(user.getId(), SessionHelper.getSessionId(request));
+				String token = "kami-" + UUIDHelper.getUUID();
+				CookieHelper.addCookie(response, KeyHelper.TOKEN, token);
+				redisTemplate.opsForValue().set(token, user);
+				redisTemplate.expire(token, 300, TimeUnit.SECONDS);
 				result = KeyHelper.SUCCESS;
 			}
 		}
@@ -186,5 +199,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> selectFollowedByUserId(String userId) {
 		return userDao.selectFollowedByUserId(userId);
+	}
+
+	@Override
+	public Count selectPersonalDetail(String userId) {
+		return userDao.selectPersonalDetail(userId);
 	}
 }

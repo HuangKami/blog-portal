@@ -1,7 +1,9 @@
 package com.kami.blog.controller;
 
 import java.sql.Timestamp;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,15 +18,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kami.blog.common.Assist;
 import com.kami.blog.lucene.LuceneService;
-import com.kami.blog.lucene.LuceneTask;
 import com.kami.blog.model.Article;
 import com.kami.blog.model.Collect;
 import com.kami.blog.model.ComposeArticle;
 import com.kami.blog.model.User;
+import com.kami.blog.quartz.ExecutorTask;
 import com.kami.blog.redis.ArticleRedis;
+import com.kami.blog.redis.TopicRedis;
 import com.kami.blog.service.ArticleService;
 import com.kami.blog.service.CollectService;
 import com.kami.blog.service.ReplyService;
+import com.kami.blog.service.UserService;
 import com.kami.blog.util.KeyHelper;
 import com.kami.blog.util.SessionHelper;
 import com.kami.blog.util.StringHelper;
@@ -33,15 +37,20 @@ import com.kami.blog.util.StringHelper;
 @RequestMapping("/article")
 public class ArticleController {
 	@Autowired
+	private UserService userService;
+	@Autowired
 	private ArticleService articleService;
 	@Autowired
 	private ReplyService replyService;
 	@Autowired
 	private ArticleRedis articleRedis;
 	@Autowired
+	private TopicRedis topicRedis;
+	@Autowired
 	private CollectService collectService;
 	@Autowired
 	private LuceneService luceneService;
+	public static final int RECOMMENDSIZE = 8;
 	private Logger logger = Logger.getLogger(ArticleController.class);
 	
 	@RequestMapping("/latestArticles/{pageNow}")
@@ -54,6 +63,7 @@ public class ArticleController {
 	
 	@RequestMapping("/{articleId}")
 	public String getDetailArticle(HttpServletRequest request ,@PathVariable int articleId, Model model) {
+		//帖子详情
 		ComposeArticle article = articleService.selectDetailArticle(articleId);
 		if(article == null) {
 			return "404";
@@ -63,7 +73,33 @@ public class ArticleController {
 		if(user != null) {
 			model.addAttribute(KeyHelper.USER, user);
 		}
-		articleService.updateReadCount(article);
+		
+		//推荐
+		List<Article> recommendArticles = new LinkedList<>();
+		for(Article article2 : luceneService.search(article.getTopic())) {
+			if(article2.getId() != article.getId() && recommendArticles.size() <= RECOMMENDSIZE) {
+				recommendArticles.add(article2);
+			}
+		}
+		model.addAttribute("recommendArticles", recommendArticles);
+		
+		//文章作者信息
+		model.addAttribute("count", userService.selectPersonalDetail(article.getUser().getId()));
+		
+		//主题
+		model.addAttribute("topics", topicRedis.getTopics());
+		
+		//阅读排行
+		model.addAttribute("reads", (Set<ComposeArticle>) articleService.formatComposeArticle(articleRedis.getArticles(KeyHelper.HOTEST_ARTICLE), 70));
+		
+		//更新浏览数
+		ExecutorTask.addTask(new Runnable() {
+			@Override
+			public void run() {
+				articleService.updateReadCount(article);
+			}
+		});
+		
 		return "main/detail";
 	}
 	
@@ -90,8 +126,10 @@ public class ArticleController {
 		article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 		try {
 			articleService.insertArticle(article);
-			LuceneTask.addTask(new Runnable() {
+			MainController.COUNT.incrementAndGet();
+			ExecutorTask.addTask(new Runnable() {
 				public void run() {
+					topicRedis.addTopicCount(article.getTopic(), 1);
 					luceneService.createIndex(article);
 				}
 			});
@@ -109,10 +147,15 @@ public class ArticleController {
 	public String deleteArticle(HttpServletRequest request, @PathVariable Integer articleId) {
 		try {
 			replyService.deleteReplyByArticleId(articleId);
-			articleService.deleteArticleById(articleId);
+			Article article = new Article();
+			article.setId(articleId);
+			article.setDel(true);
+			articleService.updateNonEmptyArticleById(article);
 			articleRedis.removeArticle(articleId);
-			LuceneTask.addTask(new Runnable() {
+			MainController.COUNT.decrementAndGet();
+			ExecutorTask.addTask(new Runnable() {
 				public void run() {
+					topicRedis.addTopicCount(articleService.selectArticleById(articleId).getTopic(), -1);
 					luceneService.deleteIndex(articleId);;
 				}
 			});
@@ -141,7 +184,13 @@ public class ArticleController {
 	
 	@RequestMapping("/search")
 	public String search(Model model, String keyword) {
-		model.addAttribute("searchList", luceneService.search(keyword));
+		model.addAttribute("keyword", keyword);
+		if(StringHelper.isNoneEmpty(keyword)) {
+			List<Article> articles = luceneService.search(keyword);
+			model.addAttribute("searchList", articles);
+		}
+		//阅读排行
+		model.addAttribute("hottest", (Set<ComposeArticle>) articleService.formatComposeArticle(articleRedis.getArticles(KeyHelper.HOTEST_ARTICLE), 70));
 		return "lucene/search";
 	}
 }

@@ -1,6 +1,7 @@
 package com.kami.blog.dao;
 import com.kami.blog.model.Article;
 import com.kami.blog.model.ComposeArticle;
+import com.kami.blog.model.Topic;
 
 import java.util.List;
 import com.kami.blog.common.Assist;
@@ -106,4 +107,8 @@ public interface ArticleDao{
      * 查询收藏的文章
      */
     List<Article> selectCollectArticleByUserId(String userId);
+    /**
+     * 分类详情
+     */
+    List<Topic> selectTopicDetail();
 }

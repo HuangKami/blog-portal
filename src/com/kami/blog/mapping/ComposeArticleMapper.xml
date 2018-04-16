@@ -39,6 +39,7 @@
         ,article.title as title
         ,article.readCount as readCount
         ,article.content as content
+        ,article.del as del
     </sql>
 
 	<select id="selectComposeArticle" parameterType="com.kami.blog.common.Assist" resultMap="article_user">
@@ -65,6 +66,7 @@
         </choose>
         ) article
         inner join user u on article.userId = u.id
+        where del = 0
         order by createTime DESC
 	</select>
 	
@@ -80,6 +82,7 @@
 			u.id as userId,
 			u.name as name,
 			u.headImg as headImg,
+			u.introduction as introduction,
 			r.id as replyId,
 			r.createTime as replyTime,
 			r.content as replyContent,
@@ -91,6 +94,6 @@
 		INNER JOIN user u on article.userId = u.id
 		LEFT JOIN reply r on article.id = r.articleId
 		LEFT JOIN user u2 on r.userId = u2.id
-		WHERE article.id = #{id,jdbcType=INTEGER}
+		WHERE article.id = #{id,jdbcType=INTEGER} and article.del = 0
 	</select>
 </mapper>

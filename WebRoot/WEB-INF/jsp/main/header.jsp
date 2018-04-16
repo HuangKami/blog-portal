@@ -45,6 +45,11 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right" style="margin-top: 20px; ">
 				<li><a href="main">首页</a></li>
+				<c:if test="${not empty sessionScope.user}">
+					<c:if test="${sessionScope.user.admin == true }">
+						<li><a href="login/toAdmin">后台首页</a></li>
+					</c:if>
+				</c:if>
 				<li><a href="personal/${sessionScope.user.id }">个人中心</a></li>
 				<li><a href="article/articlePage">写博客</a></li>
 			</ul>
