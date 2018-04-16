@@ -12,9 +12,9 @@ import com.aliyun.oss.OSSClient;
 public class OSSHelper {
 	public static final String OSSURL = "http://huangkami.oss-cn-shenzhen.aliyuncs.com/";
 	public static final String ENDPOINT = "oss-cn-shenzhen.aliyuncs.com";
-	public static final String ACCESSKEYID = "LTAIkdl3w4tbkCBH";
-	public static final String ACCESSKEYSECRET = "JsX8KCcULoWPCNMZ2n1hVakOLbUXDR";
-	public static final String BUCKETNAME = "huangkami";
+	public static final String ACCESSKEYID = "";
+	public static final String ACCESSKEYSECRET = "";
+	public static final String BUCKETNAME = "";
 	private static Logger logger = Logger.getLogger(OSSHelper.class);
 	
 	private OSSHelper() {}
