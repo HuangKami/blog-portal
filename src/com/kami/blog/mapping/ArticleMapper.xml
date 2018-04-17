@@ -130,7 +130,7 @@
         select 
             id, title, readCount, createTime
         from article
-        where userId = #{userId,jdbcType=VARCHAR}
+        where userId = #{userId,jdbcType=VARCHAR} and del = 0
     </select> 
     
     <select id="selectCollectArticleByUserId" parameterType="java.lang.String" resultMap="result_Article_Map">

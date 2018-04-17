@@ -40,9 +40,15 @@ public class TopicRedis {
 				break;
 			}
 		}
-		if(topic3 != null && topic3.getTotal() + count > 0) {
+		if(topic3 != null && topic3.getTotal() + count >= 0) {
 			redisTemplate.opsForSet().remove(KeyHelper.TOPIC, topic3);
 			topic3.setTotal(topic3.getTotal() + count);
+			redisTemplate.opsForSet().add(KeyHelper.TOPIC, topic3);
+		}
+		if(topic3 == null) {
+			topic3 = new Topic();
+			topic3.setTopic(topic);
+			topic3.setTotal(count);
 			redisTemplate.opsForSet().add(KeyHelper.TOPIC, topic3);
 		}
 	}

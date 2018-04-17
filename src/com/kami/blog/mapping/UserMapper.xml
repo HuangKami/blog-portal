@@ -353,7 +353,7 @@
 	
 	<select id="selectPersonalDetail" parameterType="java.lang.String" resultMap="personalMap">
 		select * from
-		(select count(1) as articleCount from article where userId = #{userId}) a,
+		(select count(1) as articleCount from article where userId = #{userId} and del = 0) a,
 		(select count(1) as followCount from follow where follower = #{userId}) b,
 		(select count(1) as fansCount from follow where beFollowed = #{userId}) c
 	</select>

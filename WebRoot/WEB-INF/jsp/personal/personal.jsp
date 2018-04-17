@@ -105,10 +105,18 @@
 		</script>
 	  <div class="person_detail_tab">
 		  <ul>
-			  <li id="blog_detail" data-modal="tab" class="current_detail" onclick="choose('blog')">我的博客</li>
-			  <li id="collect_detail" data-modal="tab" onclick="choose('collect')">我的收藏</li>
-			  <li id="focus_detail" data-modal="tab" class="lastli" onclick="choose('focus')">我的关注</li>
-			  <li id="fans_detail" data-modal="tab" class="lastli" onclick="choose('fans')">我的粉丝</li>
+			  <li id="blog_detail" data-modal="tab" class="current_detail" onclick="choose('blog')">
+				  <c:if test="${(not empty sessionScope.user) && (sessionScope.user.id == person.id)}">我</c:if><c:if test="${(empty sessionScope.user) || (sessionScope.user.id != person.id)}">他</c:if>的博客
+			  </li>
+			  <li id="collect_detail" data-modal="tab" onclick="choose('collect')">
+			  	  <c:if test="${(not empty sessionScope.user) && (sessionScope.user.id == person.id)}">我</c:if><c:if test="${(empty sessionScope.user) || (sessionScope.user.id != person.id)}">他</c:if>的收藏
+			  </li>
+			  <li id="focus_detail" data-modal="tab" class="lastli" onclick="choose('focus')">
+			  	  <c:if test="${(not empty sessionScope.user) && (sessionScope.user.id == person.id)}">我</c:if><c:if test="${(empty sessionScope.user) || (sessionScope.user.id != person.id)}">他</c:if>的关注
+			  </li>
+			  <li id="fans_detail" data-modal="tab" class="lastli" onclick="choose('fans')">
+			 	  <c:if test="${(not empty sessionScope.user) && (sessionScope.user.id == person.id)}">我</c:if><c:if test="${(empty sessionScope.user) || (sessionScope.user.id != person.id)}">他</c:if>的粉丝
+			  </li>
 		  </ul>
 	  </div>
         <div class="aboutMe" style="display: block">

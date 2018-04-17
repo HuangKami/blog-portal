@@ -134,7 +134,8 @@ public class ArticleServiceImpl implements ArticleService {
 			if(score <= article.getReadCount() - 1) {
 				result = articleRedis.updateScore(KeyHelper.HOTEST_ARTICLE, article.getId(), 1);
 			} 
-			if(!result && score <= article.getReadCount()) {
+			if(!result && (score <= article.getReadCount() || 
+					articleRedis.getArticles(KeyHelper.HOTEST_ARTICLE).size() < ArticleRedis.SIZE)) {
 				articleRedis.addArticle(KeyHelper.HOTEST_ARTICLE, article);
 			}
 		}

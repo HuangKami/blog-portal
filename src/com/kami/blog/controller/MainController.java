@@ -29,6 +29,7 @@ public class MainController {
 	public static final long TIME = 1523357555364L;
 	@PostConstruct
 	public void init() {
+		COUNT.set(0);
 		COUNT.addAndGet(articleService.getArticleRowCount(null));
 	}
 	

@@ -163,7 +163,7 @@ white-space: nowrap; //文本不换行，这样超出一行的部分被截取，
 			<div style="height: 30px;line-height:30px;background-color: #3399CC;padding-left: 5px;margin-bottom: 5px;color:white;">帖子分类</div>
 			<ul>
 				<c:forEach var="topic" items="${topics }">
-					<li style="margin-bottom: 10px;"><a href="article/search?keyword=${topic.topic }" target="_blank" style="color: #5B5B5B;font-weight: bold;font-size: 16px;margin-right: 20px">【${topic.topic }】</a>  <span style="float: right;">【${topic.total }】</span> </li>
+					<li style="margin-bottom: 10px;"><a href="javascript:doPost('article/search', {'keyword':'${topic.topic }'})" target="_blank" style="color: #5B5B5B;font-weight: bold;font-size: 16px;margin-right: 20px">【${topic.topic }】</a>  <span style="float: right;">【${topic.total }】</span> </li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -189,9 +189,6 @@ white-space: nowrap; //文本不换行，这样超出一行的部分被截取，
 							<i class="glyphicon glyphicon-eye-open"></i>
 							${article.readCount}
 						</span> 
-						<span class="muted">
-							<i class="glyphicon glyphicon-comment"></i> ${article.commentCount}
-						</span>
 						<span class="text">${article.content}</span>
 					</a>
 				</li>

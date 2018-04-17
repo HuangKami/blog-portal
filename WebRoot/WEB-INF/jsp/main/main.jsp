@@ -140,9 +140,6 @@
 							<i class="glyphicon glyphicon-eye-open"></i>
 							${article.readCount}
 						</span> 
-						<span class="muted">
-							<i class="glyphicon glyphicon-comment"></i> ${article.commentCount}
-						</span>
 						<span class="text">${article.content}</span>
 					</a>
 				</li>
